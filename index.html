@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Oyun Tasarımı Dersi</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ================= HAFTA LİSTESİ (ANA SAYFA) ================= -->
+    <section id="home-screen" class="screen is-active">
+      <header class="home-header">
+        <div class="home-header-ghost" aria-hidden="true">MODE</div>
+        <div class="home-header-badge">GAMEJAM ATÖLYESİ</div>
+        <h1>Oyun Tasarımı Dersi</h1>
+      </header>
+
+      <div id="week-grid" class="week-grid" aria-label="Hafta listesi"></div>
+    </section>
+
+    <!-- ================= SLAYT EKRANI ================= -->
+    <section id="slide-screen" class="screen">
+      <header class="slide-topbar">
+        <button id="btn-back" class="topbar-btn" type="button">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Haftalar</span>
+        </button>
+
+        <div class="slide-topbar-title">
+          <span id="week-label">Hafta</span>
+        </div>
+
+        <button id="btn-fullscreen" class="topbar-btn" type="button" title="Tam ekran (F)">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </header>
+
+      <div id="slide-viewport" class="slide-viewport">
+        <article id="slide-card" class="slide-card" data-type="concept"></article>
+      </div>
+
+      <footer class="slide-controls">
+        <button id="btn-prev" class="nav-btn" type="button">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Geri</span>
+        </button>
+
+        <div id="slide-dots" class="slide-dots" aria-hidden="true"></div>
+
+        <button id="btn-next" class="nav-btn nav-btn-primary" type="button">
+          <span id="btn-next-label">İleri</span>
+          <svg viewBox="0 0 24 24" class="icon"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </footer>
+    </section>
+
+  </div>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
