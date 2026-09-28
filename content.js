@@ -50,7 +50,8 @@ const WEEKS = [
         bullets: [
           "Bir kodlama dersi değil: kod yazmayı değil, bir oyunun nasıl düşünüldüğünü öğreneceğiz. Kâğıt ve kalem yeter.",
           "Oyun oynama dersi de değil: sevdiğiniz oyunları söküp içindeki parçaları inceleyeceğiz.",
-          "Bir tasarım dersi: fikir üretecek, kural yazacak, çizecek, arkadaşlarınıza oynatıp düzelteceksiniz.",
+          "Bir tasarım dersi: fikir üretecek, kural yazacak, çizecek, evde ailenize ya da arkadaşlarınıza oynatıp düzelteceksiniz.",
+          "Derste oyun oynamıyoruz. Oynamak ev ödevi: bazı haftalarda bir oyunu evde tasarımcı gözüyle oynamanızı isteyeceğiz.",
         ],
       },
       {
@@ -85,7 +86,7 @@ const WEEKS = [
           "Tasarım Defteri: her haftanın ödeviyle dolan, size ait bir defter.",
           "Kendi oyununuzun 10 maddelik tasarım belgesi (GDD).",
           "İlk bölümünüzün kâğıt üzerindeki haritası, karakter krokiniz, renk paletiniz ve ekran taslağınız.",
-          "Arkadaşlarınıza en az bir kez oynatılmış bir kâğıt prototip.",
+          "Evde en az bir kişiye oynatılmış bir kâğıt prototip.",
           "Sınıfa yapacağınız 30 saniyelik oyun sunumu.",
           "Rolleri belli, gamejam'e hazır bir ekip.",
         ],
@@ -97,7 +98,8 @@ const WEEKS = [
           "Kavram: bir tasarım fikrini birlikte öğreniyoruz.",
           "Oyun Örnekleri: o fikri tanıdığınız oyunlarda buluyoruz.",
           "Sınıfa Sorular: kendi oyun deneyiminizle tartışıyoruz.",
-          "Ödev: kendi oyununuza bir parça ekliyorsunuz. 7. haftada bu parçalar birleşip GDD'niz oluyor.",
+          "Ödev: evde kendi oyununuza bir parça ekliyorsunuz. Bazen de bir oyunu evde oynayıp inceliyorsunuz.",
+          "7. haftada bu parçalar birleşip GDD'niz oluyor.",
         ],
       },
       {
@@ -491,7 +493,7 @@ const WEEKS = [
         bullets: [
           "Kendi oyununuz için 3 temel kural yazın. Kazanma ve kaybetme koşulunu da ekleyin (GDD madde 7).",
           "Çekirdek döngünüzü yazın: ___ → ___ → ___ → tekrar (GDD madde 6).",
-          "Kurallarınızı bir arkadaşınıza hiç açıklama yapmadan okutun. Soru sorduysa o kural henüz net değil; düzeltin.",
+          "Evde kurallarınızı bir aile üyenize ya da arkadaşınıza hiç açıklama yapmadan okutun. Soru sorduysa o kural henüz net değil; düzeltin.",
         ],
       },
     ],
@@ -598,7 +600,7 @@ const WEEKS = [
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "En çok oynadığınız oyunda ilk 10 dakikada neyi öğrendiniz? Bugün hâlâ neyi öğrenmeye devam ediyorsunuz?",
+          "Evde hiç oynamadığınız bir oyunu 10 dakika oynayın. İlk 10 dakikada neyi öğrendiniz? Oyun size bunu nasıl öğretti: yazıyla mı, deneyerek mi?",
           "Kendi oyununuzda oyuncu neyi öğrenecek, neyde ustalaşacak? Tek cümle yazın.",
           "Oyuncunuzu ödüllendiren bir şey var mı (puan, para, yeni karakter)? Nasıl kazanılıyor, ne işe yarıyor? (GDD madde 10)",
         ],
@@ -682,7 +684,7 @@ const WEEKS = [
         bullets: [
           "Kendi oyununuzun ilk bölümünü kareli kâğıda yukarıdan ya da yandan çizin.",
           "Bölümü 3 parçaya ayırıp işaretleyin: Öğret, Dene, Zorlaştır.",
-          "Çiziminizi bir arkadaşınıza gösterin: parmağıyla bölümü “oynasın”. Nerede takıldığını not alın.",
+          "Evde çiziminizi bir aile üyenize ya da arkadaşınıza gösterin: parmağıyla bölümü “oynasın”. Nerede takıldığını not alın.",
         ],
       },
     ],
@@ -835,7 +837,7 @@ const WEEKS = [
         heading: "Sınıfa Sorular",
         bullets: [
           "Görselleri sade olduğu hâlde çok sevdiğiniz bir oyun var mı?",
-          "Sesi kapatarak oynadığınızda oyun nasıl değişiyor?",
+          "Aklınızda kalan bir oyun sesi ya da müziği var mı? Neden aklınızda kalmış olabilir?",
         ],
       },
       {
@@ -844,6 +846,7 @@ const WEEKS = [
         bullets: [
           "Kendi oyununuz için 2D mi 3D mü, hangi stil? 3 ana renk seçin ve her birinin neden seçildiğini yazın (GDD madde 9).",
           "Oyununuzdaki 3 önemli an için birer ses tarif edin (örn. puan alma: kısa, tiz bir “ding”).",
+          "Evde sevdiğiniz bir oyunu 5 dakika sesli, 5 dakika sessiz oynayın. Ne değişti? 2 cümle yazın.",
         ],
       },
     ],
@@ -922,6 +925,7 @@ const WEEKS = [
         type: "homework",
         heading: "Ödev",
         bullets: [
+          "Evde bir oyun oynarken ekranı durdurun: ekranda hangi bilgiler var? Hangisine hiç bakmadınız?",
           "Kendi oyununuzun oyun ekranını çizin. Ekranda en fazla 3 bilgi olsun; neden bu üçünü seçtiğinizi yazın.",
           "Oyuncunun 2-3 temel hareketini ve her birinin hangi tuşla ya da dokunuşla yapıldığını yazın (GDD madde 4-5).",
         ],
@@ -1121,61 +1125,61 @@ const WEEKS = [
       {
         type: "template",
         heading: "1. Oyun Adı ve Türü",
-        guidance: "Oyununuza bir isim verin ve türünü seçin: platform, bulmaca, macera, yarış, koşu, strateji, simülasyon ya da diğer.",
+        guidance: "Oyununuza bir isim verin ve türünü seçin: platform, bulmaca, macera, yarış, koşu, strateji, simülasyon ya da diğer. Defterinizde: 1.2 ödevi.",
         example: "Flappy Bird — Koşu (sonsuz koşu / beceri oyunu)",
       },
       {
         type: "template",
         heading: "2. Oyun Fikri",
-        guidance: "“Oyuncu ______ yapar.” Tek cümlede oyununuzu anlatın.",
+        guidance: "“Oyuncu ______ yapar.” Tek cümlede oyununuzu anlatın. Defterinizde: 1.2 ödevi.",
         example: "Oyuncu, borulara çarpmadan geçmek için kuşu doğru zamanda zıplatır.",
       },
       {
         type: "template",
         heading: "3. Oyuncunun Amacı",
-        guidance: "Oyuncu oyunda neyi başarmaya çalışıyor? Kazanmak ya da ilerlemek için ne yapmalı?",
+        guidance: "Oyuncu oyunda neyi başarmaya çalışıyor? Kazanmak ya da ilerlemek için ne yapmalı? Defterinizde: 5.2 ödevi.",
         example: "Oyuncu, mümkün olduğunca çok boru aralığından geçip yüksek skor yapmaya çalışır.",
       },
       {
         type: "template",
         heading: "4. Oyuncu Ne Yapabilir?",
-        guidance: "Oyuncunun 2-3 temel hareketini İSİM + NASIL ÇALIŞTIĞI şeklinde yazın (örn. “Zıplama: boşluğa basınca karakter zıplar”).",
+        guidance: "Oyuncunun 2-3 temel hareketini İSİM + NASIL ÇALIŞTIĞI şeklinde yazın (örn. “Zıplama: boşluğa basınca karakter zıplar”). Defterinizde: 5.1 ödevi.",
         example: "Zıplama: Ekrana dokununca kuş yukarı fırlar. · Düşüş: Dokunmazsanız kuş sürekli aşağı iner (yer çekimi).",
       },
       {
         type: "template",
         heading: "5. Kontroller",
-        guidance: "Her hareketin hangi tuşla ya da dokunuşla yapıldığını yazın: Hareket, Zıplama/Etkileşim, Saldırı/Özel hareket.",
+        guidance: "Her hareketin hangi tuşla ya da dokunuşla yapıldığını yazın: Hareket, Zıplama/Etkileşim, Saldırı/Özel hareket. Defterinizde: 5.1 ödevi.",
         example: "Hareket: yok (kuş kendiliğinden ileri gider) · Zıplama/Etkileşim: ekrana dokunmak · Saldırı/Özel hareket: yok",
       },
       {
         type: "template",
         heading: "6. Oyun Döngüsü",
-        guidance: "Oyuncunun sürekli tekrarladığı eylemleri sırayla yazın: ___ → ___ → ___ → tekrar.",
+        guidance: "Oyuncunun sürekli tekrarladığı eylemleri sırayla yazın: ___ → ___ → ___ → tekrar. Defterinizde: 2.2 ödevi.",
         example: "Zıpla → Boru aralığından geç → Skor artır → Çarparsan biter → Tekrar başla",
       },
       {
         type: "template",
         heading: "7. Kazanma ve Kaybetme",
-        guidance: "Oyuncu nasıl kazanır, nasıl kaybeder? Kaybedince ne olur: baştan mı başlar, can mı gider?",
+        guidance: "Oyuncu nasıl kazanır, nasıl kaybeder? Kaybedince ne olur: baştan mı başlar, can mı gider? Defterinizde: 2.2 ödevi.",
         example: "Kazanma: resmi bir bitiş yok, amaç en yüksek skoru kırmak. Kaybetme: boruya veya yere çarparsa oyun biter, skor sıfırdan başlar.",
       },
       {
         type: "template",
         heading: "8. Oyuncu ve Duygu",
-        guidance: "Oyuncumuz kim (yaşı, sevdiği şey)? Neden bu oyunu oynasın? Oynarken hangi duyguları (eğlence, merak, heyecan, korku, güçlü hissetme, rekabet...) yaşasın?",
+        guidance: "Oyuncumuz kim (yaşı, sevdiği şey)? Neden bu oyunu oynasın? Oynarken hangi duyguları (eğlence, merak, heyecan, korku, güçlü hissetme, rekabet...) yaşasın? Defterinizde: 2.1 ödevi.",
         example: "Her yaştan, kısa aralarda tekrar tekrar oynamayı seven kişiler. Hissedilecek duygular: gerginlik, tatmin, hafif sinirlenme.",
       },
       {
         type: "template",
         heading: "9. Görsel Dünya",
-        guidance: "2D mi 3D mü? Dünya ve karakterler nasıl görünüyor? İlham aldığınız oyun, film ya da çizgi film var mı?",
+        guidance: "2D mi 3D mü? Dünya ve karakterler nasıl görünüyor? Ana renkleriniz neler? İlham aldığınız oyun, film ya da çizgi film var mı? Defterinizde: 4.2 ödevi.",
         example: "2D, basit piksel sanat. Açık mavi gökyüzü, yeşil borular, sarı ve yuvarlak bir kuş karakteri.",
       },
       {
         type: "template",
         heading: "10. Ödüller ve Ek Özellikler (İsteğe Bağlı)",
-        guidance: "Oyununuzda para, puan, eşya, can ya da enerji gibi bir şey var mı? Varsa nasıl kazanılıyor ve ne işe yarıyor?",
+        guidance: "Oyununuzda para, puan, eşya, can ya da enerji gibi bir şey var mı? Varsa nasıl kazanılıyor ve ne işe yarıyor? Defterinizde: 3.1 ödevi.",
         example: "Tek kaynak: skor. Yüksek skorlara göre oyun sonunda madalya verilir.",
       },
       {
@@ -1209,8 +1213,8 @@ const WEEKS = [
         heading: "Kâğıt Prototip ve Playtest",
         bullets: [
           "GDD bitince iş bitmez. Oyununuzu kâğıt, kalem ve birkaç parçayla hemen oynanabilir hâle getirin: bir kişi “bilgisayar” olur, kuralları uygular.",
-          "Başka bir ekipten birine oynatın. Oyuncuyu izleyin, açıklama yapmayın: nerede duraksadı, ne zaman güldü, ne zaman sıkıldı?",
-          "Gördüğünüz sorunları GDD'nize yazıp küçük değişiklikler yapın. Bu döngü gamejam boyunca tekrar eder.",
+          "Evde bir aile üyenize ya da ekip dışından bir arkadaşınıza oynatın. Oyuncuyu izleyin, açıklama yapmayın: nerede duraksadı, ne zaman güldü, ne zaman sıkıldı?",
+          "Gördüklerinizi şablondaki “Playtest Notları” bölümüne yazın ve küçük değişiklikler yapın. Bu döngü gamejam boyunca tekrar eder.",
         ],
       },
       {
@@ -1226,7 +1230,7 @@ const WEEKS = [
         type: "concept",
         heading: "Fikrinizi Sunun (Pitch)",
         bullets: [
-          "Oyununuzu sınıfa 30 saniyede anlatın: oyun adı + tek cümlelik fikir + oyuncu ne hissedecek + neden eğlenceli.",
+          "Oyununuzu sınıfa 30 saniyede anlatın: oyun adı + tek cümlelik fikir + oyuncu ne hissedecek + neden eğlenceli. Metni şablondaki “30 Saniyelik Sunum” bölümüne yazın.",
           "Teknik ayrıntı değil, dinleyenin gözünde canlanan net bir resim hedefleyin.",
           "Karakter krokiniz ya da bölüm çiziminiz varsa gösterin; bir resim uzun bir açıklamadan daha çok şey anlatır.",
         ],
@@ -1236,7 +1240,7 @@ const WEEKS = [
         heading: "Boş Şablonu İndirin",
         bullets: [
           "Ekibinizle doldurmak için boş GDD şablonunu Word (.docx) formatında indirin.",
-          "Her ekip kendi kopyasını doldurur.",
+          "Her ekip kendi kopyasını doldurur. Şablonun sonunda playtest notları ve sunum için iki ek bölüm var.",
         ],
         download: { label: "GDD Şablonunu İndir (.docx)", href: "GDD-Sablonu.docx" },
       },
