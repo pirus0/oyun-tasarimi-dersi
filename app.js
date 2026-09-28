@@ -141,6 +141,7 @@
   ];
 
   const WEEK_TOPIC_ICON = {
+    "0": { icon: "flag", color: "#5A4FE0" },
     "1.1": { icon: "people", color: "#22B8A8" },
     "1.2": { icon: "lightbulb", color: "#F5B93E" },
     "2.1": { icon: "target", color: "#FF5A36" },
