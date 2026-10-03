@@ -1343,111 +1343,311 @@ const WEEKS = [
       },
     ],
   },
+  // ---------------------------------------------------------------------
+  // HAFTA 3.1 — Kaynaklar: Koster (2004), Hunicke, LeBlanc & Zubek (2004),
+  // Csikszentmihalyi (1990), Chen (2007), Lepper, Greene & Nisbett (1973),
+  // Skinner, Swink (2009), Jonasson & Purho (2012), Adams & Dormans (2012).
+  // ---------------------------------------------------------------------
   {
     id: "3.1",
     title: "Eğlence ve Oyuncu Deneyimi",
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["Bir oyun neden eğlencelidir?", "Zorluk, ödül, merak, ilerleme ve his."],
+        heading: "Eğlence ve Oyuncu Deneyimi",
+        lead: "2.2'de kuralların ve mekaniklerin oyuncuda bir deneyime dönüştüğünü (MDA) gördük. Bu derste o deneyimin kendisini inceliyoruz: eğlence nereden gelir, zorluk ne zaman keyif verir, ödüller oyuncuyu nasıl etkiler ve bir oyun kendini nasıl “iyi hissettirir”.",
+        steps: [
+          { label: "Eğlence nedir?", text: "Eğlence ile öğrenme arasındaki bağ ve eğlencenin sekiz türü." },
+          { label: "Zorluk ve akış", text: "Oyuncu ne zaman sıkılır, ne zaman bunalır, ne zaman kendini kaybeder?" },
+          { label: "Ödül ve ilerleme", text: "Ödüller oyuncuyu ne zaman güçlendirir, ne zaman eğlenceyi bozar?" },
+          { label: "Oyun hissi", text: "Kontrollerin ve geri bildirimin oyuna kattığı his." },
+        ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Eğlence Nedir?",
+        lead: "“Eğlenceli olsun” her tasarımcının hedefidir, ama eğlencenin ne olduğunu bilmeden onu tasarlayamayız. Bu bölümde eğlenceyi iki açıdan tanımlıyoruz: nereden geldiği ve hangi türleri olduğu. Fikrinizin hangi tür eğlenceyi vaat ettiğini bilmek, bundan sonraki her kararı yönlendirecek.",
       },
       {
         type: "concept",
-        heading: "Eğlence = Öğrenmek",
-        bullets: [
-          "Oyun tasarımcısı Raph Koster'a göre eğlencenin kaynağı öğrenmektir: bir şeyi çözmek, bir hareketi ustalıkla yapmak.",
-          "Öğrenecek bir şey kalmayınca oyun sıkıcı olur. Bu yüzden Tic-Tac-Toe'yu (XOX) bir süre sonra kimse oynamaz: hep berabere biter.",
-          "Tasarımcının sorusu: “Oyuncu bu oyunda neyi öğreniyor, neyde ustalaşıyor?”",
+        heading: "Eğlence, Öğrenmektir",
+        image: {
+          src: "assets/lesson/koster.jpg",
+          caption: "Raph Koster, oyun tasarımcısı. A Theory of Fun for Game Design (2004) kitabının yazarı.",
+          credit: "Official GDC, CC BY 2.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Raph Koster'a göre oyunlar, beynimizin çözmeyi sevdiği örüntülerdir. Bir örüntüyü kavramaya başladığımızda keyif alırız; tamamen çözdüğümüzde oyun sıkıcı olur.",
+        quote: {
+          text: "Eğlence, öğrenmenin başka bir adıdır.",
+          source: "Raph Koster, A Theory of Fun for Game Design (2004)",
+        },
+        terms: [
+          { term: "Örüntü", en: "pattern", def: "Oyunun içindeki tekrar eden düzen: düşmanın saldırı sırası, parçaların düşüş biçimi." },
+          { term: "Ustalık ve sıkılma", def: "XOX (tic-tac-toe) çocuklara eğlenceli gelir; her oyunun berabere biteceği anlaşıldığında sıkıcılaşır. Öğrenilecek bir şey kalmayan oyun biter." },
         ],
       },
       {
         type: "concept",
-        heading: "Oyunun Aktardığı Temel Duygular",
+        heading: "Eğlencenin Sekiz Türü",
+        lead: "MDA makalesinin yazarlarından Marc LeBlanc, “eğlenceli” kelimesinin yerine sekiz ayrı estetik önerir. Oyunlar genellikle bir-iki türü öne çıkarır; tasarımcı hangisini hedeflediğini bilirse kuralları ona göre seçer.",
+        table: {
+          head: ["Tür", "Oyuncu ne yaşar?", "Örnek"],
+          rows: [
+            ["Duyum (sensation)", "Göze ve kulağa hitap eden haz", "Rhythm oyunları, Journey"],
+            ["Fantezi (fantasy)", "Başka biri olmak, hayal dünyası", "The Sims, Zelda"],
+            ["Anlatı (narrative)", "Gelişen bir hikâye", "Papers, Please"],
+            ["Meydan okuma (challenge)", "Engeli aşmak, ustalaşmak", "Celeste, Dark Souls"],
+            ["Dostluk (fellowship)", "Başkalarıyla birlikte olmak", "Among Us, Minecraft sunucuları"],
+            ["Keşif (discovery)", "Bilinmeyeni bulmak", "Zelda, Minecraft"],
+            ["İfade (expression)", "Kendini ortaya koymak, yaratmak", "Minecraft, Roblox"],
+            ["Oyalanma (submission)", "Zihni dinlendiren vakit geçirme", "Candy Crush, Solitaire"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin Eğlence Türleri",
+        lead: "Fikrinizin bütün türleri vaat etmesi gerekmez; bir-iki tanesini çok iyi vermesi yeter. 1.2'deki deneyim hedefi (telaş), hangi türlerin seçileceğini zaten gösterir.",
+        table: {
+          head: ["Tür", "Karar", "Neden?"],
+          rows: [
+            ["Meydan okuma", "Birincil", "Her turda daha uzun dayanmak; telaşın kaynağı."],
+            ["Duyum", "İkincil", "Lekenin silinirken verdiği görsel ve işitsel tatmin."],
+            ["Dostluk", "Yan", "Skoru arkadaşla paylaşmak; 2.1'deki personanın motivasyonu."],
+            ["Anlatı, keşif, fantezi", "Yok", "60 saniyelik turda yer yok; kapsam dışı."],
+          ],
+        },
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "Zorluk ve Akış",
+        lead: "Meydan okuma, eğlencenin en yaygın türüdür, ama zorluk tek başına keyif vermez. Çok zor oyun bunaltır, çok kolay oyun sıkar. Bu bölüm, zorluğun hangi düzeyde ve hangi temposuyla oyuncuyu oyuna bağladığını açıklar.",
+      },
+      {
+        type: "concept",
+        heading: "Akış",
+        image: {
+          src: "assets/lesson/csikszentmihalyi.jpg",
+          caption: "Mihaly Csikszentmihalyi (1934-2021), psikolog. Akış kavramını sanatçılar, sporcular ve cerrahlar üzerindeki araştırmalarıyla tanımladı.",
+          credit: "Ehirsh, kamu malı. Kaynak: Wikimedia Commons",
+        },
+        lead: "Psikolog Mihaly Csikszentmihalyi (Flow, 1990), insanın bir işe tamamen gömüldüğü, zamanın nasıl geçtiğini fark etmediği hâle akış (flow) adını verdi. Akış, görevin zorluğu ile kişinin becerisi denk olduğunda ortaya çıkar.",
+        table: {
+          head: ["Durum", "Oyuncu ne hisseder?"],
+          rows: [
+            ["Zorluk > beceri", "Kaygı: bunalır, “haksızlık” der, bırakır."],
+            ["Zorluk < beceri", "Sıkılma: dikkati dağılır, bırakır."],
+            ["Zorluk ≈ beceri", "Akış: odaklanır, zamanı unutur, devam eder."],
+          ],
+        },
         bullets: [
-          "İyi bir tasarımcı, oyuna başlamadan önce hangi duyguları hedeflediğine karar verir.",
-          "Örnek duygular: heyecan, gerilim, merak, gurur, rahatlama, arkadaşlık, rekabet.",
-          "Gamejam'de: “Bizim oyunumuz oyuncuya hangi 2-3 duyguyu yaşatmalı?”",
+          "Akışın koşulları oyunlarda hazır bulunur: net hedef, anında geri bildirim ve beceriye uyan zorluk.",
         ],
       },
       {
         type: "concept",
-        heading: "Zorluk ve Akış (Flow)",
-        bullets: [
-          "Çok kolay olursa sıkıcı, çok zor olursa sinir bozucu olur.",
-          "Zorluk oyuncunun becerisiyle birlikte büyüdüğünde oyuncu “akışa” girer: zamanın nasıl geçtiğini fark etmez.",
-          "Bu yüzden iyi oyunlar kolay başlar ve oyuncu ustalaştıkça zorlaşır.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Merak ve Keşif",
-        bullets: [
-          "Bilinmeyeni öğrenme isteği oyuncuyu ileri taşır: “O tepenin arkasında ne var?”",
-          "Örnek: Minecraft'ta haritanın henüz görülmemiş kısımları.",
-          "Merak uyandırmak için her şeyi göstermeyin: yarım bir ipucu, kapalı bir kapı yeter.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Başarı ve İlerleme Hissi",
-        bullets: [
-          "Oyuncu geliştiğini hissetmeli: yeni seviye, yeni yetenek, yeni alan.",
-          "İlerleme göstergeleri (puan, seviye çubuğu, açılan harita) bu hissi görünür kılar.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Oyun İçi Ekonomi (Kaynaklar ve Ödüller)",
-        bullets: [
-          "Oyun içi ekonomi: oyuncunun topladığı kaynaklar (puan, para, enerji) ve onları nasıl harcadığı.",
-          "Basit bir ekonomi bile ilerleme hissini güçlendirir: puan biriktir, yeni bir şey aç.",
-          "Örnek: Clash Royale'de altın toplanır, kartları güçlendirmek için harcanır.",
-          "Ödül, oyunun asıl eğlencesinin yerine geçmemeli. Ödül olmasa da oyun oynanmaya değer olmalı.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Oyunun “His”i (Game Feel)",
-        bullets: [
-          "Aynı zıplama hareketi, ekran hafifçe sarsıldığında ya da yerden küçük bir toz bulutu kalktığında çok daha tatmin edici hissettirir.",
-          "Buna “game feel” ya da “juice” denir: ses, titreşim, küçük animasyonlar gibi anlık geri bildirimlerin toplamı.",
-          "Gamejam'de neredeyse bedava: bir vuruşta ekranı 2-3 piksel sarsmak bile büyük fark yaratır.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Tekrar Oynanabilirlik",
-        bullets: [
-          "Oyuncunun oyunu bir kez oynayıp bırakmasını mı istiyorsunuz, yoksa tekrar tekrar açmasını mı?",
-          "Rastgelelik (her seferinde farklı harita, farklı düşman sırası) ya da rekor kırma isteği oyuncuyu geri getirir.",
-          "Flappy Bird'de hikâye yok ama “bir dahakine daha iyi yaparım” hissi sizi geri çeker.",
+        heading: "Akış Kanalı ve Zorluk Eğrisi",
+        lead: "Oyuncunun becerisi oynadıkça artar; zorluk da onunla birlikte artmalıdır. Bu iki çizginin arasında kalan bölgeye akış kanalı denir. İyi oyunlarda zorluk düz bir çizgi gibi değil, testere dişi gibi yükselir.",
+        terms: [
+          { term: "Zorluk eğrisi", en: "difficulty curve", def: "Oyun boyunca zorluğun nasıl değiştiğini gösteren çizgi." },
+          { term: "Testere dişi tempo", def: "Zorluk bir süre yükselir, yeni bir bölüm ya da mekanikle kısa bir süre düşer, sonra yeniden yükselir. Düşüş anları oyuncuya nefes aldırır ve yeni şeyi öğrenme fırsatı verir." },
+          { term: "Gerilim ve rahatlama", def: "Sürekli yüksek gerilim yorar. Zirveler, aralarındaki sakin anlarla anlam kazanır." },
         ],
       },
       {
         type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Zelda: gizli alanları keşfetme merakı",
-          "Subway Surfers: oyuncu ustalaştıkça artan hız",
-          "Clash Royale: ödül ve ilerleme hissi",
+        heading: "Vaka: flOw",
+        image: {
+          src: "assets/lesson/flow-oyun.jpg",
+          caption: "flOw (2006): oyuncu küçük bir canlıyı yönetir. Daha derine inmek zorluğu artırır, yukarı çıkmak azaltır.",
+          credit: "thatgamecompany. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Jenova Chen, yüksek lisans tezinde (Flow in Games) akış kuramını oyunlara uyguladı ve tezini flOw oyunuyla gösterdi. Sorusu şuydu: herkesin becerisi farklıysa, tek bir zorluk eğrisi herkesi akışta tutabilir mi?",
+        terms: [
+          { term: "Çözüm", def: "Zorluğu oyuncunun seçimine bıraktı. Okyanusta daha derine inen oyuncu daha güçlü canlılarla karşılaşır; zorlanan oyuncu istediği an yukarı çıkabilir." },
+          { term: "Ders", def: "Zorluk ayarı bir menü seçeneği olmak zorunda değildir; oyun dünyasının içine yerleştirilebilir. Oyuncu farkında olmadan kendi akış kanalını bulur." },
         ],
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
+        type: "concept",
+        heading: "Zorluğu Ayarlamanın Yolları",
+        lead: "“Daha zor yap” belirsiz bir istektir. Tasarımcı zorluğu belirli boyutlar üzerinden ayarlar; bunlar 2.2'deki ayar değişkenleriyle doğrudan bağlantılıdır.",
+        table: {
+          head: ["Boyut", "Nasıl artar?", "“Leke”de"],
+          rows: [
+            ["Hız", "Olaylar daha hızlı olur", "Lekeler daha hızlı yayılır"],
+            ["Sayı", "Aynı anda daha çok tehdit", "Aynı anda daha çok leke"],
+            ["Hassasiyet", "Hedefler küçülür, zaman penceresi daralır", "Küçük lekeler, küçülen silgi"],
+            ["Bilgi", "Oyuncu daha az şey görür ya da önceden bilir", "Lekenin nereye yayılacağı belirsizleşir"],
+            ["Karmaşıklık", "Aynı anda düşünülecek kural sayısı artar", "Silinince ikiye bölünen leke türü"],
+          ],
+        },
         bullets: [
-          "Hangi oyunu oynarken zamanın nasıl geçtiğini anlamadınız?",
-          "Bir oyunu neden bıraktınız: çok mu kolaydı, çok mu zordu, yoksa öğrenecek bir şey mi kalmamıştı?",
+          "Kural: aynı anda yalnızca bir boyutu artırın. Oyuncu neyin zorlaştığını anlarsa, ona uyum sağlamayı öğrenir.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin Zorluk Eğrisi",
+        lead: "60 saniyelik bir turun zorluk planı, testere dişi tempoya göre:",
+        steps: [
+          { label: "0-10 sn: öğret", text: "Tek, yavaş leke. Oyuncu silmeyi öğrenir." },
+          { label: "10-25 sn: yükselt", text: "Leke sayısı artar (sayı boyutu)." },
+          { label: "25-30 sn: nefes", text: "Sayfa kısa süre temizlenir; yeni şey gelir: mürekkep şişesi devrilir." },
+          { label: "30-50 sn: yükselt", text: "Yayılma hızı artar (hız boyutu)." },
+          { label: "50-60 sn: zirve", text: "En hızlı ve en kalabalık an; tur biter, skor görünür." },
+        ],
+      },
+
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "Ödül ve İlerleme",
+        lead: "Puanlar, rozetler, yeni karakterler: oyunlar ödülle doludur. Ama ödül her zaman eğlenceyi artırmaz; yanlış kullanılırsa eğlencenin yerine geçer ve hatta onu bozar. Bu bölüm, ödülün ne zaman ve nasıl işe yaradığını açıklar.",
+      },
+      {
+        type: "concept",
+        heading: "İçsel ve Dışsal Motivasyon",
+        lead: "2.1'deki Öz-Belirleme Kuramı, iki tür motivasyon ayırır. Oyun tasarımında ikisinin dengesi kritiktir.",
+        terms: [
+          { term: "İçsel motivasyon", en: "intrinsic", def: "Bir şeyi kendisi keyifli olduğu için yapmak: zıplamanın kendisi zevkli olduğu için zıplamak." },
+          { term: "Dışsal motivasyon", en: "extrinsic", def: "Bir şeyi sonundaki ödül için yapmak: rozet almak için görevi bitirmek." },
+          { term: "Aşırı gerekçelendirme", en: "overjustification effect", def: "Lepper, Greene ve Nisbett (1973): resim çizmeyi seven çocuklara çizim için ödül vaat edildi. Ödül kaldırıldığında bu çocuklar, ödül almayanlardan daha az çizdi. Dışsal ödül, içsel keyfi bastırabilir." },
+        ],
+        bullets: [
+          "Tasarım dersi: ödül, sıkıcı bir mekaniği kurtarmak için değil, zaten eğlenceli olan bir mekaniği taçlandırmak için kullanılır.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Ödül Türleri",
+        lead: "Ödüller, oyuncuya ne kazandırdıklarına göre ayrılır. Hangi türün seçildiği, 2.1'deki hedef kitlenin motivasyonuna bağlıdır.",
+        table: {
+          head: ["Tür", "Oyuncuya ne verir?", "Örnek", "Hitap ettiği motivasyon"],
+          rows: [
+            ["Puan / skor", "Ölçülebilir başarı", "Flappy Bird skoru", "Meydan okuma, rekabet"],
+            ["Erişim", "Yeni bölüm, yeni alan", "Zelda'da açılan bölgeler", "Keşif"],
+            ["Güç", "Yeni yetenek, daha güçlü eşya", "Mario'da mantar", "Güç, ustalık"],
+            ["Koleksiyon", "Tamamlanacak bir set", "Celeste'deki çilekler", "Tamamlama"],
+            ["Kozmetik", "Görünüş değişikliği", "Among Us şapkaları", "İfade, sosyal statü"],
+            ["Bilgi", "Hikâyenin bir parçası, sır", "Gizli not, ara sahne", "Anlatı, merak"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Ödülün Zamanlaması",
+        image: {
+          src: "assets/lesson/ganimet-kutusu.png",
+          caption: "Ganimet kutusu (loot box) temsili çizimi: oyuncu, içinden ne çıkacağını bilmediği bir kutu için ödeme yapar.",
+          credit: "Sameboat, CC BY-SA 4.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Davranış psikoloğu B. F. Skinner, ödülün ne zaman verildiğinin davranışı nasıl etkilediğini inceledi. En güçlü bağlanmayı, ne zaman geleceği bilinmeyen ödül yaratır.",
+        terms: [
+          { term: "Sabit oranlı ödül", def: "Her 10 düşmanda bir ödül. Tahmin edilebilir; oyuncu ödülden sonra ara verir." },
+          { term: "Değişken oranlı ödül", def: "Ödül rastgele gelir. Oyuncu “belki şimdi” diye durmadan devam eder. Kumar makineleri bu ilkeyle çalışır." },
+          { term: "Etik sınır", def: "Ganimet kutuları değişken oranlı ödülü gerçek parayla birleştirir. Belçika 2018'de paralı ganimet kutularını kumar saydı. Tasarımcının sorumluluğu, bağlanmayı oyuncunun aleyhine kullanmamaktır." },
+        ],
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Oyun Hissi",
+        lead: "Aynı kurallara sahip iki oyundan biri “tatlı”, diğeri “odun gibi” hissettirebilir. Fark, kontrollerin tepkisinde ve her eylemin ardından gelen geri bildirimdedir. Bu bölüm, oyunun elde nasıl hissettirdiğini tasarlamayı anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Oyun Hissi",
+        lead: "Steve Swink (Game Feel, 2009), oyun hissini sanal bir nesneyi gerçek zamanlı kontrol etmenin verdiği his olarak tanımlar. Üç parçadan oluşur:",
+        terms: [
+          { term: "Gerçek zamanlı kontrol", def: "Oyuncunun girdisi ile ekrandaki tepki arasında fark edilir bir gecikme olmaması. Gecikme, karakteri “ağır” ve “tepkisiz” hissettirir." },
+          { term: "Simüle edilmiş uzay", def: "Nesnelerin çarpışması, yer çekimi, sürtünme: dünyanın kendi tutarlı fiziği." },
+          { term: "Cila", en: "polish", def: "Etkileşimi vurgulayan görsel ve işitsel ayrıntılar: toz bulutu, ses efekti, ekran sarsıntısı." },
+        ],
+      },
+      {
+        type: "examples",
+        heading: "Vaka: Celeste'nin Görünmez Yardımları",
+        image: {
+          src: "assets/lesson/celeste.png",
+          caption: "Celeste (2018): oyuncunun “tam zamanında bastım” hissi, oyunun fark ettirmeden yaptığı küçük düzeltmelerle desteklenir.",
+          credit: "Maddy Makes Games, CC BY-SA 4.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Celeste zor bir oyundur ama haksız hissettirmez. Tasarımcı Maddy Thorson, oyunun oyuncu lehine yaptığı küçük düzeltmeleri açıkladı:",
+        terms: [
+          { term: "Coyote time", def: "Platformun kenarından düştükten sonra çok kısa bir süre daha zıplanabilir. Oyuncu “kenardaydım” dediğinde haklı çıkar." },
+          { term: "Zıplama tamponu", en: "jump buffering", def: "Yere inmeden hemen önce basılan zıplama tuşu hatırlanır ve yere değince uygulanır." },
+          { term: "Tepe noktasında hafiflik", def: "Zıplamanın en yüksek noktasında yer çekimi azalır; oyuncuya havada yön düzeltecek zaman kalır." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Geri Bildirim ve “Juice”",
+        lead: "Martin Jonasson ve Petri Purho, 2012'deki “Juice it or lose it” konuşmasında aynı Breakout oyununu önce sade, sonra adım adım efektler ekleyerek gösterdi. Kurallar hiç değişmedi, ama oyun bambaşka hissettirdi. Bu efektlere “juice” denir.",
+        table: {
+          head: ["Teknik", "Ne yapar?", "“Leke”de"],
+          rows: [
+            ["Parçacık", "Eylemin etrafına küçük parçalar saçar", "Silinen lekeden silgi kırıntıları"],
+            ["Ses", "Her eyleme kısa ve karakterli bir ses", "Sürterken hışırtı, temizlenince “çıt”"],
+            ["Ekran sarsıntısı", "Güçlü anlarda ekranı kısa süre titretir", "Mürekkep şişesi devrildiğinde"],
+            ["Ezilme-uzama", "Squash and stretch: nesne çarpınca basılır, hızlanınca uzar", "Silgi bastırınca yassılır"],
+            ["Duraksama", "Hit-stop: önemli anda oyun bir an durur", "Son leke silinince"],
+          ],
+        },
+        bullets: [
+          "Ölçü: juice, olanı açıklamalıdır. Her şey parlayıp titrerse oyuncu önemli olanı göremez.",
+        ],
+      },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "Dinamik Zorluk Ayarı",
+        lead: "Bazı oyunlar zorluğu oyuncunun performansına göre kendiliğinden ayarlar: dinamik zorluk ayarı (dynamic difficulty adjustment). Resident Evil 4, oyuncu sık ölürse düşmanları fark ettirmeden zayıflatır, çok iyi oynarsa güçlendirir. 2.2'deki Mario Kart'ın lastik bant etkisi de bunun bir türüdür. Risk: oyuncu fark ederse, başarısının kendine ait olmadığını hisseder.",
+      },
+      {
+        type: "extra",
+        heading: "İç Ekonomi",
+        lead: "Oyunda kazanılan ve harcanan her şey (altın, iksir, can) bir ekonomi oluşturur. Adams ve Dormans ekonomiyi dört parçayla anlatır:",
+        terms: [
+          { term: "Kaynak", en: "source", def: "Bir şeyi üreten yer: düşman öldürünce düşen altın." },
+          { term: "Gider", en: "drain", def: "Bir şeyi yok eden yer: dükkânda harcanan altın." },
+          { term: "Dönüştürücü", en: "converter", def: "Bir şeyi başka bir şeye çeviren yer: odunu tahtaya çeviren tezgâh." },
+          { term: "Takas", en: "trader", def: "Oyuncular ya da oyuncu ile oyun arasında değiş tokuş." },
+        ],
+        bullets: [
+          "Kaynak giderden büyükse “enflasyon” olur: oyuncu her şeyi alabilir, ödüller değerini kaybeder.",
+        ],
+      },
+
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Örüntü", en: "pattern", def: "Oyunun içinde öğrenilecek tekrar eden düzen." },
+          { term: "Sekiz estetik", def: "Duyum, fantezi, anlatı, meydan okuma, dostluk, keşif, ifade, oyalanma." },
+          { term: "Akış", en: "flow", def: "Zorluk ile becerinin denk olduğu, zamanın unutulduğu hâl." },
+          { term: "Zorluk eğrisi", en: "difficulty curve", def: "Zorluğun oyun boyunca değişimi; testere dişi tempo." },
+          { term: "İçsel / dışsal motivasyon", def: "Eylemin kendisi için / sonundaki ödül için yapmak." },
+          { term: "Değişken oranlı ödül", def: "Ne zaman geleceği bilinmeyen, en güçlü bağlanmayı yaratan ödül." },
+          { term: "Oyun hissi", en: "game feel", def: "Kontrol, fizik ve cilanın birlikte verdiği his." },
+          { term: "Juice", def: "Kuralları değiştirmeden geri bildirimi güçlendiren efektler." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Evde hiç oynamadığınız bir oyunu 10 dakika oynayın. İlk 10 dakikada neyi öğrendiniz? Oyun size bunu nasıl öğretti: yazıyla mı, deneyerek mi?",
-          "Kendi oyununuzda oyuncu neyi öğrenecek, neyde ustalaşacak? Tek cümle yazın.",
-          "Oyuncunuzu ödüllendiren bir şey var mı (puan, para, yeni karakter)? Nasıl kazanılıyor, ne işe yarıyor? (GDD madde 10)",
+          "Oyununuzun birincil ve ikincil eğlence türünü sekiz estetikten seçin; “Leke” tablosundaki gibi hangi türleri bilerek dışarıda bıraktığınızı da yazın.",
+          "Bir oturumun zorluk eğrisini testere dişi tempoyla planlayın: hangi saniyede ya da bölümde hangi zorluk boyutu artıyor, nerede nefes aralığı var?",
+          "Oyununuzdaki ödülleri yazın: türü ne, nasıl kazanılıyor, oyuncunun hangi motivasyonuna hitap ediyor? (GDD madde 10)",
+          "Temel fiiliniz için üç juice efekti tarif edin (parçacık, ses, sarsıntı ya da başka).",
+          "Evde: hiç oynamadığınız bir oyunu 10 dakika oynayın ve akıştan çıktığınız anı not edin. Sıkıldınız mı, bunaldınız mı? Hangi zorluk boyutu buna yol açtı?",
         ],
       },
     ],
