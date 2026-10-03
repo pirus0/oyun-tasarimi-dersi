@@ -1652,84 +1652,237 @@ const WEEKS = [
       },
     ],
   },
+  // ---------------------------------------------------------------------
+  // HAFTA 3.2 — Kaynaklar: Miyamoto (Super Mario Bros. 1-1 üzerine 2015
+  // röportajı), Hayashida (kishōtenketsu, 2012), Dan Taylor (Ten Principles
+  // of Good Level Design, GDC 2013), Kevin Lynch (The Image of the City, 1960).
+  // ---------------------------------------------------------------------
   {
     id: "3.2",
     title: "Bölüm (Level) Tasarımı",
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["Level design nedir?", "Oyuncuya yazıyla değil, oynatarak öğretmek."],
+        heading: "Bölüm Tasarımı",
+        lead: "3.1'de zorluğun testere dişi gibi yükselmesi gerektiğini gördük. Bölüm tasarımı, bu eğriyi oyuncunun içinde dolaştığı somut bir mekâna çevirir: hangi engel nerede, oyuncu bir mekaniği nerede öğrenir, nereye gideceğini nasıl bilir?",
+        steps: [
+          { label: "Bölüm tasarımı nedir?", text: "Bölümün görevi ve iyi bölüm tasarımının ilkeleri." },
+          { label: "Oynatarak öğretmek", text: "Super Mario Bros. 1-1 ve dört perdelik bölüm yapısı." },
+          { label: "Tempo ve yapı", text: "Yoğunluk, nefes alanları ve bölümlerin birbirine bağlanması." },
+          { label: "Oyuncuyu yönlendirmek", text: "Oyuncu, kimse söylemeden nereye gideceğini nasıl bilir?" },
+          { label: "Kâğıttan teste", text: "Bir bölüm hangi adımlarla yapılır?" },
+        ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Bölüm Tasarımı Nedir?",
+        lead: "Mekanikler oyuncuya ne yapabileceğini söyler; bölüm, bu mekaniklerin hangi sırayla ve hangi koşullarda sınanacağını belirler. Aynı mekanikle kolay ya da imkânsız bir bölüm yapılabilir. Fark, bölüm tasarımındadır.",
       },
       {
         type: "concept",
-        heading: "Level Design Nedir?",
-        bullets: [
-          "Oyuncunun bir alanda yaşayacağı deneyimin tasarlanmasıdır: nereden başlar, neyle karşılaşır, nerede biter.",
-          "Bölüm, mekanikleri öğrettiğiniz ve test ettiğiniz yerdir.",
+        heading: "Bölüm Tasarımı Nedir?",
+        lead: "Bölüm tasarımı (level design), oyun alanının, engellerin, düşmanların, ödüllerin ve yolların yerleştirilmesidir. Bölüm tasarımcısı yeni kural yazmaz; var olan mekanikleri bir mekâna dizerek oyuncuya bir deneyim yaşatır.",
+        terms: [
+          { term: "Bölüm", en: "level", def: "Oyunun başı ve sonu olan bir parçası: bir harita, bir sahne, bir tur. “Leke”de bir defter sayfası." },
+          { term: "Bölümün üç görevi", def: "Öğretmek: yeni mekaniği tanıtmak. Sınamak: öğrenileni zorlaştırarak test etmek. Yaşatmak: deneyim hedefine uygun bir tempo ve duygu üretmek." },
         ],
       },
       {
         type: "concept",
-        heading: "Yazıyla Değil, Oynatarak Öğret",
-        bullets: [
-          "Super Mario Bros.'un ilk bölümünde ekranda uzun bir talimat yazmaz.",
-          "İlk düşman güvenli bir yerde karşınıza çıkar; zıplamanız gerektiğini kendiniz keşfedersiniz.",
-          "İyi bir ilk bölüm oyuncuya “ne yapacağım?” diye sordurmaz. Oyuncu denerken öğrenir.",
-        ],
+        heading: "İyi Bölümün İlkeleri",
+        lead: "Bölüm tasarımcısı Dan Taylor, 2013'teki GDC konuşmasında iyi bölüm tasarımının on ilkesini sıraladı. Gamejam ölçeğinde en işe yarayan beşi:",
+        table: {
+          head: ["İlke", "Anlamı"],
+          rows: [
+            ["Mekaniklerden doğar", "Bölüm, oyunun mekaniklerini kullanmak ve sınamak için vardır; mekaniğin kullanılmadığı alan boş alandır."],
+            ["Sürekli öğretir", "Öğretici bölüm ilk bölümde bitmez; her bölüm bir şey öğretir ya da öğreneni derinleştirir."],
+            ["Ne yapılacağını söyler, nasıl yapılacağını değil", "Hedef açıktır; çözüm yolu oyuncuya bırakılır."],
+            ["Şaşırtır", "Öğrenilen kural beklenmedik bir biçimde kullanılır."],
+            ["Verimlidir", "Aynı alan ve aynı parçalar farklı biçimlerde yeniden kullanılır; her şey sıfırdan yapılmaz."],
+          ],
+        },
       },
+
+      // --- Bölüm 2 ---
       {
-        type: "concept",
-        heading: "Öğret, Dene, Zorlaştır",
-        bullets: [
-          "Öğret: yeni mekaniği güvenli bir yerde tanıtın. Hata yapsa da ceza küçük olsun.",
-          "Dene: oyuncunun o mekaniği tek başına kullanmasını isteyin.",
-          "Zorlaştır: mekaniği başka bir şeyle birleştirin ya da hızlandırın.",
-          "Bitiş: oyuncu öğrendiği her şeyi kullanarak bölümü tamamlar ve başarıyı hisseder.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Engel ve Düşman Yerleşimi",
-        bullets: [
-          "Engeller, oyuncuyu mekaniği kullanmaya zorlamalı. Zıplama öğrettiyseniz, zıplanacak bir çukur koyun.",
-          "Yeni bir engeli önce tek başına gösterin, sonra diğerleriyle karıştırın.",
-          "Oyuncunun göremediği yerden gelen ani tehlike haksız hissettirir.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Zorluk Nasıl Artırılır?",
-        bullets: [
-          "Yeni engel türleri, daha hızlı düşmanlar, daha dar alanlar, daha az zaman.",
-          "Her zaman aynı anda tek bir şeyi zorlaştırın. Hepsi birden gelirse oyuncu neden kaybettiğini anlamaz.",
-          "Zor bir bölümün ardından kısa bir nefes alma bölümü koyun.",
-        ],
+        type: "section",
+        heading: "Oynatarak Öğretmek",
+        lead: "Oyuncular öğretici metinleri okumaz, atlar. En iyi oyunlar kuralları yazıyla değil, bölümün kendisiyle öğretir: oyuncunun karşısına, ancak doğru şeyi yaparak geçebileceği bir durum koyar. Bu bölümde bunun en ünlü örneğini ve arkasındaki yapıyı göreceğiz.",
       },
       {
         type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Super Mario Bros: ilk bölüm, oyunun neredeyse bütün kurallarını talimat yazmadan öğretir",
-          "Angry Birds: her bölüm yeni bir kuş ya da yeni bir yapı malzemesi tanıtır",
-          "Geometry Dash: engeller önce tek tek, sonra art arda gelir",
+        heading: "Vaka: Super Mario Bros. 1-1",
+        image: {
+          src: "assets/lesson/mario-1-1.png",
+          caption: "Super Mario Bros. (1985), Dünya 1-1'in ilk ekranı: tek bir yazı olmadan oyunun temel kurallarını öğretir.",
+          credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Shigeru Miyamoto, 1-1'in ilk ekranının oyunu bilmeyen birine kuralları kendiliğinden öğretmek için tasarlandığını anlatır:",
+        terms: [
+          { term: "Yön", def: "Mario ekranın solunda başlar, sağı boştur: oyuncu sağa gitmesi gerektiğini anlar." },
+          { term: "İlk düşman", def: "Yavaşça yaklaşan Goomba'dan kaçmanın tek yolu zıplamaktır. Oyuncu ya zıplamayı öğrenir ya da ölür ve öğrenir." },
+          { term: "Soru blokları", def: "Parlayan bloğa vurmak bir şey çıkarır; merak, deneme yaptırır." },
+          { term: "Mantar", def: "İlk mantar sağa gider, borudan sekip oyuncuya doğru döner. Oyuncu kaçamasa bile ona dokunur ve iyi bir şey olduğunu öğrenir." },
         ],
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
+        type: "concept",
+        heading: "Dört Perdelik Bölüm: Kishōtenketsu",
+        image: {
+          src: "assets/lesson/mario-3d-world.png",
+          caption: "Super Mario 3D World (2013): her bölüm tek bir yeni fikir üzerine kurulur ve bu fikri dört adımda işler.",
+          credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Super Mario 3D Land ve 3D World'ün yönetmeni Koichi Hayashida, bölümlerini Çin ve Japon anlatı geleneğindeki dört perdeli yapıyla kurduğunu anlatır: kishōtenketsu.",
+        steps: [
+          { label: "Ki: giriş", text: "Yeni mekanik güvenli bir yerde tanıtılır; hata yapmanın bedeli yoktur." },
+          { label: "Shō: gelişme", text: "Aynı mekanik biraz daha zor bir durumda kullanılır." },
+          { label: "Ten: büküm", text: "Mekanik beklenmedik bir biçimde kullanılır ya da başka bir mekanikle birleşir." },
+          { label: "Ketsu: sonuç", text: "Öğrenilenlerin hepsi son bir sınavda bir araya gelir; bölüm biter." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin İlk Dört Sayfası",
+        lead: "“Leke”de her defter sayfası bir bölümdür. 2.2'de seçtiğimiz yan mekanik (devrilen mürekkep şişesi), dört sayfaya kishōtenketsu ile yayılır:",
+        table: {
+          head: ["Sayfa", "Perde", "Ne olur?"],
+          rows: [
+            ["1", "Giriş", "Sayfanın köşesinde tek bir mürekkep şişesi yavaşça devrilir. Oyuncu büyük lekeyi silmeyi öğrenir."],
+            ["2", "Gelişme", "İki şişe, farklı zamanlarda devrilir. Oyuncu hangisine önce gideceğini seçmek zorunda kalır."],
+            ["3", "Büküm", "Şişe, normal lekelerin arasında devrilir; küçük lekeleri silerken büyüğü gözden kaçırmak kolaylaşır."],
+            ["4", "Sonuç", "Bütün leke türleri ve şişeler aynı sayfada; 60 saniyenin zirvesi."],
+          ],
+        },
+      },
+
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "Tempo ve Yapı",
+        lead: "Tek tek iyi tasarlanmış engeller, sıralanışları kötüyse yorucu ya da sıkıcı bir bölüm oluşturur. Bu bölüm, engellerin bölüm boyunca nasıl dağıtılacağını ve bölümlerin birbirine nasıl bağlanacağını anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Yoğunluk ve Nefes Alanları",
+        lead: "Bölüm boyunca oyuncunun üzerindeki baskı, 3.1'deki zorluk eğrisinin küçük bir kopyası gibi iniş çıkış yapar. Tasarımcılar bunu bir yoğunluk grafiğiyle planlar.",
+        terms: [
+          { term: "Yoğunluk", en: "intensity", def: "Belirli bir anda oyuncunun ne kadar baskı altında olduğu: düşman sayısı, zaman baskısı, hata payının darlığı." },
+          { term: "Nefes alanı", def: "Tehlikenin olmadığı kısa bölge. Oyuncu dinlenir, ödülünü toplar, bir sonraki bölümü görür. Kontrol noktaları genellikle burada olur." },
+          { term: "Ritim", def: "Yoğun ve sakin anların sırası. Hep yoğun bölüm yorar; hep sakin bölüm sıkar." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Bölümlerin Yapısı",
+        lead: "Bölümlerin birbirine nasıl bağlandığı, oyuncunun ne kadar özgür olduğunu belirler. Yapı seçimi kapsamı da doğrudan etkiler.",
+        table: {
+          head: ["Yapı", "Nasıl çalışır?", "Örnek", "Gamejam'e uygunluğu"],
+          rows: [
+            ["Doğrusal", "Bölümler sırayla, tek yoldan oynanır", "Super Mario Bros., Celeste", "En uygun: en az içerik"],
+            ["Merkez ve kollar", "Hub: bir merkezden farklı bölümlere gidilir", "Super Mario 64", "Orta"],
+            ["Kilit ve anahtar", "Gating: yeni yetenek, kapalı yeri açar", "Zelda, Metroid", "Zor: çok planlama ister"],
+            ["Açık dünya", "Oyuncu her yere istediği sırayla gider", "Minecraft, Zelda: Breath of the Wild", "Uygun değil"],
+          ],
+        },
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Oyuncuyu Yönlendirmek",
+        lead: "Oyuncu kaybolduğunda oyun durur. Ama ok işaretleri ve yazılar sihirli çemberi bozar. Bölüm tasarımcısı, oyuncuyu fark ettirmeden yönlendirmek için şehir planlamacılarından ve mimarlardan ödünç alınan araçlar kullanır.",
+      },
+      {
+        type: "concept",
+        heading: "Şehrin İmgesi",
+        image: {
+          src: "assets/lesson/hl2-city17.jpg",
+          caption: "Half-Life 2 (2004), City 17: arkadaki dev Citadel kulesi şehrin her yerinden görünür ve oyuncuya hep nerede olduğunu söyler.",
+          credit: "Valve. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Şehir planlamacısı Kevin Lynch (The Image of the City, 1960), insanların bir şehirde yollarını beş öğeyle bulduğunu gösterdi. Bölüm tasarımcıları bu öğeleri oyun haritalarında kullanır.",
+        terms: [
+          { term: "Yol", en: "path", def: "Oyuncunun ilerlediği hat: koridor, cadde, patika." },
+          { term: "Kenar", en: "edge", def: "Geçilemeyen sınır: duvar, nehir, uçurum." },
+          { term: "Bölge", en: "district", def: "Kendine özgü görünüşü olan alan: çarşı, mezarlık, liman." },
+          { term: "Düğüm", en: "node", def: "Yolların kesiştiği, karar verilen nokta: meydan, kavşak." },
+          { term: "İşaret", en: "landmark", def: "Uzaktan görünen ve yön veren yapı: kule, dağ, dev ağaç." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Yönlendirme Teknikleri",
+        lead: "Lynch'in öğelerine ek olarak, bölüm tasarımcıları oyuncunun gözünü istedikleri yere çekmek için görsel ipuçları kullanır:",
+        table: {
+          head: ["Teknik", "Nasıl çalışır?", "Örnek"],
+          rows: [
+            ["Işık", "Göz, karanlıktan aydınlığa yönelir", "Karanlık koridorun sonundaki aydınlık kapı"],
+            ["Renk", "Tutarlı bir renk, “buradan geçilir” demektir", "Mirror's Edge'de tırmanılabilir yerlerin kırmızıya boyanması"],
+            ["Kırıntı izi", "Breadcrumbs: toplanabilir nesneler yolu çizer", "Mario'da havada dizili altınlar"],
+            ["Çizgiler", "Kenarlar, kablolar, yollar bakışı bir noktaya taşır", "Hedefe doğru uzanan raylar"],
+            ["Hareket", "Göz, hareket eden şeye bakar", "Uzaktan uçan bir kuş sürüsü"],
+          ],
+        },
         bullets: [
-          "Bir oyunun ilk bölümü size nasıl öğretti? Yazı mı okudunuz, yoksa deneyerek mi öğrendiniz?",
-          "Hiç “bu bölüm haksız” dediğiniz oldu mu? Neden?",
+          "Ölçü: ipucu fazla belirginse (her tırmanılacak yerde sarı boya), oyuncu kendini yönlendirilmiş değil, elinden tutulmuş hisseder.",
+        ],
+      },
+
+      // --- Bölüm 5 ---
+      {
+        type: "section",
+        heading: "Kâğıttan Teste",
+        lead: "Profesyonel bölüm tasarımcıları güzel görünen bir bölümle işe başlamaz. Önce bölümün oynanıp oynanmadığını en ucuz yoldan test ederler, görselliği en sona bırakırlar. Bu bölüm, bir bölümün hangi adımlarla yapıldığını anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Bir Bölüm Nasıl Yapılır?",
+        image: {
+          src: "assets/lesson/mario-1-1-sema.png",
+          caption: "Mario 1-1'in ilk ekranının blokaj hâli: zemin, bloklar, boru ve düşman yalnızca renkli kutularla gösterilmiş. Oynanış, görsel olmadan da okunur.",
+          credit: "Maplestrip, CC0. Kaynak: Wikimedia Commons",
+        },
+        steps: [
+          { label: "Amaç", text: "Bölüm neyi öğretecek, hangi duyguyu yaşatacak? Tek cümle." },
+          { label: "Kâğıt harita", text: "Kareli kâğıda yukarıdan ya da yandan çizim: yollar, engeller, ödüller, başlangıç ve bitiş." },
+          { label: "Blokaj", text: "Blockout / graybox: bölüm oyunda yalnızca gri kutularla kurulur. Görsel yoktur, sadece oynanış vardır." },
+          { label: "Test ve düzeltme", text: "Başkası oynar, tasarımcı izler; takılınan yerler değiştirilir." },
+          { label: "Görselleştirme", text: "Bölüm oynanır hâle geldiğinde son görseller eklenir." },
+        ],
+      },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "Prosedürel Bölüm Üretimi",
+        lead: "Bazı oyunlarda bölümleri tasarımcı değil, bilgisayar kurallara göre üretir: prosedürel üretim (procedural generation). Spelunky, her oyunda elle hazırlanmış oda parçalarını rastgele birleştirerek yeni bir harita kurar. Bu, tekrar oynanabilirliği artırır ama tasarımcıya yeni bir iş verir: rastgele üretilen her bölümün oynanabilir ve adil olmasını garanti eden kuralları yazmak.",
+      },
+
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Bölüm tasarımı", en: "level design", def: "Alanın, engellerin, ödüllerin ve yolların yerleştirilmesi." },
+          { term: "Kishōtenketsu", def: "Giriş, gelişme, büküm, sonuç: dört perdelik bölüm yapısı." },
+          { term: "Yoğunluk / nefes alanı", def: "Oyuncu üzerindeki baskı / baskının olmadığı kısa bölge." },
+          { term: "Doğrusal / merkez / açık", def: "Bölümlerin birbirine bağlanma yapıları." },
+          { term: "Kilit ve anahtar", en: "gating", def: "Yeni yeteneğin kapalı alanı açması." },
+          { term: "Lynch'in beş öğesi", def: "Yol, kenar, bölge, düğüm, işaret." },
+          { term: "Kırıntı izi", en: "breadcrumbs", def: "Yolu gösteren toplanabilir nesneler." },
+          { term: "Blokaj", en: "blockout / graybox", def: "Bölümün görselsiz, gri kutularla kurulmuş hâli." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Kendi oyununuzun ilk bölümünü kareli kâğıda yukarıdan ya da yandan çizin.",
-          "Bölümü 3 parçaya ayırıp işaretleyin: Öğret, Dene, Zorlaştır.",
-          "Evde çiziminizi bir aile üyenize ya da arkadaşınıza gösterin: parmağıyla bölümü “oynasın”. Nerede takıldığını not alın.",
+          "Oyununuzun ilk bölümünün amacını tek cümleyle yazın: hangi mekaniği öğretiyor, hangi duyguyu yaşatıyor?",
+          "Bölümü kareli kâğıda çizin ve kishōtenketsu'nun dört perdesini haritada işaretleyin. Bölümünüz tek ekransa (“Leke” gibi), dört sayfa ya da dört dalga olarak planlayın.",
+          "Bölümün yoğunluk grafiğini çizin: nerede zirve, nerede nefes alanı var? Haritaya en az bir işaret (landmark) ve bir yönlendirme tekniği ekleyin.",
+          "Evde: çiziminizi hiç açıklama yapmadan bir aile üyenize ya da arkadaşınıza gösterin ve parmağıyla “oynamasını” isteyin. Nereye gideceğini bilemediği ya da takıldığı yerleri not alıp haritayı düzeltin.",
         ],
       },
     ],
