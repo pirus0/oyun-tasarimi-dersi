@@ -58,13 +58,15 @@
 
   // ---- Slayt tipine göre rozet metni + ikon/renk ----
   const BADGE_BY_TYPE = {
-    intro: { label: "Bu Hafta", icon: "flag", color: "#5A4FE0" },
+    intro: { label: "Ders Haritası", icon: "flag", color: "#5A4FE0" },
     concept: { label: "Kavram", icon: "lightbulb", color: "#F5B93E" },
     examples: { label: "Oyun Örnekleri", icon: "controller", color: "#FF5A36" },
     questions: { label: "Sınıfa Sorular", icon: "question", color: "#22B8A8" },
     homework: { label: "Ödev", icon: "notebook", color: "#FF4757" },
     template: { label: "GDD Şablonu", icon: "document", color: "#5B6472" },
     summary: { label: "Terim Sözlüğü", icon: "bookQuest", color: "#5A4FE0" },
+    section: { label: "Bölüm", icon: "map", color: "#5A4FE0" },
+    extra: { label: "Ek Bilgi", icon: "lightbulb", color: "#8A8B93" },
   };
 
   // Tüm slaytlar tek kolon: dev ikon paneli içerik alanını yarıya düşürüyordu.
@@ -260,7 +262,22 @@
     slideCard.setAttribute("data-type", slide.type);
     slideCard.setAttribute("data-layout", isSplit ? "split" : "single");
 
-    const badgeHtml = `<div class="slide-badge">${icon(badge.icon, badge.color)}<span>${badge.label}</span></div>`;
+    // Bölüm bağlamı: bu slayttan önceki son "section" slaytı ve kaçıncı bölüm olduğu.
+    let sectionNo = 0;
+    let sectionTitle = "";
+    for (let i = 0; i <= state.slideIndex; i++) {
+      if (week.slides[i].type === "section") {
+        sectionNo += 1;
+        sectionTitle = week.slides[i].heading;
+      }
+    }
+    const inSection = sectionNo > 0 && !["intro", "summary", "homework"].includes(slide.type);
+    const badgeHtml =
+      slide.type === "section"
+        ? `<div class="section-number">Bölüm ${sectionNo}</div>`
+        : inSection
+        ? `<div class="slide-badge slide-crumb${slide.type === "extra" ? " is-extra" : ""}"><span>${slide.type === "extra" ? "Ek bilgi" : `Bölüm ${sectionNo} · ${escapeHtml(sectionTitle)}`}</span></div>`
+        : `<div class="slide-badge">${icon(badge.icon, badge.color)}<span>${badge.label}</span></div>`;
 
     let bodyHtml;
     if (slide.type === "examples" && slide.items) {
