@@ -671,77 +671,211 @@ const WEEKS = [
       },
     ],
   },
+  // ---------------------------------------------------------------------
+  // HAFTA 2 — Kaynaklar: Bartle (1996), Yee / Quantic Foundry, Ryan, Rigby &
+  // Przybylski (2006), Cooper (1999), Salen & Zimmerman (2004), Fullerton,
+  // Adams & Dormans (2012), Hunicke, LeBlanc & Zubek (2004), Juul (2002).
+  // Akış, eğlence türleri ve ekonomi 3. haftaya bırakıldı.
+  // ---------------------------------------------------------------------
   {
     id: "2.1",
     title: "Oyuncu ve Hedef Kitle",
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["Oyunu kim oynayacak?", "Farklı oyuncular farklı şeyler arar."],
-      },
-      {
-        type: "concept",
-        heading: "Oyuncu Kimdir?",
+        heading: "Oyuncu ve Hedef Kitle",
+        lead: "Bir oyun, onu oynayan kişiyle birlikte tamamlanır. Bu derste oyuncuları anlamak için kullanılan modelleri, oyuncuyu tasarım belgesine geçirmenin yöntemini ve farklı oyunculara aynı oyunu nasıl erişilebilir kılacağımızı öğreneceğiz.",
         bullets: [
-          "Oyunu deneyimleyen ve kararları veren kişi.",
-          "Önemli bir gerçek: siz oyuncunuz değilsiniz. Kendi yaptığınız oyunu çok iyi bilirsiniz; ilk kez oynayan biri bilmez.",
+          "Hedef kitleyi demografik ve psikografik özelliklerle tanımlayabilmek",
+          "Bartle tiplerini, Quantic Foundry motivasyon modelini ve Öz-Belirleme Kuramı'nı açıklayabilmek",
+          "Kendi oyunu için bir oyuncu personası yazabilmek",
+          "Oynanış bağlamını ve erişilebilirliği tasarım kararlarına dönüştürebilmek",
         ],
       },
       {
         type: "concept",
-        heading: "Hedef Kitle Nedir?",
+        heading: "Siz Oyuncunuz Değilsiniz",
+        lead: "Tasarımcının en büyük yanılgısı, oyuncunun da kendisi gibi düşündüğünü varsaymaktır. Oyunu yapan kişi kuralları, gizli yolları ve düşmanların davranışını zaten bilir; ilk kez oynayan kişi bunların hiçbirini bilmez.",
+        terms: [
+          { term: "Bilgi laneti", en: "curse of knowledge", def: "Bir şeyi bilen kişinin, onu bilmeyen birinin yerine kendini koyamaması. Tasarımcıya “çok kolay” gelen bölüm, yeni oyuncuyu duvara toslatır." },
+          { term: "Hedef kitle", en: "target audience", def: "Oyunun özellikle kimin için tasarlandığı. “Herkes” bir hedef kitle değildir; herkes için tasarlanan oyun genellikle kimseye tam oturmaz." },
+        ],
         bullets: [
-          "Oyunun kimin için tasarlandığıdır: yaş, ilgi alanı, oyun deneyimi, ne kadar vakti olduğu.",
-          "Küçük yaş: basit kurallar, hızlı ve renkli geri bildirim.",
-          "Deneyimli oyuncu: daha derin sistemler, daha zor meydan okumalar.",
-          "Otobüste 2 dakika oynayan biriyle akşam 2 saat oynayan biri aynı oyunu istemez.",
+          "Bu yüzden oyun testi (playtest) zorunludur: oyuncuyu tahmin etmek yerine izlersiniz.",
         ],
       },
       {
         type: "concept",
-        heading: "Bartle'ın 4 Oyuncu Tipi",
+        heading: "Hedef Kitleyi Tanımlamak",
+        lead: "Pazarlama ve kullanıcı araştırmasında hedef kitle iki tür bilgiyle tanımlanır. Oyun tasarımında ikincisi çoğu zaman daha önemlidir: aynı yaştaki iki oyuncu, tamamen farklı şeyler isteyebilir.",
+        table: {
+          head: ["Bilgi türü", "Ne söyler?", "Örnek"],
+          rows: [
+            ["Demografik", "Kim olduğu: yaş, cinsiyet, ülke, cihaz", "14-16 yaş, akıllı telefon kullanan lise öğrencisi"],
+            ["Psikografik", "Ne istediği: ilgi alanı, motivasyon, alışkanlık", "Arkadaşlarıyla rekabet etmeyi seven, kısa maç oynayan"],
+            ["Oyun deneyimi", "Ne kadar oyun bildiği", "Gündelik oyuncu (casual) ya da deneyimli oyuncu (core)"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Bartle'ın Oyuncu Tipleri",
+        image: {
+          src: "assets/lesson/bartle.jpg",
+          caption: "Richard Bartle, ilk çok oyunculu çevrim içi oyunlardan MUD1'in (1978) ortak yaratıcısı.",
+          credit: "J. G. Bartle, CC BY-SA 3.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Richard Bartle, 1996'daki makalesinde çok oyunculu metin oyunlarının (MUD) oyuncularını iki eksene göre dört tipe ayırdı: oyuncu dünyayla mı yoksa diğer oyuncularla mı ilgileniyor; onları etkilemek (acting on) mi yoksa onlarla etkileşmek (interacting with) mi istiyor?",
+        table: {
+          head: ["", "Etkilemek", "Etkileşmek"],
+          rows: [
+            ["Dünya", "Başarıcı (Achiever): puan, seviye, eşya toplar", "Kâşif (Explorer): haritayı, sırları, sistemi keşfeder"],
+            ["Oyuncular", "Rakip (Killer): diğer oyunculara üstün gelir", "Sosyal (Socializer): diğer oyuncularla ilişki kurar"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Bartle Modelinin Sınırları",
+        lead: "Bartle tipleri ünlüdür ama dikkatli kullanılmalıdır. Model, tek bir oyun türünün oyuncu gözlemlerine dayanır; istatistiksel bir araştırma değildir. Bartle'ın kendisi de modelin her oyuna uygulanmasına karşı uyarır.",
         bullets: [
-          "Başarıcı (Achiever): puan toplamak, seviye atlamak, oyunu bitirmek ister.",
-          "Kâşif (Explorer): gizli yerleri ve oyunun sırlarını bulmayı sever.",
-          "Sosyal (Socializer): başkalarıyla birlikte oynamaktan keyif alır.",
-          "Rakip (Killer): başka oyunculara karşı yarışmayı ve kazanmayı sever.",
-          "Çoğumuz bunların bir karışımıyız. Bu tipler bir kutu değil, oyuncuyu anlamaya yarayan bir mercek.",
+          "Model, MUD gibi çok oyunculu sanal dünyalar için yazıldı. Tek oyunculu bir bulmaca oyununda “Rakip” ve “Sosyal” tipleri anlamını kaybeder.",
+          "Gerçek oyuncular tek bir tipe sığmaz; çoğu insan bir karışımdır ve aynı kişi farklı oyunlarda farklı davranır.",
+          "Doğru kullanım: Bartle'ı oyuncuları kutulara koymak için değil, “Oyunumuz kime ne sunuyor?” sorusunu sormak için kullanın.",
         ],
       },
       {
         type: "concept",
-        heading: "Oyuncu Ne Bekler?",
+        heading: "Quantic Foundry Motivasyon Modeli",
+        lead: "Nick Yee ve Quantic Foundry, yüz binlerce oyuncudan toplanan anket verisiyle 12 oyun motivasyonu belirledi. Bartle'dan farkı, istatistiksel veriye dayanması ve her türe uygulanabilmesidir. Motivasyonlar altı çift hâlinde gruplanır.",
+        table: {
+          head: ["Grup", "Motivasyonlar", "Oyuncu ne arar?"],
+          rows: [
+            ["Aksiyon", "Yıkım, heyecan", "Patlamalar, hızlı tempo, sürpriz"],
+            ["Sosyal", "Rekabet, topluluk", "Başkalarını yenmek; takımda olmak, sohbet etmek"],
+            ["Ustalık", "Meydan okuma, strateji", "Zor rakipler; plan kurup düşünerek kazanmak"],
+            ["Başarı", "Tamamlama, güç", "Her şeyi toplamak; karakterini güçlendirmek"],
+            ["Sürükleyicilik", "Fantezi, hikâye", "Başka biri olmak; iyi kurulmuş bir hikâye"],
+            ["Yaratıcılık", "Tasarım, keşif", "Kendi şeyini inşa etmek; denemek ve kurcalamak"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Öz-Belirleme Kuramı",
+        lead: "Psikolojide Deci ve Ryan'ın Öz-Belirleme Kuramı (Self-Determination Theory), insanların üç temel psikolojik ihtiyacı olduğunu söyler. Ryan, Rigby ve Przybylski (2006), oyunların bu üç ihtiyacı karşıladığı ölçüde oyuncuyu bağladığını gösterdi.",
+        terms: [
+          { term: "Yetkinlik", en: "competence", def: "Becerikli ve gelişen biri olma hissi. Oyunda: net geri bildirim, ustalaştıkça zorlaşan bölümler, “bunu artık yapabiliyorum” anı." },
+          { term: "Özerklik", en: "autonomy", def: "Kendi seçimini yapma hissi. Oyunda: farklı yollar, oynanış tarzı seçenekleri, oyuncunun kendi hedefini koyabilmesi." },
+          { term: "İlişkisellik", en: "relatedness", def: "Başkalarıyla bağlı olma hissi. Oyunda: takım arkadaşları, topluluk, oyuncuyu önemseyen karakterler." },
+        ],
         bullets: [
-          "Net bir hedef, adil kurallar, ne olduğunu anlatan geri bildirim.",
-          "Kaybettiğinde “oyun hile yaptı” değil, “ben hata yaptım, bir daha denerim” diyebilmeli.",
-          "Gamejam'de sorulacak soru: “Bizim oyunumuz en çok hangi oyuncu tipini mutlu eder?”",
+          "Tasarımcı için soru: Oyunumuz bu üç ihtiyacın hangisini karşılıyor, hangisini engelliyor?",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Persona Yöntemi",
+        lead: "Persona, hedef kitleyi temsil eden kurgusal ama gerçekçi bir kişi tarifidir. Yazılım tasarımcısı Alan Cooper (1999) tarafından yaygınlaştırıldı. Ekip “oyuncu bunu sever mi?” yerine “Elif bunu sever mi?” diye sorar; tartışma somutlaşır.",
+        table: {
+          head: ["Alan", "Örnek persona: “Leke” oyunu için Elif"],
+          rows: [
+            ["Kim?", "14 yaşında, 9. sınıf öğrencisi."],
+            ["Nerede, ne kadar oynar?", "Telefonda, okul servisinde, bir seferde 3-5 dakika."],
+            ["Ne sever?", "Kısa ve hızlı oyunlar, arkadaşlarıyla skor yarıştırmak."],
+            ["Ne sevmez?", "Uzun öğretici ekranlar, oyunu durdurup menüde gezinmek."],
+            ["Motivasyon", "Rekabet ve meydan okuma (Quantic Foundry); yetkinlik (Öz-Belirleme)."],
+            ["Tasarıma etkisi", "60 saniyelik turlar, tek dokunuşla yeniden başlama, skor paylaşma."],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Oynanış Bağlamı",
+        image: {
+          src: "assets/lesson/minecraft-end.png",
+          caption: "Minecraft'ta saatler süren bir yolculuğun sonu: End boyutu. Uzun oturumlar için tasarlanmış bir hedef.",
+          credit: "Xbox México, CC BY 3.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Oyuncunun oyunu nerede, ne zaman ve ne kadar süreyle oynadığı tasarımı doğrudan değiştirir.",
+        terms: [
+          { term: "Oturum süresi", en: "session length", def: "Oyuncunun bir oturuşta oynadığı süre. Otobüste 2 dakika oynanan oyun, her an bırakılabilmeli ve kaldığı yeri unutturmamalıdır." },
+          { term: "Bölünebilirlik", def: "Oyunun kesintiye uğradığında kaybettirmemesi: otomatik kayıt, kısa bölümler, duraklatma." },
+          { term: "Ortam", def: "Sessiz bir odada mı, kalabalıkta mı? Kalabalıkta oynanan oyun sese bağımlı olmamalıdır." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Erişilebilirlik",
+        lead: "Erişilebilirlik (accessibility), engeli olan oyuncuların da oyunu oynayabilmesidir. Bu bir “ek özellik” değil, hedef kitleyi büyüten bir tasarım kararıdır. Game Accessibility Guidelines gibi kaynaklar somut kontrol listeleri sunar.",
+        table: {
+          head: ["Durum", "Yaygınlık / örnek", "Tasarım çözümü"],
+          rows: [
+            ["Renk körlüğü", "Yaklaşık her 12 erkekten biri", "Bilgiyi yalnızca renkle değil, şekil ve simgeyle de vermek"],
+            ["İşitme kaybı", "Sesli uyarıyı duyamamak", "Altyazı, sesin yönünü gösteren görsel işaret"],
+            ["Motor güçlük", "Hızlı ya da çok tuşa basamamak", "Tuşları yeniden atama, basılı tutma yerine dokunma"],
+            ["Bilişsel yük", "Çok bilgiyle bunalmak", "Kısa metin, tekrar edilebilen öğretici, yavaşlatma seçeneği"],
+          ],
+        },
+        bullets: [
+          "The Last of Us Part II (2020), 60'tan fazla erişilebilirlik seçeneğiyle sektörde örnek gösterilir.",
         ],
       },
       {
         type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Roblox: çok geniş yaş grubu, arkadaşlarla birlikte oynamak (Sosyal)",
-          "Clash Royale: başka oyunculara karşı kısa maçlar (Rakip)",
-          "Minecraft: keşfetmeyi ve inşa etmeyi seven oyuncular (Kâşif)",
+        heading: "Vaka: Celeste ve Yardım Modu",
+        image: {
+          src: "assets/lesson/celeste.png",
+          caption: "Celeste (2018): her ekran kısa ve zorlu bir platform bulmacasıdır. Oyuncu öldüğünde ekranın başında anında yeniden doğar.",
+          credit: "Maddy Makes Games, CC BY-SA 4.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Celeste, Maddy Thorson ve Noel Berry'nin zor bir platform oyunudur. Ekip hem zorluk arayan deneyimli oyuncuyu hem de hikâyeyi görmek isteyen ama refleksleri yetmeyen oyuncuyu kaybetmemek için iki karar aldı:",
+        terms: [
+          { term: "Yardım Modu", en: "Assist Mode", def: "Oyuncu oyun hızını düşürebilir, sınırsız dayanıklılık ya da yenilmezlik açabilir. Varsayılan zorluk değişmez; yardım isteyen kendisi seçer." },
+          { term: "Ölümü cezalandırmamak", def: "Ölünce aynı ekranın başında anında yeniden doğulur. Oyun, ölüm sayısıyla gurur duymayı öğütler: çok ölmek, çok öğrenmek demektir." },
+          { term: "Ders", def: "Zorluk, hedef kitleyi daraltmak zorunda değildir. Temel deneyimi koruyup oyuncuya seçim (özerklik) vermek, kitleyi genişletir." },
         ],
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
+        type: "concept",
+        heading: "Yaş Derecelendirmesi",
+        lead: "Avrupa'da oyunlar PEGI (Pan European Game Information) sistemiyle derecelendirilir. Kutu ve mağaza sayfasında görülen yaş etiketi, oyunun hangi yaş için uygun olduğunu gösterir. Hedef kitle seçimi, içeriğin sınırını da belirler.",
+        table: {
+          head: ["Etiket", "Anlamı"],
+          rows: [
+            ["PEGI 3", "Her yaşa uygun; korkutucu ses ya da görüntü yok."],
+            ["PEGI 7", "Hafif korkutucu sahneler ya da gerçekçi olmayan, hafif şiddet olabilir."],
+            ["PEGI 12", "Fantastik karakterlere yönelik şiddet, hafif küfür olabilir."],
+            ["PEGI 16", "Gerçekçi şiddet, yetişkin temaları içerebilir."],
+            ["PEGI 18", "Ağır şiddet ve yetişkin içerik."],
+          ],
+        },
         bullets: [
-          "Siz hangi oyuncu tipine daha yakınsınız? Oynadığınız oyunlar bunu doğruluyor mu?",
-          "Küçük kardeşiniz ya da anne-babanız için oyun yapsaydınız neyi değiştirirdiniz?",
+          "PEGI ayrıca içerik simgeleri kullanır: şiddet, korku, kötü dil, kumar, oyun içi satın alma.",
+        ],
+      },
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Hedef kitle", en: "target audience", def: "Oyunun özellikle kimin için tasarlandığı." },
+          { term: "Demografik / psikografik", def: "Oyuncunun kim olduğu / ne istediği." },
+          { term: "Bilgi laneti", en: "curse of knowledge", def: "Bilen kişinin bilmeyenin yerine kendini koyamaması." },
+          { term: "Bartle tipleri", def: "Başarıcı, kâşif, rakip, sosyal: iki eksenli oyuncu modeli." },
+          { term: "Öz-Belirleme Kuramı", en: "self-determination theory", def: "Yetkinlik, özerklik, ilişkisellik ihtiyaçları." },
+          { term: "Persona", def: "Hedef kitleyi temsil eden kurgusal ama gerçekçi kişi tarifi." },
+          { term: "Oturum süresi", en: "session length", def: "Oyuncunun bir oturuşta oynadığı süre." },
+          { term: "Erişilebilirlik", en: "accessibility", def: "Engeli olan oyuncuların da oynayabilmesi için alınan tasarım kararları." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Kendi oyununuzun oyuncusunu tarif edin: kaç yaşında, ne sever, oyunu nerede ve ne kadar süre oynar?",
-          "Bu oyuncu en çok hangi Bartle tipine yakın?",
-          "Oyununuz ona hangi 2-3 duyguyu yaşatmalı? (GDD madde 8)",
+          "Kendi oyununuz için “Persona Yöntemi” slaytındaki tabloyu doldurarak bir persona yazın. Ona bir isim verin.",
+          "Personanızın en güçlü iki Quantic Foundry motivasyonunu seçin. Oyununuzdaki hangi kural ya da özellik bu motivasyonlara hitap ediyor? Her biri için bir cümle yazın.",
+          "Oyununuz yetkinlik, özerklik ve ilişkisellik ihtiyaçlarından hangisini karşılıyor? Personanızın oyun sırasında yaşaması gereken 2-3 duyguyu yazın (GDD madde 8).",
+          "Evde: Celeste ya da sevdiğiniz başka bir oyunun ayarlar menüsünü açın ve gördüğünüz erişilebilirlik seçeneklerini listeleyin. Hangisi kime yardım ediyor?",
         ],
       },
     ],
@@ -752,96 +886,235 @@ const WEEKS = [
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["Kural ile mekanik arasındaki fark.", "Kazanma/kaybetme ve oyun döngüsü."],
-      },
-      {
-        type: "concept",
-        heading: "Oyun Kuralları",
+        heading: "Kurallar ve Mekanikler",
+        lead: "Hafta 1'de oyunun biçimsel öğelerini gördük. Bu derste en önemli iki öğeye, kurallara ve mekaniklere yakından bakacağız: türlerini, nasıl yazıldıklarını, oyuncuda nasıl bir deneyime dönüştüklerini ve birbirini nasıl besleyerek döngü oluşturduklarını.",
         bullets: [
-          "Oyuncunun yapabileceği ve yapamayacağı şeyler.",
-          "Kurallar net olmalı, herkes aynı şekilde anlamalı.",
-          "Test: kuralı hiç konuşmadan, sadece yazılı olarak okuyan biri doğru oynayabiliyor mu?",
+          "Kuralın üç katmanını ve iyi kural yazmanın ölçütlerini açıklayabilmek",
+          "Kazanma ve kaybetme koşullarını hedef türlerine göre tasarlayabilmek",
+          "MDA çerçevesiyle bir oyunu mekanik, dinamik ve estetik olarak analiz edebilmek",
+          "Geri bildirim döngülerini, çekirdek döngüyü ve ayar değişkenlerini tanımlayabilmek",
         ],
       },
       {
         type: "concept",
-        heading: "Oyuncunun Yapabilecekleri",
-        bullets: [
-          "Hareket etmek, bir şeyle etkileşime girmek, seçim yapmak.",
-          "Örnek: Among Us'ta oyuncu hareket eder, görev yapar, toplantı çağırır ve oy verir.",
+        heading: "Kuralın Üç Katmanı",
+        image: {
+          src: "assets/lesson/saklambac.jpg",
+          caption: "Saklambaç (Meyerheim, 19. yüzyıl). Yazılı kural kitabı olmayan bir oyunda bile işlemsel, kurucu ve örtük kurallar vardır.",
+          credit: "Friedrich Eduard Meyerheim (muhtemelen), kamu malı. Kaynak: Wikipedia",
+        },
+        lead: "Salen ve Zimmerman, bir oyunun kurallarını üç katmanda inceler:",
+        terms: [
+          { term: "İşlemsel kurallar", en: "operational rules", def: "Oyuncunun okuyup uyguladığı kurallar: “Ebe 10'a kadar sayar, sonra arar.”" },
+          { term: "Kurucu kurallar", en: "constitutive rules", def: "Oyunun altında yatan mantık: kim bulunduğunda ne değişir, oyun hangi durumda biter. Bilgisayar oyununda bunlar koddur." },
+          { term: "Örtük kurallar", en: "implicit rules", def: "Yazılmayan ama herkesin uyduğu kurallar: ebe gözlerini aralamaz, kimse eve gidip saklanmaz." },
         ],
       },
       {
         type: "concept",
-        heading: "Kazanma ve Kaybetme Koşulları",
+        heading: "İyi Kural Nasıl Yazılır?",
+        lead: "Kurallar oyuncuya oyunun sınırlarını anlatan bir sözleşmedir. Belirsiz bir kural, oyuncular arasında tartışmaya ya da oyuncuyla oyun arasında “bu haksızlık” hissine yol açar.",
+        table: {
+          head: ["Ölçüt", "Zayıf kural", "Güçlü kural"],
+          rows: [
+            ["Net", "Oyuncu hızlı olmalı.", "Oyuncunun her lekeyi silmek için 3 saniyesi var."],
+            ["Ölçülebilir", "Çok leke birikirse kaybedersin.", "Sayfanın %50'si lekeyle kaplanırsa kaybedersin."],
+            ["Tutarlı", "Bazen lekeler hızlanır.", "Her 15 saniyede lekelerin yayılma hızı iki katına çıkar."],
+            ["Gerekli", "Lekeler farklı renklerde olabilir.", "(Oyuna bir şey katmıyorsa kural çıkarılır.)"],
+          ],
+        },
         bullets: [
-          "Oyuncu ne zaman kazanır, ne zaman kaybeder net olmalı.",
-          "Belirsiz koşul, kafa karışıklığı demektir: “Bitti mi? Kazandım mı?”",
-          "Bazı oyunlarda kazanma yoktur, rekor vardır (Flappy Bird). Bu da net bir hedeftir.",
+          "Kural testi: kuralı hiç açıklama yapmadan yalnızca yazılı olarak okuyan biri, soru sormadan doğru oynayabiliyor mu?",
         ],
       },
       {
         type: "concept",
-        heading: "Kaybedince Ne Olur?",
-        bullets: [
-          "Kaybetmenin sonucu oyunun hissini belirler: en baştan mı başlanır, son kontrol noktasından mı, yoksa sadece bir can mı gider?",
-          "Çok cezalandırıcı olursa (her hatada en baştan) oyuncu sinirlenir. Hiç sonucu olmazsa gerilim kalmaz.",
-          "Gamejam'de basit bir seçim yeterli: örneğin 3 can var, can biterse bölüm baştan başlar.",
+        heading: "Kazanma Koşulu: Hedef Türleri",
+        lead: "Fullerton oyun hedeflerini on türe ayırır. Seçilen tür, gereken mekanikleri belirler.",
+        table: {
+          head: ["Hedef türü", "Oyuncu ne yapar?", "Örnek"],
+          rows: [
+            ["Ele geçirme", "Rakibin birimlerini yok eder ya da alır", "Satranç, dama"],
+            ["Kovalama", "Birini yakalar ya da ondan kaçar", "Saklambaç, Pac-Man"],
+            ["Yarış", "Hedefe rakiplerden önce varır", "Mario Kart"],
+            ["Hizalama", "Parçaları belirli bir düzene sokar", "Tetris, Candy Crush"],
+            ["Kurtarma / kaçış", "Birini ya da kendini güvenli bir yere ulaştırır", "Super Mario Bros."],
+            ["Yasak eylem", "Kuralı ilk çiğneyen kaybeder", "Jenga, Operation"],
+            ["İnşa", "Bir şey kurar ya da büyütür", "Minecraft, SimCity"],
+            ["Keşif", "Bilinmeyen alanları açar", "Zelda"],
+            ["Çözüm", "Bir problemi önce ya da doğru çözer", "Sudoku, Portal"],
+            ["Alt etme", "Bilgi ya da blöfle rakibi aldatır", "Among Us, poker"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Kaybetmenin Bedeli",
+        lead: "Kaybetme koşulu kadar, kaybedince ne olduğu da tasarlanır. Bu bedel, oyunun gerilimini ve oyuncunun ne kadar risk alacağını belirler: bedel ağırsa oyuncu temkinli, hafifse cesur oynar.",
+        table: {
+          head: ["Bedel", "Nasıl çalışır?", "Örnek"],
+          rows: [
+            ["Anında yeniden deneme", "Aynı noktadan, kayıpsız devam", "Celeste"],
+            ["Kontrol noktası", "Checkpoint: son kaydedilen noktadan devam", "Çoğu platform ve macera oyunu"],
+            ["Can sistemi", "Birkaç hata hakkı; can bitince bölüm baştan", "Klasik Super Mario Bros."],
+            ["Geri alınabilir kayıp", "Kaybedilen kaynak, ölünen yere dönülürse geri alınır", "Dark Souls"],
+            ["Kalıcı ölüm", "Permadeath: karakter ve ilerleme tamamen gider", "Roguelike'lar, Minecraft hardcore modu"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Mekaniğin Tanımı",
+        lead: "Kural, neyin mümkün olduğunu söyler; mekanik ise oyuncunun bu kurallar içinde oyunla etkileşim kurmak için kullandığı yöntemdir. Oyun araştırmacısı Miguel Sicart (2008) mekaniği, “oyuncunun oyun dünyasıyla etkileşmek için başvurduğu yöntemler” olarak tanımlar.",
+        terms: [
+          { term: "Mekanik", en: "mechanic", def: "Oyuncunun yapabildiği eylem ve onu yöneten kural birlikte: zıplamak + zıplamanın yüksekliği + havada yön değiştirebilmek." },
+          { term: "Oyun durumu", en: "game state", def: "Oyunun herhangi bir andaki tüm bilgisi: skor, can, karakterlerin yeri, kalan süre. Her mekanik bu durumu değiştirir." },
+          { term: "Girdi → durum → çıktı", def: "Oyuncu bir girdi verir (dokunur), mekanik oyun durumunu değiştirir (kuş yükselir), oyun bunu bir çıktıyla gösterir (görüntü, ses)." },
         ],
       },
       {
         type: "concept",
-        heading: "Programcı Ne Yapar?",
-        bullets: [
-          "Programcı, tasarımcının kurallarını ve mekaniklerini çalışan bir sisteme çevirir.",
-          "Önce oyunun çekirdek döngüsünü çalışır hale getirir. Süsler sonra gelir; önemli olan bir an önce test edilebilir bir prototip.",
-          "Hız, güç, süre gibi sayıları kolay değiştirilebilir yazar. Böylece ekip “zıplama biraz daha yüksek olsun” denemesini saniyeler içinde yapabilir.",
-        ],
+        heading: "Beş Mekanik Türü",
+        lead: "Ernest Adams ve Joris Dormans (Game Mechanics: Advanced Game Design, 2012) mekanikleri beş türe ayırır. Çoğu oyun birkaç türü birleştirir; kendi oyununuzun hangilerini kullandığını bilmek kapsamı netleştirir.",
+        table: {
+          head: ["Tür", "Ne yönetir?", "Örnek"],
+          rows: [
+            ["Fizik", "Hareket, kuvvet, çarpışma, zamanlama", "Flappy Bird'de yer çekimi ve kanat çırpma"],
+            ["İç ekonomi", "Kaynakların kazanılması, harcanması, takası", "Clash Royale'de iksir; Minecraft'ta malzeme"],
+            ["İlerleme mekanizmaları", "Oyuncunun dünyada nasıl ilerleyeceği: kapı, anahtar, kilit", "Zelda'da yeni eşyayla açılan bölgeler"],
+            ["Taktik manevra", "Birimlerin harita üzerindeki konumu ve avantajı", "Satranç, strateji oyunları"],
+            ["Sosyal etkileşim", "Oyuncular arası ittifak, oylama, iletişim", "Among Us'ta toplantı ve oylama"],
+          ],
+        },
       },
       {
         type: "concept",
-        heading: "MDA: Mekanik, Dinamik, Estetik",
-        bullets: [
-          "Mekanik: tasarımcının yazdığı kural ve eylemler (saklan, ara, sobele).",
-          "Dinamik: bu kurallar oynanırken ortaya çıkan durum (ebe yaklaşırken nefesini tutmak, son anda yer değiştirmek).",
-          "Estetik: oyuncunun hissettiği duygu (gerilim, heyecan).",
-          "Tasarımcı mekaniği yazar ama oyuncu önce duyguyu yaşar. Duyguyu doğrudan yazamazsınız; onu yaratacak kuralı tasarlarsınız.",
+        heading: "MDA Çerçevesi",
+        lead: "Hunicke, LeBlanc ve Zubek'in 2004'te yayımladığı MDA (Mechanics, Dynamics, Aesthetics), oyunu üç katmanda inceler. En önemli fikri şudur: tasarımcı oyuna mekanikten başlayarak bakar, oyuncu ise estetikten, yani hissettiği duygudan.",
+        steps: [
+          { label: "Mekanik", text: "Mechanics: tasarımcının yazdığı kurallar ve eylemler. Saklambaçta: ebe sayar, arar, bulduğunu sobeler." },
+          { label: "Dinamik", text: "Dynamics: bu kurallar oynanırken ortaya çıkan davranışlar. Ebe uzaklaşınca kaleye koşmak, son anda saklanma yeri değiştirmek." },
+          { label: "Estetik", text: "Aesthetics: oyuncunun yaşadığı duygusal tepki. Gerilim, heyecan, yakalanmama sevinci." },
         ],
-      },
-      {
-        type: "concept",
-        heading: "Oyun Döngüsü (Game Loop)",
         bullets: [
-          "Çekirdek döngü (core loop): oyuncunun saniyeler içinde tekrar tekrar yaptığı eylem zinciri. Flappy Bird: dokun, zıpla, borudan geç, puan al.",
-          "Büyük döngü: maçlar ya da bölümler arası tekrar. Clash Royale: maç yap, ödül al, kartını güçlendir, desteni değiştir, yeni maça gir.",
-          "İyi bir çekirdek döngü kısa, anlaşılır ve tek başına bile eğlencelidir. Ödüller ve süsler onun üstüne gelir.",
+          "Tasarımcı estetiği doğrudan yazamaz. İstediği duyguyu (estetik) seçer, onu doğuracak davranışları (dinamik) düşünür ve bu davranışları mümkün kılan kuralları (mekanik) yazar. Duygu türlerini 3. haftada ayrıntılı göreceğiz.",
         ],
       },
       {
         type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Among Us: kural “sahtekârı oyla bul”; mekanik oylama; dinamik birbirini suçlama ve savunma",
-          "Satranç: az sayıda sabit kural, sonsuz farklı oyun",
-          "Fall Guys: basit mekanik (koş, zıpla, tutun), çok oyuncu bir araya gelince kaotik sonuçlar",
+        heading: "Vaka: Among Us'ın MDA Analizi",
+        image: {
+          src: "assets/lesson/among-us.png",
+          caption: "Among Us (2018): sağ alttaki USE, REPORT ve KILL düğmeleri oyunun temel mekaniklerini gösterir.",
+          credit: "Innersloth. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Üç kişilik Innersloth stüdyosunun oyununda, az sayıda mekanik zengin bir sosyal deneyim üretir:",
+        table: {
+          head: ["Katman", "Among Us'ta"],
+          rows: [
+            ["Mekanik", "Mürettebat görev yapar; sahtekâr öldürür ve sabote eder; ceset rapor edilir; toplantıda oy verilir."],
+            ["Dinamik", "Birlikte dolaşıp birbirine tanıklık etmek, kanıt olarak görev göstermek, suçlamak, yalan söylemek."],
+            ["Estetik", "Şüphe, gerilim, blöf yapmanın heyecanı, arkadaşlar arasındaki kahkaha."],
+          ],
+        },
+        bullets: [
+          "Ders: Oylama mekaniği tek başına basittir; ama “sahtekâr aranızda” bilgisiyle birleşince tartışma, ittifak ve ihanet dinamikleri ortaya çıkar.",
         ],
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
+        type: "concept",
+        heading: "Ortaya Çıkış ve İlerleme",
+        lead: "Oyun araştırmacısı Jesper Juul (2002), oyunların zorluğu iki farklı yolla ürettiğini gösterdi. Bu ayrım, kural yazarken neyin tasarlanacağını belirler.",
+        terms: [
+          { term: "Ortaya çıkış", en: "emergence", def: "Az sayıda kural, birbiriyle etkileşerek çok sayıda farklı durum yaratır. Satrançta altı tür taş ve birkaç kural, sayısız farklı oyun üretir. Tasarımcı kuralları tasarlar, durumları değil." },
+          { term: "İlerleme", en: "progression", def: "Tasarımcı, oyuncunun karşılaşacağı zorlukları tek tek ve sırayla hazırlar. Macera oyunlarındaki bulmacalar böyledir: her biri bir kez çözülür." },
+        ],
         bullets: [
-          "Bir oyunda “bu kural haksız” dediğiniz bir an oldu mu? Neden haksızdı?",
-          "Saklambaçtan tek bir kuralı değiştirseniz oyun nasıl değişirdi? (Örn. ebe gözlerini kapatmıyor.)",
+          "Gamejam için anlamı: ilerleme oyunları çok içerik ister (her bölüm elle yapılır). Ortaya çıkış oyunları az içerikle uzun süre oynatılabilir. Kısıtlı sürede ikincisi daha güvenlidir.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Geri Bildirim Döngüleri",
+        image: {
+          src: "assets/lesson/monopoly.jpg",
+          caption: "Monopoly: çok mülkü olan daha çok kira toplar, daha çok mülk alır. Oyun genellikle saatler önce belli olmuş bir sona sürüklenir.",
+          credit: "Horst Frank, CC BY-SA 3.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Bir mekaniğin sonucu, aynı mekaniği tekrar etkilediğinde geri bildirim döngüsü (feedback loop) oluşur.",
+        terms: [
+          { term: "Pozitif döngü", en: "positive feedback", def: "Önde olanı daha da öne geçirir: kazanan daha güçlü olur. Oyunu hızla bitirir ama geride kalan oyuncu umudunu kaybeder." },
+          { term: "Negatif döngü", en: "negative feedback", def: "Oyunu dengeler: geride olana yardım eder ya da öndekini yavaşlatır. Yarışı son ana kadar çekişmeli tutar." },
+          { term: "Lastik bant etkisi", en: "rubber banding", def: "Geride kalanı öne doğru çeken negatif döngü. Mario Kart'ta geride olan oyuncu daha güçlü eşyalar alır." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Çekirdek Döngü ve İç İçe Döngüler",
+        image: {
+          src: "assets/lesson/mario-kart-8.jpg",
+          caption: "Mario Kart 8: saniyelik döngü (sür, eşya al, kullan) yarış döngüsünün, yarış döngüsü de kupa döngüsünün içindedir.",
+          credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Çekirdek döngü (core loop), oyuncunun tekrar tekrar yaptığı eylem zinciridir. Oyunlar genellikle farklı zaman ölçeklerinde iç içe döngüler kurar.",
+        table: {
+          head: ["Ölçek", "Clash Royale", "Flappy Bird"],
+          rows: [
+            ["Saniyeler", "İksir biriktir → kart oyna → saldır/savun", "Dokun → yüksel → borudan geç"],
+            ["Dakikalar", "Maç oyna → kazan → sandık al", "Öl → skoru gör → hemen yeniden başla"],
+            ["Günler", "Kart güçlendir → desteyi değiştir → arenada yüksel", "Rekoru kır → arkadaşına göster"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Ayar Değişkenleri",
+        lead: "Bir mekaniğin hissini çoğu zaman kuralın kendisi değil, kuralın içindeki sayılar belirler. Bu sayılara ayar değişkenleri (tuning variables) denir. Programcı onları kolayca değiştirilebilir yazar; tasarımcı oyunu test ederek doğru değeri bulur.",
+        table: {
+          head: ["Değişken", "Düşük değer", "Yüksek değer"],
+          rows: [
+            ["Yer çekimi", "Süzülen, rahat, “ay yüzeyi” hissi", "Ağır, hızlı düşen, gergin"],
+            ["Zıplama kuvveti", "Kısa, dikkatli zıplamalar", "Uçar gibi, kontrolü zor"],
+            ["Engel aralığı", "Sık engel: zor, refleks ister", "Seyrek engel: kolay, rahat"],
+            ["Oyun hızı", "Düşünmeye vakit kalır", "Panik ve refleks"],
+          ],
+        },
+        bullets: [
+          "Aynı kurallara sahip iki oyun, yalnızca bu sayılar farklı olduğu için tamamen farklı hissettirebilir. Bu ince ayar işine “denge ayarı” (tuning) denir.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Denge",
+        lead: "Denge (balance), oyunda hiçbir seçeneğin diğerlerini anlamsız kılacak kadar güçlü olmamasıdır. Bir seçenek açıkça en iyiyse, oyuncular yalnızca onu seçer ve diğer içerikler boşa gider.",
+        terms: [
+          { term: "Baskın strateji", en: "dominant strategy", def: "Her durumda en iyi sonucu veren seçenek. Oyunda karar vermeyi ortadan kaldırdığı için bir tasarım hatasıdır." },
+          { term: "Geçişsiz denge", en: "intransitive balance", def: "Taş-kâğıt-makas yapısı: her seçenek birini yener, birine yenilir. Pokémon'daki tip üstünlükleri (su > ateş > çimen > su) bu şekilde çalışır." },
+          { term: "Simetrik / asimetrik", def: "Simetrik oyunda herkes aynı imkânlarla başlar (satranç). Asimetrik oyunda imkânlar farklıdır ama denktir (Among Us'ta mürettebat ve sahtekâr)." },
+        ],
+      },
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "İşlemsel / kurucu / örtük kural", def: "Okunan kural / alttaki mantık / yazılmayan kural." },
+          { term: "Mekanik", en: "mechanic", def: "Oyuncunun oyunla etkileşim yöntemi: eylem + onu yöneten kural." },
+          { term: "Oyun durumu", en: "game state", def: "Oyunun bir andaki tüm bilgisi." },
+          { term: "MDA", def: "Mekanik → dinamik → estetik; tasarımcı ve oyuncu ters yönden bakar." },
+          { term: "Ortaya çıkış / ilerleme", en: "emergence / progression", def: "Kurallardan doğan / elle hazırlanan zorluk." },
+          { term: "Geri bildirim döngüsü", en: "feedback loop", def: "Pozitif: öndekini güçlendirir. Negatif: oyunu dengeler." },
+          { term: "Çekirdek döngü", en: "core loop", def: "Oyuncunun tekrar tekrar yaptığı eylem zinciri." },
+          { term: "Ayar değişkeni / baskın strateji", en: "tuning variable / dominant strategy", def: "Mekaniğin sayısı / her zaman en iyi olan seçenek." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Kendi oyununuz için 3 temel kural yazın. Kazanma ve kaybetme koşulunu da ekleyin (GDD madde 7).",
-          "Çekirdek döngünüzü yazın: ___ → ___ → ___ → tekrar (GDD madde 6).",
-          "Evde kurallarınızı bir aile üyenize ya da arkadaşınıza hiç açıklama yapmadan okutun. Soru sorduysa o kural henüz net değil; düzeltin.",
+          "Kendi oyununuz için en fazla 5 işlemsel kural yazın; her birini “İyi Kural Nasıl Yazılır?” tablosundaki dört ölçüte göre kontrol edin. Kazanma koşulunuzun Fullerton'daki hedef türünü ve kaybetmenin bedelini yazın (GDD madde 7).",
+          "Çekirdek döngünüzü saniyeler ve dakikalar ölçeğinde yazın: ___ → ___ → ___ → tekrar (GDD madde 6).",
+          "Oyununuzun MDA tablosunu Among Us örneğindeki gibi doldurun. En az üç ayar değişkeni belirleyin ve değerleri artınca/azalınca oyunun hissinin nasıl değişeceğini yazın.",
+          "Evde: kurallarınızı bir aile üyenize ya da arkadaşınıza hiç açıklama yapmadan okutun. Sorduğu her soru, henüz net olmayan bir kuralı gösterir; düzeltin.",
         ],
       },
     ],
