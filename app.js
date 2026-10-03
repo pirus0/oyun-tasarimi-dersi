@@ -64,10 +64,11 @@
     questions: { label: "Sınıfa Sorular", icon: "question", color: "#22B8A8" },
     homework: { label: "Ödev", icon: "notebook", color: "#FF4757" },
     template: { label: "GDD Şablonu", icon: "document", color: "#5B6472" },
+    summary: { label: "Terim Sözlüğü", icon: "bookQuest", color: "#5A4FE0" },
   };
 
-  // İki kolonlu (illüstrasyonlu) slayt tipleri; "concept" tek kolon ve sade kalır.
-  const SPLIT_TYPES = new Set(["intro", "examples", "questions", "homework", "template"]);
+  // Tüm slaytlar tek kolon: dev ikon paneli içerik alanını yarıya düşürüyordu.
+  const SPLIT_TYPES = new Set();
 
   // ---- "Oyun Örnekleri" maddesindeki oyun adına göre ikon/renk eşleştirme ----
   // "img" varsa gerçek oyun logosu (assets/games/) gösterilir; yoksa düz ikona düşer.
@@ -262,7 +263,7 @@
     const badgeHtml = `<div class="slide-badge">${icon(badge.icon, badge.color)}<span>${badge.label}</span></div>`;
 
     let bodyHtml;
-    if (slide.type === "examples") {
+    if (slide.type === "examples" && slide.items) {
       bodyHtml = `<ul class="example-list">${slide.items.map(renderExampleItem).join("")}</ul>`;
     } else if (slide.type === "template") {
       bodyHtml = `
@@ -278,11 +279,7 @@
         </div>
       `;
     } else {
-      bodyHtml = `
-        <ul class="slide-list">
-          ${slide.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}
-        </ul>
-      `;
+      bodyHtml = renderBlocks(slide);
     }
 
     const downloadHtml = slide.download
@@ -308,10 +305,68 @@
       `;
     }
 
-    slideCard.innerHTML = contentHtml + illustrationHtml;
+    // Gerçek görsel (oyun ekran görüntüsü, fotoğraf): sağ kolonda, altında kaynak satırı.
+    let figureHtml = "";
+    if (slide.image) {
+      slideCard.setAttribute("data-layout", "figure");
+      figureHtml = `
+        <figure class="slide-figure">
+          <img src="${escapeHtml(slide.image.src)}" alt="${escapeHtml(slide.image.caption)}" />
+          <figcaption>${escapeHtml(slide.image.caption)}<span class="figure-credit">${escapeHtml(slide.image.credit)}</span></figcaption>
+        </figure>
+      `;
+    }
+
+    slideCard.innerHTML = contentHtml + illustrationHtml + figureHtml;
 
     renderDots(total);
     updateControls(total);
+  }
+
+  // Ders anlatımı blokları; slaytta hangisi varsa bu sırayla çizilir:
+  // lead (paragraf), quote, terms, table, steps, bullets.
+  function renderBlocks(slide) {
+    let html = "";
+    if (slide.lead) {
+      const paras = Array.isArray(slide.lead) ? slide.lead : [slide.lead];
+      html += paras.map((p) => `<p class="slide-lead">${escapeHtml(p)}</p>`).join("");
+    }
+    if (slide.quote) {
+      html += `
+        <blockquote class="slide-quote">
+          <p>${escapeHtml(slide.quote.text)}</p>
+          <cite>${escapeHtml(slide.quote.source)}</cite>
+        </blockquote>
+      `;
+    }
+    if (slide.terms) {
+      html += `<dl class="term-list${slide.terms.length >= 6 ? " term-list-grid" : ""}">${slide.terms
+        .map(
+          (t) => `
+            <div class="term-row">
+              <dt>${escapeHtml(t.term)}${t.en ? `<span class="term-en">${escapeHtml(t.en)}</span>` : ""}</dt>
+              <dd>${escapeHtml(t.def)}</dd>
+            </div>
+          `
+        )
+        .join("")}</dl>`;
+    }
+    if (slide.table) {
+      const head = slide.table.head.map((h) => `<th>${escapeHtml(h)}</th>`).join("");
+      const rows = slide.table.rows
+        .map((r) => `<tr>${r.map((c) => `<td>${escapeHtml(c)}</td>`).join("")}</tr>`)
+        .join("");
+      html += `<div class="table-wrap"><table class="slide-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+    if (slide.steps) {
+      html += `<ol class="step-list">${slide.steps
+        .map((s) => `<li><strong>${escapeHtml(s.label)}</strong><span>${escapeHtml(s.text)}</span></li>`)
+        .join("")}</ol>`;
+    }
+    if (slide.bullets) {
+      html += `<ul class="slide-list">${slide.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`;
+    }
+    return html;
   }
 
   // "Oyun Adı: açıklama" formatındaki maddeyi renkli ikonlu rozet kartına dönüştürür.
