@@ -167,12 +167,6 @@ const WEEKS = [
         type: "section",
         heading: "Oyun Nedir?",
         lead: "Bir şeyi tasarlamadan önce onun ne olduğunu bilmek gerekir. Bu bölümde oyunu tanımlayan kavramları göreceğiz. Bu kavramlar, fikrinizin gerçekten bir “oyun” olup olmadığını, yoksa bir hikâye ya da oyuncak mı olduğunu anlamanızı sağlayacak.",
-        bullets: [
-          "Oyun tasarımcısı neyi tasarlar?",
-          "Oyunun tanımları ve tanımdaki anahtar kavramlar",
-          "Sihirli çember ve oyunbaz tutum",
-          "Oyuncak, bulmaca, yarışma ve oyun arasındaki fark",
-        ],
       },
       {
         type: "concept",
@@ -258,11 +252,6 @@ const WEEKS = [
         type: "section",
         heading: "Oyunun Parçaları",
         lead: "Bir saati tamir etmek için onu parçalarına ayırmayı bilmek gerekir. Oyun için de durum aynıdır. Bu bölümdeki sekiz öğe, 1.2'de kendi fikir yazınızı okurken kullanacağınız kontrol listesidir.",
-        bullets: [
-          "Fullerton'ın sekiz biçimsel öğesi",
-          "Örnek analiz: Tetris",
-          "Anlamlı oyun: oyuncunun kararları ne zaman önemlidir?",
-        ],
       },
       {
         type: "concept",
@@ -320,10 +309,6 @@ const WEEKS = [
         type: "section",
         heading: "Oyun Nasıl Tasarlanır?",
         lead: "İyi oyunlar ilk denemede iyi olmaz; defalarca denenip düzeltilerek olgunlaşır. Bu kursta getirdiğiniz fikir de aynı yoldan geçecek: her hafta yeni bir araçla ele alınıp biçilecek, 7. haftada bir tasarım belgesine (GDD) dönüşecek.",
-        bullets: [
-          "Yinelemeli tasarım döngüsü",
-          "Prototip ve oyun testi",
-        ],
       },
       {
         type: "concept",
@@ -480,11 +465,6 @@ const WEEKS = [
         type: "section",
         heading: "Fikri Parçalara Ayırmak",
         lead: "1.1'deki sekiz biçimsel öğe şimdi bir kontrol listesine dönüşüyor. Fikir yazınızı bu listeyle okuduğunuzda, hangi parçaların hazır olduğunu ve hangilerinin henüz boş olduğunu görürsünüz. Boş kalan her satır, tasarımın yapılması gereken yeridir.",
-        bullets: [
-          "Fikir yazısını biçimsel öğelerle okumak",
-          "Deneyim hedefi: oyuncu ne hissetmeli?",
-          "Temel fiil ve hedefler: oyuncu ne yapıyor, neye ulaşmaya çalışıyor?",
-        ],
       },
       {
         type: "concept",
@@ -566,11 +546,6 @@ const WEEKS = [
         type: "section",
         heading: "Fikri Biçmek",
         lead: "Fikir yazıları neredeyse her zaman elimizdeki zamana sığmayacak kadar büyüktür. Terzi kumaşı keserek elbiseyi ortaya çıkarır; tasarımcı da fikirden keserek oyunu ortaya çıkarır. Ne kesileceğine rastgele değil, ölçütlerle karar verilir.",
-        bullets: [
-          "Kapsam ve özellik şişmesi",
-          "Tasarım sütunları: kesme kararının ölçütü",
-          "Örnek: “Leke” yazısını biçmek",
-        ],
       },
       {
         type: "concept",
@@ -621,11 +596,6 @@ const WEEKS = [
         type: "section",
         heading: "Fikri Sabitlemek",
         lead: "Biçilmiş fikir, artık başkasına anlatılabilecek kadar nettir. Son adım, onu bir türe yerleştirmek ve ekibin, öğretmenin ya da jürinin hemen anlayacağı tek bir cümleye dönüştürmektir. Bu cümle, GDD'nin ilk iki maddesi olacak.",
-        bullets: [
-          "Oyununuzun türü",
-          "Yüksek konsept ve kanca",
-          "“Leke”nin önceki ve sonraki hâli",
-        ],
       },
       {
         type: "concept",
@@ -765,10 +735,6 @@ const WEEKS = [
         type: "section",
         heading: "Oyuncuyu Anlamak",
         lead: "Tasarımcı kuralları yazar ama oyunu oyuncu yaşar. Aynı kural, bir oyuncuya heyecan, bir başkasına sıkıntı verebilir. Bu yüzden kural yazmadan önce kimin için yazdığımızı bilmemiz gerekir.",
-        bullets: [
-          "Tasarımcı neden kendi oyununun iyi bir oyuncusu değildir?",
-          "Hedef kitle hangi bilgilerle tanımlanır?",
-        ],
       },
       {
         type: "concept",
@@ -804,12 +770,6 @@ const WEEKS = [
         type: "section",
         heading: "Hedef Kitleyi Seçmek",
         lead: "Hedef kitle rastgele seçilmez, sırayla sorulan dört soruyla daraltılır. Her adım bir öncekinin cevabını kullanır.",
-        steps: [
-          { label: "Fikir", text: "Oyun fikriniz kime doğal olarak hitap ediyor?" },
-          { label: "Yaş aralığı", text: "Bu oyuncu hangi düşünme ve beceri düzeyinde?" },
-          { label: "Oyun deneyimi", text: "Daha önce ne kadar oyun oynamış?" },
-          { label: "Motivasyon", text: "Oyundan ne istiyor?" },
-        ],
       },
       {
         type: "concept",
@@ -923,11 +883,6 @@ const WEEKS = [
         type: "section",
         heading: "Platformu Seçmek",
         lead: "Hedef kitle belli olunca platform sorusu gelir. Platform, oyunun oynandığı cihazdır; kontrolleri, ekran boyutunu ve oturum süresini belirlediği için tasarımın parçasıdır, sonradan verilen teknik bir karar değildir.",
-        bullets: [
-          "Platformlar arasındaki fark nedir?",
-          "Temel fiil hangi kontrolle en doğal yapılır?",
-          "Platform hangi ölçütlerle seçilir?",
-        ],
       },
       {
         type: "concept",
@@ -989,9 +944,6 @@ const WEEKS = [
         type: "section",
         heading: "Kararları Birleştirmek",
         lead: "Şimdiye kadar verdiğimiz kararlar (fikir, yaş, deneyim, motivasyon, platform) ayrı ayrı listelendiğinde akılda kalmaz. Persona yöntemi bunları tek bir kişi tarifinde birleştirir; ekip bundan sonraki her kararı bu kişiye göre test eder.",
-        bullets: [
-          "Persona nedir, nasıl yazılır?",
-        ],
       },
       {
         type: "concept",
@@ -1088,10 +1040,6 @@ const WEEKS = [
         type: "section",
         heading: "Kurallar",
         lead: "Kurallar oyunun sınırlarını çizer: neyin mümkün, neyin yasak olduğunu ve ne olursa ne olacağını söyler. Mekanikler bu sınırların içinde çalışır; bu yüzden önce kuralları anlamamız gerekir.",
-        bullets: [
-          "Bir oyunda kaç tür kural vardır?",
-          "İyi bir kuralı kötü bir kuraldan ne ayırır?",
-        ],
       },
       {
         type: "concept",
@@ -1131,11 +1079,6 @@ const WEEKS = [
         type: "section",
         heading: "Mekanikler",
         lead: "Kural neyin mümkün olduğunu söyler; mekanik ise oyuncunun bu kurallar içinde fiilen ne yaptığıdır. Bir oyunun mekanikleri eşit değildir: biri oyunun kalbidir, diğerleri onu destekler. Bu bölümde bu ayrımı ve destekleyici mekaniklerin nasıl seçildiğini öğreneceğiz.",
-        bullets: [
-          "Mekanik nedir?",
-          "Çekirdek mekanik ile yan mekanik arasındaki fark nedir?",
-          "Yan mekanik hangi ölçütlerle seçilir, gamejam'de kaç mekanik yeterlidir?",
-        ],
       },
       {
         type: "concept",
@@ -1239,10 +1182,6 @@ const WEEKS = [
         type: "section",
         heading: "Kazanmak ve Kaybetmek",
         lead: "Mekanikler oyuncuya ne yapabileceğini söyler; kazanma ve kaybetme koşulları ise bunu neden yaptığını. Hafta 1'deki biçimsel öğelerden “hedefler” ve “sonuç” burada somut kurallara dönüşür.",
-        bullets: [
-          "Kazanma koşulu hangi türlerde olabilir?",
-          "Kaybedince ne olmalı?",
-        ],
       },
       {
         type: "concept",
@@ -1285,10 +1224,6 @@ const WEEKS = [
         type: "section",
         heading: "Mekanikten Deneyime",
         lead: "Şimdiye kadar tasarımcının yazdıklarını gördük: kurallar, mekanikler, kazanma ve kaybetme. Oyuncu ise bunları değil, bunların ona hissettirdiğini yaşar. Bu bölüm, yazdığımız kuralların oyuncuda nasıl bir deneyime dönüştüğünü inceler.",
-        bullets: [
-          "MDA: mekanik, dinamik, estetik",
-          "Çekirdek döngü ve geri bildirim döngüleri",
-        ],
       },
       {
         type: "concept",
