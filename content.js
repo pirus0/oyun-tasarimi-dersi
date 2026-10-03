@@ -140,10 +140,12 @@ const WEEKS = [
   },
 
   // ---------------------------------------------------------------------
-  // HAFTA 1 — Ders anlatımı formatı: paragraf (lead), terim tanımı (terms),
-  // tablo (table), adımlar (steps), alıntı (quote). Kaynaklar: Huizinga,
-  // Suits, Caillois, Crawford, Salen & Zimmerman, Fullerton, Schell.
-  // Diğer haftalar bu formata taşınacak.
+  // HAFTA 1 — Bölümlü yapı (bkz. Hafta 2 açıklaması). Öğrenciler bu haftaya
+  // kendi oyun fikirlerini bir metin olarak yazıp getirir; kurs boyunca bu
+  // fikir haftadan haftaya biçilerek 7. haftada GDD'ye dönüşür.
+  // 1.1 kavramsal araçları verir, 1.2 bu araçlarla fikir metnini işler.
+  // Kaynaklar: Huizinga, Suits, Caillois, Crawford, Salen & Zimmerman,
+  // Fullerton, Schell, Osborn.
   // ---------------------------------------------------------------------
   {
     id: "1.1",
@@ -152,12 +154,24 @@ const WEEKS = [
       {
         type: "intro",
         heading: "Oyun Tasarımına Giriş",
-        lead: "Bu derste oyun tasarımcılarının ve oyun araştırmacılarının “oyun” kavramını nasıl tanımladığını, bir oyunu hangi parçalara ayırarak incelediğini ve bir oyunun nasıl bir ekip ve süreçle üretildiğini öğreneceğiz.",
+        lead: "Bir oyun ekibindeki rolleri tanıdınız. Bu derste bir oyun tasarımcısının kullandığı temel kavramları öğreneceğiz. Bu kavramlar, getirdiğiniz oyun fikrini kurs boyunca biçmek için kullanacağımız araçlardır.",
+        steps: [
+          { label: "Oyun nedir?", text: "Tasarımcılar ve araştırmacılar oyunu nasıl tanımlar, oyunu oyuncak ve bulmacadan ne ayırır?" },
+          { label: "Oyunun parçaları", text: "Her oyunda bulunan sekiz biçimsel öğe ve bir oyunu bu öğelerle analiz etmek." },
+          { label: "Oyun nasıl tasarlanır?", text: "Fikir, prototip, test ve düzeltme döngüsü: yinelemeli tasarım." },
+        ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Oyun Nedir?",
+        lead: "Bir şeyi tasarlamadan önce onun ne olduğunu bilmek gerekir. Bu bölümde oyunu tanımlayan kavramları göreceğiz. Bu kavramlar, fikrinizin gerçekten bir “oyun” olup olmadığını, yoksa bir hikâye ya da oyuncak mı olduğunu anlamanızı sağlayacak.",
         bullets: [
-          "Oyunun dört temel tanımını ve bu tanımlardaki anahtar kavramları açıklayabilmek",
-          "Oyunu oyuncak, bulmaca ve yarışmadan ayırabilmek",
-          "Bir oyunu sekiz biçimsel öğesine ayırarak analiz edebilmek",
-          "Oyun ekibindeki rolleri ve bir oyunun üretim aşamalarını sayabilmek",
+          "Oyun tasarımcısı neyi tasarlar?",
+          "Oyunun tanımları ve tanımdaki anahtar kavramlar",
+          "Sihirli çember ve oyunbaz tutum",
+          "Oyuncak, bulmaca, yarışma ve oyun arasındaki fark",
         ],
       },
       {
@@ -211,21 +225,9 @@ const WEEKS = [
           credit: "Fotoğraf: bilinmiyor, kamu malı. Kaynak: Wikimedia Commons",
         },
         terms: [
-          {
-            term: "Sihirli çember",
-            en: "magic circle",
-            def: "Huizinga'nın ortaya attığı, Salen ve Zimmerman'ın yaygınlaştırdığı kavram. Oyuna başlayan kişi, kuralların geçerli olduğu görünmez bir çemberin içine girer. Satrançta atın L çizmesi yalnızca bu çemberin içinde anlamlıdır.",
-          },
-          {
-            term: "Oyunbozan",
-            en: "spoilsport",
-            def: "Huizinga'ya göre oyunbozan hileciden daha tehlikelidir: hileci kuralı çiğner ama oyunda kalır; oyunbozan çemberi yok eder.",
-          },
-          {
-            term: "Oyunbaz tutum",
-            en: "lusory attitude",
-            def: "Suits'in kavramı: kuralları, yalnızca oyun mümkün olsun diye gönüllü olarak kabul etmek. Golfte topu deliğe elle koymak en kolay yoldur; ama sopayı kabul ederiz, çünkü oyun bu engelden doğar.",
-          },
+          { term: "Sihirli çember", en: "magic circle", def: "Huizinga'nın ortaya attığı, Salen ve Zimmerman'ın yaygınlaştırdığı kavram. Oyuna başlayan kişi, kuralların geçerli olduğu görünmez bir çemberin içine girer. Satrançta atın L çizmesi yalnızca bu çemberin içinde anlamlıdır." },
+          { term: "Oyunbozan", en: "spoilsport", def: "Huizinga'ya göre oyunbozan hileciden daha tehlikelidir: hileci kuralı çiğner ama oyunda kalır; oyunbozan çemberi yok eder." },
+          { term: "Oyunbaz tutum", en: "lusory attitude", def: "Suits'in kavramı: kuralları, yalnızca oyun mümkün olsun diye gönüllü olarak kabul etmek. Golfte topu deliğe elle koymak en kolay yoldur; ama sopayı kabul ederiz, çünkü oyun bu engelden doğar." },
         ],
       },
       {
@@ -240,31 +242,26 @@ const WEEKS = [
         table: {
           head: ["Tür", "Ölçüt", "Örnek"],
           rows: [
-            ["Oyuncak (toy)", "Etkileşim var, hedef yok.", "Top, Lego, Minecraft'ın yaratıcı modu"],
+            ["Oyuncak (toy)", "Etkileşim var, hedef yok.", "Top, Lego"],
             ["Bulmaca (puzzle)", "Hedef var, rakip yok.", "Sudoku, Rubik küpü"],
             ["Yarışma (competition)", "Rakip var, ama rakibe müdahale edilemez.", "100 metre koşusu, bowling"],
-            ["Oyun (game)", "Rakip var ve oyuncular birbirini etkileyebilir.", "Satranç, futbol, Clash Royale"],
+            ["Oyun (game)", "Rakip var ve oyuncular birbirini etkileyebilir.", "Satranç, futbol"],
           ],
         },
         bullets: [
-          "Tasarımcı için anlamı: bir oyuncağa hedef ve kural eklendiğinde oyun doğar. Minecraft'ın hayatta kalma modu, yaratıcı moda açlık, düşman ve gece-gündüz döngüsü ekleyerek bunu yapar.",
+          "Tasarımcı için anlamı: bir oyuncağa hedef ve kural eklendiğinde oyun doğar. Fikriniz yalnızca bir dünya ya da karakter anlatıyorsa, henüz bir oyuncaktır.",
         ],
       },
+
+      // --- Bölüm 2 ---
       {
-        type: "concept",
-        heading: "Caillois'nın Dört Oyun Kategorisi",
-        lead: "Sosyolog Roger Caillois (1958), oyunları oyuncuya yaşattıkları temel deneyime göre dört gruba ayırır. Çoğu oyun birden fazla kategoriyi birleştirir.",
-        table: {
-          head: ["Kategori", "Deneyim", "Örnek"],
-          rows: [
-            ["Agon", "Rekabet, beceriyle üstün gelme", "Satranç, FIFA, Valorant"],
-            ["Alea", "Şans, sonucun oyuncunun elinde olmaması", "Zar, piyango, Uno'da kart çekme"],
-            ["Mimicry", "Taklit, başka biri olma", "Evcilik, The Sims, rol yapma oyunları"],
-            ["Ilinx", "Baş dönmesi, hız ve sarsılma hissi", "Salıncak, lunapark, yarış oyunları"],
-          ],
-        },
-        terms: [
-          { term: "Paidia ↔ Ludus", def: "Caillois'nın ikinci ekseni. Paidia serbest, doğaçlama oyundur (çocukların uydurduğu oyunlar); ludus ise kuralları belirlenmiş, beceri isteyen oyundur (satranç)." },
+        type: "section",
+        heading: "Oyunun Parçaları",
+        lead: "Bir saati tamir etmek için onu parçalarına ayırmayı bilmek gerekir. Oyun için de durum aynıdır. Bu bölümdeki sekiz öğe, 1.2'de kendi fikir yazınızı okurken kullanacağınız kontrol listesidir.",
+        bullets: [
+          "Fullerton'ın sekiz biçimsel öğesi",
+          "Örnek analiz: Tetris",
+          "Anlamlı oyun: oyuncunun kararları ne zaman önemlidir?",
         ],
       },
       {
@@ -283,14 +280,13 @@ const WEEKS = [
         ],
       },
       {
-        type: "concept",
+        type: "examples",
         heading: "Örnek Analiz: Tetris",
         image: {
           src: "assets/lesson/tetris-ilk-surum.png",
           caption: "Tetris'in ilk sürümü: Alexey Pajitnov, 1984, Sovyet Elektronika 60 bilgisayarı. Parçalar yazı karakterleriyle çiziliyordu.",
           credit: "Ekran görüntüsü: Alexey Pajitnov. Kaynak: Wikipedia (adil kullanım)",
         },
-        lead: "Sekiz biçimsel öğe, Tetris (1984) üzerinde:",
         table: {
           head: ["Öğe", "Tetris'te"],
           rows: [
@@ -318,71 +314,15 @@ const WEEKS = [
           { term: "Bütünleşik", en: "integrated", def: "Eylemin sonucu, oyunun ilerleyen bölümlerini de etkilemelidir. Bir kararın oyunun sonuna hiçbir etkisi yoksa, o karar anlamsızdır." },
         ],
       },
+
+      // --- Bölüm 3 ---
       {
-        type: "concept",
-        heading: "Oyun Türleri",
-        image: {
-          src: "assets/lesson/super-mario.png",
-          caption: "Super Mario Bros. (1985): platform türünü tanımlayan oyun. Temel fiil zıplamak; bölüm tasarımı bu fiili sınar.",
-          credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)",
-        },
-        lead: "Tür (genre), oyunun temel eylemine ve yapısına göre yapılan sınıflandırmadır. Oyuncu bir türün adını duyduğunda ne yapacağını aşağı yukarı bilir.",
-        table: {
-          head: ["Tür", "Temel eylem", "Örnek"],
-          rows: [
-            ["Platform (platformer)", "Zıplayarak engelleri ve boşlukları aşmak", "Super Mario Bros., Celeste"],
-            ["Bulmaca (puzzle)", "Mantık ve örüntü çözmek", "Tetris, Candy Crush"],
-            ["Aksiyon-macera", "Keşfetmek ve dövüşmek", "The Legend of Zelda"],
-            ["Strateji", "Kaynak yönetip plan kurmak", "Clash Royale"],
-            ["Sonsuz koşu (endless runner)", "Hızlanan engellerden kaçmak", "Subway Surfers, Temple Run"],
-            ["Kum havuzu (sandbox)", "Serbestçe inşa etmek ve keşfetmek", "Minecraft, Roblox"],
-            ["Roguelike", "Her denemede yeniden üretilen bölümlerde ilerlemek", "Hades, The Binding of Isaac"],
-          ],
-        },
-      },
-      {
-        type: "concept",
-        heading: "Platform: Oyunun Oynandığı Cihaz",
-        lead: "Platform, oyunun oynandığı cihazdır: mobil, PC, konsol ya da tarayıcı. “Platform oyunu” ise bir türün adıdır; ikisi karıştırılmamalıdır. Platform; girdi yöntemini, ekran boyutunu ve oyun oturumunun süresini belirler.",
-        table: {
-          head: ["Platform", "Girdi (input)", "Tipik oturum", "Tasarıma etkisi"],
-          rows: [
-            ["Mobil", "Dokunmatik ekran", "1-5 dakika", "Az ve büyük düğme, tek elle oynanış, sık kayıt"],
-            ["PC", "Klavye ve fare", "30 dakika ve üzeri", "Hassas nişan, çok tuşlu kontroller, karmaşık arayüz"],
-            ["Konsol", "Kumanda", "30 dakika ve üzeri", "Sınırlı tuş sayısı, uzaktan okunabilen büyük yazı"],
-            ["Tarayıcı", "Fare ya da dokunma", "Birkaç dakika", "Kurulum yok, hemen başlayan oyun; gamejam'lerde yaygın"],
-          ],
-        },
-      },
-      {
-        type: "concept",
-        heading: "Oyun Ekibindeki Roller",
-        table: {
-          head: ["Rol", "Sorumluluk"],
-          rows: [
-            ["Oyun tasarımcısı", "Kuralları, hedefleri ve oyuncu deneyimini tasarlar. Büyük ekiplerde uzmanlaşır: sistem tasarımcısı (kurallar, denge, ekonomi), seviye tasarımcısı (bölümler), anlatı tasarımcısı (hikâye, diyalog), UX tasarımcısı (arayüz, kontroller)."],
-            ["Programcı", "Tasarımı çalışan bir yazılıma çevirir. Oynanış programcısı (gameplay programmer) mekanikleri, motor programcısı oyunun altyapısını yazar."],
-            ["Sanatçı", "Konsept sanatçısı ilk çizimleri yapar; 2D/3D sanatçılar karakter ve dünyayı üretir; animatör hareketi verir."],
-            ["Ses tasarımcısı / besteci", "Ses efektlerini ve müziği üretir. Ses, oyuncuya geri bildirim veren en hızlı kanallardan biridir."],
-            ["Yapımcı", "Producer: takvimi, bütçeyi ve ekip koordinasyonunu yönetir."],
-            ["Test uzmanı", "QA (kalite güvencesi): oyunu sistematik olarak oynayıp hataları bulur ve raporlar."],
-          ],
-        },
+        type: "section",
+        heading: "Oyun Nasıl Tasarlanır?",
+        lead: "İyi oyunlar ilk denemede iyi olmaz; defalarca denenip düzeltilerek olgunlaşır. Bu kursta getirdiğiniz fikir de aynı yoldan geçecek: her hafta yeni bir araçla ele alınıp biçilecek, 7. haftada bir tasarım belgesine (GDD) dönüşecek.",
         bullets: [
-          "Küçük ekiplerde ve gamejam'lerde bir kişi birden fazla rol üstlenir. Minecraft'ın ilk sürümünü tek kişi yaptı.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Bir Oyun Nasıl Üretilir?",
-        lead: "Profesyonel oyun geliştirme genellikle şu aşamalardan geçer:",
-        steps: [
-          { label: "Konsept", text: "Fikir, hedef kitle ve oyunun ana deneyimi belirlenir." },
-          { label: "Ön üretim", text: "Pre-production: prototipler yapılır, oyunun eğlenceli olup olmadığı test edilir, tasarım belgesi (GDD) yazılır." },
-          { label: "Üretim", text: "Production: bölümler, karakterler, sesler ve kodun büyük kısmı üretilir." },
-          { label: "Alfa", text: "Oyunun bütün özellikleri vardır ama içerik eksik ve hatalar çoktur." },
-          { label: "Beta", text: "İçerik tamamdır; ekip hataları ayıklar ve dengeyi ayarlar." },
-          { label: "Yayın", text: "Release: oyun oyunculara ulaşır. Ardından güncellemeler ve yeni içerikle yayın sonrası dönem başlar." },
+          "Yinelemeli tasarım döngüsü",
+          "Prototip ve oyun testi",
         ],
       },
       {
@@ -393,17 +333,46 @@ const WEEKS = [
           caption: "Jason Rohrer'in Diamond Trust of London oyunu için hazırladığı kâğıt prototip: harita, puan tablosu, nohut ve bozuk paralar. Oyun kodlanmadan önce kurallar böyle test edildi.",
           credit: "Jason Rohrer, kamu malı. Kaynak: Wikimedia Commons",
         },
-        lead: "Oyun tasarımı düz bir çizgide ilerlemez, döngü hâlinde ilerler. Fullerton bu yaklaşımı oyuncu merkezli tasarım süreci (playcentric design) olarak adlandırır: oyuncu, sürecin her adımında tasarıma dahil edilir.",
+        lead: "Fullerton bu yaklaşımı oyuncu merkezli tasarım (playcentric design) olarak adlandırır: oyuncu, sürecin her adımında tasarıma dahil edilir.",
         steps: [
           { label: "Fikir", text: "Bir kural ya da mekanik önerilir." },
-          { label: "Prototip", text: "Fikrin en basit, oynanabilir hâli yapılır. Kâğıt ve kalemle bile olabilir (kâğıt prototip)." },
+          { label: "Prototip", text: "Fikrin en basit, oynanabilir hâli. Kâğıt ve kalemle bile olabilir." },
           { label: "Oyun testi", text: "Playtest: başkaları oynar, tasarımcı izler ve not alır." },
-          { label: "Değerlendirme", text: "Ne işe yaradı, ne yaramadı? Kural değiştirilir ve döngü baştan başlar." },
+          { label: "Değerlendirme", text: "Ne işe yaradı, ne yaramadı? Kural değiştirilir, döngü baştan başlar." },
         ],
         terms: [
-          { term: "Yineleme", en: "iteration", def: "Bu döngünün her bir turu. İyi oyunlar, tek seferde değil, onlarca yinelemeyle olgunlaşır." },
+          { term: "Yineleme", en: "iteration", def: "Bu döngünün her bir turu. Fikir yazınızın her haftaki yeni hâli de bir yinelemedir; eski hâlini silmeyin." },
         ],
       },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "Caillois'nın Dört Oyun Kategorisi",
+        lead: "Sosyolog Roger Caillois (1958), oyunları oyuncuya yaşattıkları temel deneyime göre dört gruba ayırır. Çoğu oyun birden fazla kategoriyi birleştirir.",
+        table: {
+          head: ["Kategori", "Deneyim", "Örnek"],
+          rows: [
+            ["Agon", "Rekabet, beceriyle üstün gelme", "Satranç, FIFA"],
+            ["Alea", "Şans, sonucun oyuncunun elinde olmaması", "Zar, Uno'da kart çekme"],
+            ["Mimicry", "Taklit, başka biri olma", "Evcilik, The Sims"],
+            ["Ilinx", "Baş dönmesi, hız ve sarsılma hissi", "Salıncak, yarış oyunları"],
+          ],
+        },
+      },
+      {
+        type: "extra",
+        heading: "Bir Oyun Nasıl Üretilir?",
+        lead: "Profesyonel ekiplerde tasarım döngüsü, şu üretim aşamalarının içinde döner:",
+        steps: [
+          { label: "Konsept", text: "Fikir, hedef kitle ve ana deneyim belirlenir." },
+          { label: "Ön üretim", text: "Pre-production: prototipler yapılır, tasarım belgesi (GDD) yazılır." },
+          { label: "Üretim", text: "Production: bölümler, karakterler, sesler ve kodun büyük kısmı üretilir." },
+          { label: "Alfa / Beta", text: "Alfa: bütün özellikler var, hatalar çok. Beta: içerik tamam, hatalar ayıklanıyor." },
+          { label: "Yayın", text: "Release: oyun oyunculara ulaşır; ardından güncellemeler gelir." },
+        ],
+      },
+
       {
         type: "summary",
         heading: "Terim Sözlüğü",
@@ -411,9 +380,9 @@ const WEEKS = [
           { term: "Oyun tasarımı", en: "game design", def: "Oyunun hedeflerini, kurallarını ve eylemlerini belirleme işi." },
           { term: "Sihirli çember", en: "magic circle", def: "Oyun kurallarının geçerli olduğu, gerçek hayattan ayrı alan." },
           { term: "Oyunbaz tutum", en: "lusory attitude", def: "Kuralları, oyun mümkün olsun diye gönüllü kabul etmek." },
+          { term: "Oyuncak / oyun", en: "toy / game", def: "Hedefsiz etkileşim / hedef, kural ve çatışması olan etkileşim." },
           { term: "Biçimsel öğeler", en: "formal elements", def: "Oyuncular, hedefler, prosedürler, kurallar, kaynaklar, çatışma, sınırlar, sonuç." },
           { term: "Anlamlı oyun", en: "meaningful play", def: "Eylemin sonucunun görülebilir ve oyunun geneline etkili olması." },
-          { term: "Tür / Platform", en: "genre / platform", def: "Oyunun yapısına göre sınıfı / oynandığı cihaz." },
           { term: "Prototip", en: "prototype", def: "Bir fikrin en basit oynanabilir hâli." },
           { term: "Yinelemeli tasarım", en: "iterative design", def: "Prototip, test ve düzeltme döngüsüyle ilerleyen tasarım." },
         ],
@@ -422,41 +391,72 @@ const WEEKS = [
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Tasarım Defteri'nize yazdığınız 3 oyundan birini seçin ve sekiz biçimsel öğesini Tetris tablosundaki gibi yazın.",
-          "Üç oyunun her birini Crawford'a göre (oyuncak, bulmaca, yarışma, oyun) ve Caillois'ya göre (agon, alea, mimicry, ilinx) sınıflandırın. Birden fazla kategoriye giriyorsa hepsini yazıp gerekçelendirin.",
-          "Bu oyunlardan birinin ekibinde olsaydınız hangi rolü üstlenmek isterdiniz? Nedenini iki cümleyle yazın.",
+          "Sevdiğiniz bir oyunu seçin ve sekiz biçimsel öğesini Tetris tablosundaki gibi yazın.",
+          "Aynı oyunda verdiğiniz bir kararı yazın: sonucu ayırt edilebilir mi, oyunun geri kalanını etkiliyor mu (anlamlı oyun)?",
+          "Oyun fikri yazınızı bir sonraki derse getirin. Henüz yazmadıysanız, oyununuzu 5-10 cümleyle, aklınıza geldiği gibi anlatın; 1.2'de bu yazıyı birlikte işleyeceğiz.",
         ],
       },
     ],
   },
   {
     id: "1.2",
-    title: "Oyun Fikri Geliştirme",
+    title: "Fikirden Tasarıma",
     slides: [
       {
         type: "intro",
-        heading: "Oyun Fikri Geliştirme",
-        lead: "Bir oyun fikri tek bir anda gelen ilhamla değil, belirli tekniklerle üretilir ve bir dizi soruyla olgunlaştırılır. Bu derste bir fikri, bir ekibe anlatılabilecek tek cümlelik bir konsepte dönüştürmeyi öğreneceğiz.",
-        bullets: [
-          "Oyun fikrinin dört giriş noktasını ayırt edebilmek",
-          "Deneyim hedefi ve temel fiil yazabilmek",
-          "Fikir üretme tekniklerini uygulayabilmek",
-          "Yüksek konsept cümlesi ve tasarım sütunları yazabilmek, kapsamı sınırlayabilmek",
+        heading: "Fikirden Tasarıma",
+        lead: "Bu derse bir oyun fikri yazısıyla geldiniz. Bu yazı, kursun sonuna kadar üzerinde çalışacağımız ham maddedir. Bugün onu bir tasarımcı gibi okuyacak, parçalarına ayıracak, gereksiz yerlerini kesecek ve tek cümlelik bir konsepte dönüştüreceğiz.",
+        steps: [
+          { label: "Fikir yazısını okumak", text: "Fikir ile tasarım arasındaki fark; fikriniz hangi kapıdan girdi?" },
+          { label: "Fikri parçalara ayırmak", text: "Biçimsel öğeler, deneyim hedefi, temel fiil, hedefler." },
+          { label: "Fikri biçmek", text: "Kapsam, tasarım sütunları; neyi tutacağız, neyi keseceğiz?" },
+          { label: "Fikri sabitlemek", text: "Tür ve yüksek konsept: oyunu tek cümlede anlatmak." },
         ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Fikir Yazısını Okumak",
+        lead: "Bir fikir yazısı genellikle bir dünya, bir karakter ve bir hikâye anlatır. Tasarım ise oyuncunun ne yaptığını anlatır. İşe, yazınızın hangisini anlattığını görerek başlıyoruz. Ders boyunca aşağıdaki örnek yazıyı birlikte işleyeceğiz.",
+        quote: {
+          text: "Okulda sıkılan bir öğrencinin defterine mürekkep dökülür ve mürekkep canlanıp sayfayı ele geçirmeye çalışır. Öğrenci silgisiyle defterini kurtarmalıdır. Sonunda dev bir mürekkep canavarıyla savaşılır. Oyuncu karakterini geliştirebilir, farklı silgiler alabilir ve arkadaşlarıyla oynayabilir.",
+          source: "Örnek öğrenci fikir yazısı: “Leke”",
+        },
       },
       {
         type: "concept",
-        heading: "Fikrin Dört Giriş Noktası",
-        lead: "Tasarımcılar bir oyuna genellikle dört kapıdan birinden girer. Hangi kapıdan girildiği önemli değildir; sonunda dördü de tanımlanmalıdır.",
+        heading: "Fikir, Tasarım Değildir",
+        lead: "Fikir yazıları çoğunlukla oyunun ne hakkında olduğunu anlatır: tema ve hikâye. Oynanış ise oyuncunun oyun sırasında fiilen ne yaptığıdır. Bir fikri oyuna çeviren, oynanış sorularının cevaplarıdır.",
+        terms: [
+          { term: "Tema", en: "theme", def: "Oyunun ne hakkında olduğu: dünya, karakterler, konu. “Defterdeki canlı mürekkep.”" },
+          { term: "Oynanış", en: "gameplay", def: "Oyuncunun oyun sırasında yaptığı eylemler ve verdiği kararlar. “Parmakla sürterek lekeleri silmek.”" },
+        ],
+        table: {
+          head: ["Fikir yazısının söylediği", "Tasarımın sorduğu"],
+          rows: [
+            ["Öğrenci defterini kurtarmalıdır.", "Oyuncu her saniye ne yapıyor? Defter ne zaman “kurtarılmış” sayılır?"],
+            ["Mürekkep sayfayı ele geçirmeye çalışır.", "Mürekkep nasıl ve ne hızla yayılıyor? Oyuncu ne zaman kaybeder?"],
+            ["Dev bir mürekkep canavarıyla savaşılır.", "Savaşmak hangi eylemle yapılıyor? Silmekten farklı bir oyun mu?"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Fikriniz Hangi Kapıdan Girdi?",
+        lead: "Tasarımcılar bir oyuna genellikle dört kapıdan birinden girer. Fikriniz büyük olasılıkla bunlardan birinden doğdu; diğer üçünü tasarım sırasında tamamlamanız gerekecek.",
         table: {
           head: ["Giriş noktası", "Başlangıç sorusu", "Örnek"],
           rows: [
             ["Mekanik", "Oyuncu ne yapabilir?", "Portal: bir öğrenci projesinde (Narbacular Drop) denenen “iki nokta arasında geçit açma” mekaniğinden doğdu."],
             ["Tema / dünya", "Oyun nerede, kimin hakkında?", "Papers, Please: bir sınır kapısında pasaport kontrol eden memur olmak."],
             ["Deneyim", "Oyuncu ne hissetmeli?", "Journey: hiç konuşmadan, tanımadığı biriyle yol arkadaşlığı kurma hissi."],
-            ["Kısıt", "Hangi sınırla çalışıyorum?", "Surgeon Simulator: 2013 Global Game Jam'in “kalp atışı sesi” temasından çıktı. Baba Is You da bir gamejam'de yapıldı."],
+            ["Kısıt", "Hangi sınırla çalışıyorum?", "Surgeon Simulator: 2013 Global Game Jam'in “kalp atışı sesi” temasından çıktı."],
           ],
         },
+        bullets: [
+          "“Leke” temadan girdi: canlı mürekkep ve okul defteri. Eksik olan, temanın içinde oyuncunun ne yaptığıdır.",
+        ],
       },
       {
         type: "examples",
@@ -466,12 +466,64 @@ const WEEKS = [
           caption: "Papers, Please (2013): oyuncu, belgeleri masada yan yana koyup karşılaştırır. Arayüzün kendisi oyunun mekaniğidir.",
           credit: "Lucas Pope. Kaynak: Wikipedia (adil kullanım)",
         },
-        lead: "Lucas Pope'un tek başına geliştirdiği oyunda, oyuncu kurgusal Arstotzka ülkesinde bir sınır kapısı memurudur. Fikir bir temadan doğdu: Pope, seyahatlerinde gördüğü pasaport memurlarının işini oyuna çevirmek istedi.",
+        lead: "Fikirlerin çoğu gibi bu oyun da bir temadan doğdu: Lucas Pope, seyahatlerinde gördüğü pasaport memurlarının işini oyuna çevirmek istedi. Asıl tasarım işi, bu temayı bir oynanışa dönüştürmekti.",
         terms: [
-          { term: "Temel fiil", def: "Karşılaştırmak: pasaport, giriş izni ve kimlik kartındaki bilgilerdeki tutarsızlığı bulmak, sonra damgalamak (onay ya da red)." },
-          { term: "Çatışma", def: "Her gün yeni kurallar eklenir ve süre sınırlıdır. Doğru karar başına maaş alınır; yanlış karar ceza getirir." },
-          { term: "Kaynaklar", def: "Gün sonunda maaşla ailenin kirası, yemeği ve ısınması ödenir. Para yetmezse aile hastalanır." },
-          { term: "Ders", def: "Tema ile mekanik birbirini destekler. Belgesi eksik birini acıyıp içeri almak, ailenin parasından vazgeçmek demektir: ahlaki ikilem tamamen kurallardan doğar." },
+          { term: "Temel fiil", def: "Karşılaştırmak: pasaport, giriş izni ve kimlik kartındaki tutarsızlığı bulmak, sonra damgalamak." },
+          { term: "Çatışma", def: "Her gün yeni kurallar eklenir ve süre sınırlıdır. Doğru karar başına maaş alınır." },
+          { term: "Kaynaklar", def: "Maaşla ailenin kirası, yemeği ve ısınması ödenir. Para yetmezse aile hastalanır." },
+          { term: "Ders", def: "Tema, mekaniğe dönüşünce güçlenir. Belgesi eksik birini acıyıp içeri almak, ailenin parasından vazgeçmek demektir: ahlaki ikilem tamamen kurallardan doğar." },
+        ],
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "Fikri Parçalara Ayırmak",
+        lead: "1.1'deki sekiz biçimsel öğe şimdi bir kontrol listesine dönüşüyor. Fikir yazınızı bu listeyle okuduğunuzda, hangi parçaların hazır olduğunu ve hangilerinin henüz boş olduğunu görürsünüz. Boş kalan her satır, tasarımın yapılması gereken yeridir.",
+        bullets: [
+          "Fikir yazısını biçimsel öğelerle okumak",
+          "Deneyim hedefi: oyuncu ne hissetmeli?",
+          "Temel fiil ve hedefler: oyuncu ne yapıyor, neye ulaşmaya çalışıyor?",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Fikir Yazısını Biçimsel Öğelerle Okumak",
+        table: {
+          head: ["Öğe", "“Leke” yazısında", "Durum"],
+          rows: [
+            ["Oyuncular", "“Arkadaşlarıyla oynayabilir.” Birlikte mi, karşı karşıya mı?", "Belirsiz"],
+            ["Hedefler", "“Defterini kurtarmalıdır.” Ne zaman kurtarılmış sayılır?", "Belirsiz"],
+            ["Prosedürler", "“Silgisiyle.” Nasıl: dokunarak mı, sürterek mi?", "Belirsiz"],
+            ["Kurallar", "Yazıda hiç kural yok.", "Boş"],
+            ["Kaynaklar", "“Farklı silgiler.”", "Var"],
+            ["Çatışma", "Mürekkep sayfayı ele geçirmeye çalışıyor.", "Var"],
+            ["Sınırlar", "Defter sayfası.", "Var"],
+            ["Sonuç", "Kazanma ve kaybetme yazılmamış.", "Boş"],
+          ],
+        },
+        bullets: [
+          "Yazıdaki en canlı şeyler (tema, çatışma, dünya) hazır; en zayıf olanlar (kural, hedef, sonuç) ise oyunu oyun yapan parçalar. Bu çok yaygın bir durumdur.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Deneyim Hedefi",
+        lead: "Fullerton, tasarıma devam etmeden önce oyuncunun yaşayacağı deneyimin tek cümleyle yazılmasını önerir. Bu cümle, fikri biçerken neyin kalıp neyin gideceğine karar veren pusuladır.",
+        terms: [
+          { term: "Deneyim hedefi", en: "player experience goal", def: "Oyuncunun oyun sırasında ne hissedeceğini anlatan cümle. Kalıp: “Oyuncu ... hissetmeli, çünkü ...”" },
+          { term: "Oyuncu fantezisi", en: "player fantasy", def: "Oyuncunun oyunda kim olduğunu hayal ettiği rol: ejderha avcısı, şehir kurucu, dedektif." },
+        ],
+        table: {
+          head: ["Deneyim hedefi", "Bu hissi yaratan tasarım kararları"],
+          rows: [
+            ["Telaş", "Azalan süre, hızla yayılan tehdit, durmaya izin vermeyen tempo"],
+            ["Merak", "Kapalı kapılar, yarım görünen harita, açılmamış sandıklar"],
+            ["Güç", "Zayıf başlayıp güçlenen karakter, kolayca yenilen kalabalık düşmanlar"],
+          ],
+        },
+        bullets: [
+          "“Leke” için: Oyuncu telaş hissetmeli, çünkü mürekkep durmadan yayılıyor ve her an sayfayı kaplayabilir.",
         ],
       },
       {
@@ -482,91 +534,115 @@ const WEEKS = [
           caption: "Journey (2012): uzaktaki dağa doğru yürüyen iki yabancı oyuncu. İsim, sohbet ya da puan tablosu yoktur.",
           credit: "thatgamecompany. Kaynak: Wikipedia (adil kullanım)",
         },
-        lead: "thatgamecompany ve tasarımcı Jenova Chen, işe bir mekanikle değil bir deneyim hedefiyle başladı: çevrimiçi oyunlarda yabancılar genellikle birbirine rakip ya da araçtır; Journey'de tanımadığınız biriyle gerçek bir yol arkadaşlığı kurmanızı istediler. Her tasarım kararı bu hedefe göre verildi.",
+        lead: "thatgamecompany ve Jenova Chen işe bir deneyim hedefiyle başladı: tanımadığınız biriyle gerçek bir yol arkadaşlığı kurmak. Her tasarım kararı, bu hedefe hizmet edip etmediğine göre verildi.",
         terms: [
-          { term: "İsim ve sohbet yok", def: "Diğer oyuncunun kim olduğu yolculuk bitene kadar görünmez. Hakaret, rekabet ve dış dünya oyunun dışında kalır." },
+          { term: "İsim ve sohbet yok", def: "Diğer oyuncunun kim olduğu yolculuk bitene kadar görünmez. Hakaret ve rekabet oyunun dışında kalır." },
           { term: "Tek iletişim yolu", def: "Oyuncular yalnızca bir ses/nota çıkararak iletişim kurabilir." },
-          { term: "Birlikte güçlenme", def: "Birbirine yakın duran oyuncular birbirinin uçma gücünü yeniler. Kural, iş birliğini zorlamaz ama ödüllendirir." },
-          { term: "Ders", def: "Önce deneyim hedefi yazılır (“yabancıyla bağ kurmak”), sonra bu hedefe hizmet etmeyen her özellik (sohbet, puan, rekabet) çıkarılır." },
+          { term: "Birlikte güçlenme", def: "Birbirine yakın duran oyuncular birbirinin uçma gücünü yeniler." },
+          { term: "Ders", def: "Deneyim hedefine hizmet etmeyen her özellik (sohbet, puan, rekabet) çıkarıldı. Fikri biçmek budur." },
         ],
       },
       {
         type: "concept",
-        heading: "Deneyim Hedefi",
-        lead: "Fullerton, tasarıma başlamadan önce oyuncunun yaşayacağı deneyimin tek cümleyle yazılmasını önerir. Bu cümle, sonradan alınacak her kararın pusulasıdır.",
+        heading: "Temel Fiil ve Hedefler",
+        lead: "Oyunların çoğu bir ya da iki eylem üzerine kurulur ve tasarımcılar bu eylemi bir fiille ifade eder. Fiil, oyuncunun bir hedefe ulaşmak için yaptığı şeydir.",
         terms: [
-          { term: "Deneyim hedefi", en: "player experience goal", def: "Oyuncunun oyun sırasında ne hissedeceğini ve ne yaşayacağını anlatan cümle. Kalıp: “Oyuncu ... hissetmeli, çünkü ...”" },
-          { term: "Oyuncu fantezisi", en: "player fantasy", def: "Oyuncunun oyunda kim olduğunu hayal ettiği rol: ejderha avcısı, şehir kurucu, dedektif." },
+          { term: "Temel fiil", en: "core verb", def: "Oyuncunun en sık tekrarladığı eylem. Test: “Oyuncu ... yapar.” Cümle tek fiile sığmıyorsa fikir henüz dağınıktır. 2.2'de bu fiili çekirdek mekaniğe dönüştüreceğiz." },
+          { term: "Kısa vadeli hedef", def: "Oyuncunun şu an yapmaya çalıştığı şey. Yoksa oyuncu ne yapacağını bilemez." },
+          { term: "Uzun vadeli hedef", def: "Oyuncunun sonunda ulaşmak istediği şey. Yoksa oyuncu neden devam ettiğini bilemez." },
         ],
         table: {
-          head: ["Deneyim hedefi", "Bu hissi yaratan tasarım kararları"],
+          head: ["Oyun", "Temel fiil", "Kısa vadeli hedef", "Uzun vadeli hedef"],
           rows: [
-            ["Panik", "Azalan süre, daralan oyun alanı, hızlanan müzik"],
-            ["Merak", "Kapalı kapılar, yarım görünen harita, açılmamış sandıklar"],
-            ["Güç", "Zayıf başlayıp güçlenen karakter, kolayca yenilen kalabalık düşmanlar"],
+            ["Flappy Bird", "Kanat çırpmak", "Bir sonraki borudan geçmek", "Kendi rekorunu kırmak"],
+            ["Super Mario Bros.", "Zıplamak", "Önündeki boşluğu atlamak", "Prensesi kurtarmak"],
+            ["“Leke”", "Silmek", "Önündeki lekeyi silmek", "Sayfayı 60 saniye temiz tutmak"],
           ],
         },
       },
+
+      // --- Bölüm 3 ---
       {
-        type: "concept",
-        heading: "Temel Fiil ve Çekirdek Mekanik",
-        lead: "Oyunların çoğu bir ya da iki eylem üzerine kurulur ve tasarımcılar bu eylemi bir fiille ifade eder.",
-        terms: [
-          { term: "Mekanik", en: "mechanic", def: "Oyuncunun oyun dünyasıyla etkileşime girdiği eylem ve bu eylemi yöneten kural. Zıplama bir mekaniktir; ne kadar yükseğe zıplanacağı onun kuralıdır." },
-          { term: "Temel fiil", en: "core verb", def: "Oyuncunun en sık tekrarladığı eylem. Test: “Oyuncu ... yapar.” Cümle tek fiile sığmıyorsa fikir henüz dağınıktır." },
-          { term: "Çekirdek mekanik", en: "core mechanic", def: "Temel fiilin kurallarıyla birlikte tanımlanmış hâli. Oyunun geri kalanı bunun üzerine kurulur." },
-        ],
-        table: {
-          head: ["Oyun", "Temel fiil"],
-          rows: [
-            ["Flappy Bird", "Kanat çırpmak"],
-            ["Super Mario Bros.", "Zıplamak"],
-            ["Candy Crush", "Yer değiştirmek"],
-            ["Among Us", "Suçlamak ve savunmak"],
-          ],
-        },
-      },
-      {
-        type: "concept",
-        heading: "Kısa ve Uzun Vadeli Hedefler",
-        lead: "Oyuncunun her an bir sonraki adımı bilmesi ve aynı zamanda ulaşmak istediği daha büyük bir şeyin olması gerekir. Bu iki hedef türü iç içe çalışır.",
-        table: {
-          head: ["Oyun", "Kısa vadeli hedef", "Uzun vadeli hedef"],
-          rows: [
-            ["Flappy Bird", "Bir sonraki borudan geçmek", "Kendi rekorunu kırmak"],
-            ["Minecraft (hayatta kalma)", "Geceden önce barınak yapmak", "Ender Ejderhası'nı yenmek"],
-            ["Super Mario Bros.", "Önündeki boşluğu atlamak", "Prensesi kurtarmak"],
-          ],
-        },
+        type: "section",
+        heading: "Fikri Biçmek",
+        lead: "Fikir yazıları neredeyse her zaman elimizdeki zamana sığmayacak kadar büyüktür. Terzi kumaşı keserek elbiseyi ortaya çıkarır; tasarımcı da fikirden keserek oyunu ortaya çıkarır. Ne kesileceğine rastgele değil, ölçütlerle karar verilir.",
         bullets: [
-          "Kısa vadeli hedef yoksa oyuncu ne yapacağını bilemez. Uzun vadeli hedef yoksa oyuncu neden devam ettiğini bilemez.",
+          "Kapsam ve özellik şişmesi",
+          "Tasarım sütunları: kesme kararının ölçütü",
+          "Örnek: “Leke” yazısını biçmek",
         ],
       },
       {
         type: "concept",
-        heading: "Beyin Fırtınası",
-        lead: "Beyin fırtınası (brainstorming) tekniği, Alex Osborn tarafından 1953'te tanımlandı. Amaç, değerlendirmeyi ertelemek ve önce çok sayıda fikir üretmektir. Osborn'un dört kuralı:",
-        steps: [
-          { label: "Eleştiri yok", text: "Fikir üretme aşamasında hiçbir fikir yargılanmaz. Değerlendirme sonraki aşamadır." },
-          { label: "Nicelik", text: "Ne kadar çok fikir, o kadar iyi. İlk akla gelen fikir genellikle herkesin aklına gelen fikirdir." },
-          { label: "Uçuk fikirler", text: "Saçma görünen fikirler teşvik edilir; özgün oyunlar sıklıkla buradan çıkar." },
-          { label: "Birleştirme", text: "Başkalarının fikirleri geliştirilir ve birbiriyle birleştirilir." },
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Fikir Üretme Teknikleri",
+        heading: "Kapsam",
         image: {
-          src: "assets/lesson/necrodancer.png",
-          caption: "Crypt of the NecroDancer (2015): zindan keşfi (roguelike) ile ritim oyununun birleşimi. Karakter yalnızca müziğin vuruşunda hareket edebilir.",
-          credit: "Brace Yourself Games. Kaynak: Wikipedia (adil kullanım)",
+          src: "assets/lesson/gamejam.jpg",
+          caption: "Global Game Jam 2019, Arles (Fransa). Ekipler aynı temayla 48 saatte oyun yapar; bu sürede bitirilebilecek kapsamı seçmek en önemli tasarım kararıdır.",
+          credit: "Yannickvernet, CC BY-SA 4.0. Kaynak: Wikimedia Commons",
         },
+        lead: "Kapsam (scope), oyunun ne kadar büyük olacağıdır: kaç bölüm, kaç mekanik, kaç karakter. Acemi tasarımcıların en sık hatası, elindeki zamana sığmayacak bir oyun planlamaktır.",
         terms: [
-          { term: "Fiil değiştirme", def: "Bilinen bir oyunun temel fiilini değiştirin. “Mario zıplayamasa, sadece yer değiştirebilse ne olurdu?”" },
-          { term: "Tür harmanlama", en: "genre mashup", def: "İki türü birleştirin. Crypt of the NecroDancer, roguelike türünü ritim oyunuyla birleştirir: her adım müziğin vuruşunda atılmalıdır." },
-          { term: "Rastgele girdi", en: "random input", def: "Rastgele seçilen bir kelime, nesne ya da fotoğrafı oyuna çevirin. Silgi → “lekeleri yayılmadan silmek.”" },
-          { term: "Kısıt ekleme", en: "constraint", def: "Kendinize sınır koyun: tek tuşla oynanan oyun, 10 saniyelik oyun, hiç yazı içermeyen oyun. Kısıtlar yaratıcılığı daraltmaz, yönlendirir." },
+          { term: "Özellik şişmesi", en: "feature creep", def: "Sürekli yeni özellik eklenmesi. Sonunda hiçbir özellik tam bitmez." },
+          { term: "En küçük oynanabilir sürüm", en: "minimum viable product", def: "Temel fiili gösteren, başı ve sonu olan en küçük oyun. Önce bu bitirilir, kalan zamanda üstüne eklenir." },
         ],
+      },
+      {
+        type: "concept",
+        heading: "Tasarım Sütunları",
+        lead: "Tasarım sütunları (design pillars), oyunun mutlaka sahip olması gereken iki ya da üç temel niteliktir. Deneyim hedefinden türetilir. Bir özellik ancak sütunlardan birine hizmet ediyorsa oyunda kalır.",
+        table: {
+          head: ["“Leke” sütunu", "Anlamı"],
+          rows: [
+            ["Telaş", "Lekeler her saniye yayılır, oyuncu hiç durmaz."],
+            ["Tek parmak", "Oyunun tamamı tek parmakla silerek oynanır."],
+            ["Okul defteri", "Her şey mavi tükenmez kalemle çizilmiş gibi görünür."],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke” Yazısını Biçmek",
+        lead: "Fikir yazısındaki her parçayı sütunlara ve kapsama göre üç kutudan birine koyuyoruz:",
+        table: {
+          head: ["Yazıdaki parça", "Karar", "Gerekçe"],
+          rows: [
+            ["Silgiyle mürekkebi silmek", "Tut", "Temel fiil; üç sütunun hepsine hizmet ediyor."],
+            ["Mürekkebin sayfayı ele geçirmesi", "Tut", "Çatışma ve telaşın kaynağı."],
+            ["Farklı silgiler", "Sonraya bırak", "Yan mekanik adayı; 2.2'de ölçütlerle değerlendirilecek."],
+            ["Arkadaşlarla oynamak", "Dönüştür", "Çok oyunculu yapmak yerine skor paylaşmak."],
+            ["Dev mürekkep canavarıyla savaş", "Çıkar", "Silmekten farklı bir oyun; kapsamı ikiye katlar."],
+            ["Karakter geliştirme", "Çıkar", "Menüde gezinmek telaşı böler."],
+          ],
+        },
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Fikri Sabitlemek",
+        lead: "Biçilmiş fikir, artık başkasına anlatılabilecek kadar nettir. Son adım, onu bir türe yerleştirmek ve ekibin, öğretmenin ya da jürinin hemen anlayacağı tek bir cümleye dönüştürmektir. Bu cümle, GDD'nin ilk iki maddesi olacak.",
+        bullets: [
+          "Oyununuzun türü",
+          "Yüksek konsept ve kanca",
+          "“Leke”nin önceki ve sonraki hâli",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Oyununuzun Türü",
+        lead: "Tür (genre), oyunun temel eylemine ve yapısına göre yapılan sınıflandırmadır. Tür adı, oyuncuya ne yapacağını önceden söyler. Türünüzü temel fiilinize bakarak seçin.",
+        table: {
+          head: ["Tür", "Temel eylem", "Örnek"],
+          rows: [
+            ["Platform (platformer)", "Zıplayarak engelleri ve boşlukları aşmak", "Super Mario Bros., Celeste"],
+            ["Bulmaca (puzzle)", "Mantık ve örüntü çözmek", "Tetris, Candy Crush"],
+            ["Aksiyon-macera", "Keşfetmek ve dövüşmek", "The Legend of Zelda"],
+            ["Strateji", "Kaynak yönetip plan kurmak", "Clash Royale"],
+            ["Refleks / arcade", "Hızlı ve doğru zamanlanmış tepki", "Flappy Bird, Fruit Ninja"],
+            ["Sonsuz koşu (endless runner)", "Hızlanan engellerden kaçmak", "Subway Surfers"],
+            ["Kum havuzu (sandbox)", "Serbestçe inşa etmek ve keşfetmek", "Minecraft, Roblox"],
+          ],
+        },
       },
       {
         type: "concept",
@@ -579,7 +655,6 @@ const WEEKS = [
         terms: [
           { term: "Yüksek konsept", en: "high concept", def: "Oyunu tek cümlede özetleyen ifade. Kalıp: “[Oyun], [tür] türünde bir oyundur; oyuncu [temel fiil] yaparak [hedef]e ulaşmaya çalışır.”" },
           { term: "Kanca", en: "hook", def: "Oyunu benzerlerinden ayıran tek özellik. Yüksek konseptin sonuna eklenir: “Farkı: ...”" },
-          { term: "Asansör konuşması", en: "elevator pitch", def: "Oyunu 30 saniyede, yüksek konsept + kanca + hedef kitle olarak anlatmak." },
         ],
         quote: {
           text: "Flappy Bird, tek dokunuşla oynanan bir refleks oyunudur; oyuncu kuşu zıplatarak boruların arasından geçmeye çalışır. Farkı: tek bir çarpma her şeyi bitirir.",
@@ -588,85 +663,74 @@ const WEEKS = [
       },
       {
         type: "concept",
-        heading: "Tasarım Sütunları",
-        lead: "Tasarım sütunları (design pillars), oyunun mutlaka sahip olması gereken iki ya da üç temel niteliktir. Ekip bir özelliği eklemeden önce sorar: “Bu, sütunlarımızdan birine hizmet ediyor mu?” Etmiyorsa özellik eklenmez.",
+        heading: "Örnek: “Leke”nin Önceki ve Sonraki Hâli",
         table: {
-          head: ["Örnek oyun: “Leke”", "Sütun"],
+          head: ["", "Fikir yazısı", "Biçilmiş tasarım"],
           rows: [
-            ["1", "Telaş: lekeler her saniye yayılır, oyuncu hiç durmaz."],
-            ["2", "Tek parmak: oyunun tamamı tek parmakla silerek oynanır."],
-            ["3", "Okul defteri estetiği: her şey mavi tükenmez kalemle çizilmiş gibi görünür."],
+            ["Anlattığı", "Bir hikâye: öğrenci, canlı mürekkep, canavar", "Bir oynanış: lekeleri yayılmadan silmek"],
+            ["Deneyim", "Yazılmamış", "Telaş"],
+            ["Temel fiil", "Belirsiz (silmek? savaşmak? geliştirmek?)", "Silmek"],
+            ["Hedef ve sonuç", "“Defteri kurtarmak”", "Sayfayı 60 saniye temiz tut; %50'si kaplanırsa kaybedersin"],
+            ["Kapsam", "Bölümler, boss savaşı, geliştirme, çok oyunculu", "Tek sayfa, tek leke türü, skor paylaşma"],
           ],
         },
-        bullets: [
-          "Bu sütunlara göre, “Leke”ye karakter geliştirme menüsü eklemek telaşı böleceği için reddedilir.",
-        ],
+        quote: {
+          text: "Leke, tek parmakla oynanan bir refleks oyunudur; oyuncu defter sayfasına yayılan mürekkep lekelerini silerek sayfayı temiz tutmaya çalışır. Farkı: sildiğiniz her leke silginizi küçültür.",
+          source: "“Leke”nin yüksek konsepti",
+        },
       },
+
+      // --- Ek bilgi ---
       {
-        type: "concept",
-        heading: "Kapsam",
+        type: "extra",
+        heading: "Fikri Güçlendirmek: Teknikler",
         image: {
-          src: "assets/lesson/gamejam.jpg",
-          caption: "Global Game Jam 2019, Arles (Fransa). Dünya çapında binlerce ekip aynı tema ile 48 saatte oyun yapar; bu sürede bitirilebilecek kapsamı seçmek en önemli tasarım kararıdır.",
-          credit: "Yannickvernet, CC BY-SA 4.0. Kaynak: Wikimedia Commons",
+          src: "assets/lesson/necrodancer.png",
+          caption: "Crypt of the NecroDancer (2015): zindan keşfi (roguelike) ile ritim oyununun birleşimi. Karakter yalnızca müziğin vuruşunda hareket edebilir.",
+          credit: "Brace Yourself Games. Kaynak: Wikipedia (adil kullanım)",
         },
-        lead: "Kapsam (scope), oyunun ne kadar büyük olacağıdır: kaç bölüm, kaç mekanik, kaç karakter. Acemi tasarımcıların en sık hatası, elindeki zamana sığmayacak bir oyun planlamaktır.",
+        lead: "Biçtikten sonra fikriniz sıradan kaldıysa, bir kanca bulmak için şu teknikleri kullanabilirsiniz:",
         terms: [
-          { term: "Özellik şişmesi", en: "feature creep", def: "Geliştirme sırasında sürekli yeni özellik eklenmesi. Sonunda hiçbir özellik tam bitmez." },
-          { term: "En küçük oynanabilir sürüm", en: "minimum viable product (MVP)", def: "Çekirdek mekaniği gösteren, başı ve sonu olan en küçük oyun. Gamejam'de önce bu bitirilir, kalan zamanda üstüne eklenir." },
-        ],
-        bullets: [
-          "Kural: tek temel fiil, tek bölüm, tek kazanma koşulu. Bu çalışıyorsa genişletin.",
+          { term: "Fiil değiştirme", def: "Bilinen bir oyunun temel fiilini değiştirin: “Mario zıplayamasa, sadece yer değiştirebilse?”" },
+          { term: "Tür harmanlama", en: "genre mashup", def: "İki türü birleştirin: roguelike + ritim = Crypt of the NecroDancer." },
+          { term: "Kısıt ekleme", en: "constraint", def: "Tek tuş, 10 saniye, hiç yazı yok. Kısıtlar yaratıcılığı yönlendirir." },
         ],
       },
       {
-        type: "concept",
-        heading: "Fikri Seçmek",
-        lead: "Beyin fırtınasından çıkan fikirler, değerlendirme aşamasında ölçütlerle puanlanır. Her ölçüte 1-3 puan verin, en yüksek toplamı alan fikirle devam edin.",
-        table: {
-          head: ["Ölçüt", "Soru"],
-          rows: [
-            ["Eğlence potansiyeli", "Temel fiil tek başına, ödül ve süs olmadan da ilgi çekici mi?"],
-            ["Yapılabilirlik", "Feasibility: elimizdeki süre ve becerilerle bitirilebilir mi?"],
-            ["Özgünlük", "Bir kancası var mı, yoksa bilinen bir oyunun kopyası mı?"],
-            ["Netlik", "Yüksek konsept cümlesine sığıyor mu?"],
-          ],
-        },
-      },
-      {
-        type: "concept",
-        heading: "Örnek: Bir Fikrin Gelişimi",
-        lead: "Bu dersteki adımların tamamı, tek bir fikir üzerinde:",
+        type: "extra",
+        heading: "Beyin Fırtınası",
+        lead: "Ekipte fikir üretirken Alex Osborn'un (1953) beyin fırtınası (brainstorming) kuralları kullanılır. Amaç, değerlendirmeyi ertelemek ve önce çok sayıda fikir üretmektir.",
         steps: [
-          { label: "Rastgele girdi", text: "Masadaki silgi." },
-          { label: "Temel fiil", text: "Silmek." },
-          { label: "Deneyim hedefi", text: "Oyuncu telaş hissetmeli, çünkü lekeler sürekli yayılıyor." },
-          { label: "Hedefler", text: "Kısa vadeli: önündeki lekeyi silmek. Uzun vadeli: sayfayı 60 saniye temiz tutmak." },
-          { label: "Yüksek konsept", text: "Leke, tek parmakla oynanan bir refleks oyunudur; oyuncu defter sayfasına yayılan mürekkep lekelerini silerek sayfayı temiz tutmaya çalışır. Farkı: sildiğiniz her leke silginizi küçültür." },
-          { label: "Kapsam", text: "Tek sayfa, tek leke türü, 60 saniye." },
+          { label: "Eleştiri yok", text: "Fikir üretme aşamasında hiçbir fikir yargılanmaz." },
+          { label: "Nicelik", text: "Ne kadar çok fikir, o kadar iyi. İlk akla gelen fikir, herkesin aklına gelen fikirdir." },
+          { label: "Uçuk fikirler", text: "Saçma görünen fikirler teşvik edilir." },
+          { label: "Birleştirme", text: "Başkalarının fikirleri geliştirilir ve birleştirilir." },
         ],
       },
+
       {
         type: "summary",
         heading: "Terim Sözlüğü",
         terms: [
+          { term: "Tema / oynanış", en: "theme / gameplay", def: "Oyunun ne hakkında olduğu / oyuncunun fiilen ne yaptığı." },
           { term: "Deneyim hedefi", en: "player experience goal", def: "Oyuncunun ne hissedeceğini anlatan tek cümle." },
-          { term: "Oyuncu fantezisi", en: "player fantasy", def: "Oyuncunun oyunda üstlendiğini hayal ettiği rol." },
-          { term: "Mekanik", en: "mechanic", def: "Eylem ve onu yöneten kural." },
           { term: "Temel fiil", en: "core verb", def: "Oyuncunun en sık yaptığı eylem." },
-          { term: "Beyin fırtınası", en: "brainstorming", def: "Değerlendirmeyi erteleyerek çok sayıda fikir üretme tekniği." },
-          { term: "Yüksek konsept / Kanca", en: "high concept / hook", def: "Oyunun tek cümlelik özeti / onu farklı kılan özellik." },
+          { term: "Kısa / uzun vadeli hedef", def: "Şu an yapılan / sonunda ulaşılmak istenen." },
+          { term: "Kapsam", en: "scope", def: "Oyunun büyüklüğü: bölüm, mekanik, karakter sayısı." },
+          { term: "Özellik şişmesi", en: "feature creep", def: "Kontrolsüz özellik eklenmesi." },
           { term: "Tasarım sütunları", en: "design pillars", def: "Her kararın test edildiği 2-3 temel nitelik." },
-          { term: "Kapsam / Özellik şişmesi", en: "scope / feature creep", def: "Oyunun büyüklüğü / kontrolsüz özellik eklenmesi." },
+          { term: "Yüksek konsept / kanca", en: "high concept / hook", def: "Oyunun tek cümlelik özeti / onu farklı kılan özellik." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Tasarım Defteri'nize 6 oyun fikri yazın: dört giriş noktasının (mekanik, tema, deneyim, kısıt) her birinden en az bir tane. Her fikir tek cümle: “Oyuncu ... yapar.”",
-          "Fikirleri “Fikri Seçmek” tablosundaki dört ölçüte göre 1-3 arası puanlayın ve en yüksek puanlıyı seçin. Dersin sonuna kadar bu oyun üzerinde çalışacağız.",
-          "Seçtiğiniz oyun için yazın: geçici isim ve tür (GDD madde 1), yüksek konsept cümlesi + kanca (GDD madde 2), deneyim hedefi ve temel fiil.",
+          "Fikir yazınızı “Leke” tablosundaki gibi sekiz biçimsel öğeyle okuyun; her öğeyi “var”, “belirsiz” ya da “boş” olarak işaretleyin ve boş olanları doldurun.",
+          "Deneyim hedefinizi, temel fiilinizi, kısa ve uzun vadeli hedefinizi yazın.",
+          "2-3 tasarım sütunu belirleyin. Fikir yazınızdaki her parçayı “tut / sonraya bırak / dönüştür / çıkar” diye işaretleyin ve gerekçesini yazın.",
+          "Oyununuza bir isim ve tür verin (GDD madde 1). Yüksek konsept cümlenizi kancasıyla birlikte yazın (GDD madde 2).",
+          "Fikir yazınızın yeni hâlini Tasarım Defteri'ne yazın. Eski hâlini silmeyin: her hafta yeni bir yineleme ekleyeceğiz.",
         ],
       },
     ],
@@ -687,7 +751,7 @@ const WEEKS = [
       {
         type: "intro",
         heading: "Oyuncu ve Hedef Kitle",
-        lead: "1. haftada bir oyun fikri seçtiniz. Bu derste o fikrin kimin için olduğuna ve nerede oynanacağına karar vereceğiz. Bu iki karar, sonraki haftalarda kontrolleri, bölümleri, zorluğu ve görselleri belirleyecek.",
+        lead: "1. haftada oyun fikrinizi biçip yüksek konseptini yazdınız. Bu derste o oyunun kimin için olduğuna ve nerede oynanacağına karar vereceğiz. Bu iki karar, sonraki haftalarda kontrolleri, bölümleri, zorluğu ve görselleri belirleyecek.",
         steps: [
           { label: "Oyuncuyu anlamak", text: "Neden oyuncuyla başlıyoruz? Hedef kitle neyle tanımlanır?" },
           { label: "Hedef kitleyi seçmek", text: "Fikir, yaş aralığı, oyun deneyimi ve motivasyona göre dört adımda karar." },
