@@ -2628,83 +2628,281 @@ const WEEKS = [
       },
     ],
   },
+  // ---------------------------------------------------------------------
+  // HAFTA 5.1 — Kaynaklar: Don Norman (The Design of Everyday Things, 1988;
+  // gözden geçirilmiş baskı 2013), Erik Fagerholt & Magnus Lorentzon (Beyond
+  // the HUD, Chalmers, 2009), Visceral Games (Dead Space, 2008), Paul Fitts
+  // (1954), Steven Hoober (How Do Users Really Hold Mobile Devices?, 2013),
+  // Apple Human Interface Guidelines, George Fan (Plants vs. Zombies, GDC 2012).
+  // ---------------------------------------------------------------------
   {
     id: "5.1",
     title: "Arayüz ve Kullanıcı Deneyimi",
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["Oyuncuya bilgi nasıl verilir?", "Menüler, HUD ve kontroller."],
+        heading: "Arayüz ve Kullanıcı Deneyimi",
+        lead: "4.2'de oyunun nasıl göründüğüne ve duyulduğuna karar verdik. Bu derste oyunun oyuncuyla nasıl konuştuğuna bakıyoruz: oyuncu ne yapabileceğini nereden anlar, yaptığının sonucunu nasıl görür, kontrolleri nasıl öğrenir? Bu ders, GDD'nin 4. ve 5. maddelerini, “Oyuncu Ne Yapabilir?” ve “Kontroller”i dolduracak kararları anlatır.",
+        steps: [
+          { label: "Arayüz nedir?", text: "Arayüz, kullanıcı deneyimi ve oyuncu ile oyun arasındaki iki boşluk." },
+          { label: "Bilgiyi nereye koymalı?", text: "Dört arayüz türü ve ekranda neyin gösterileceği." },
+          { label: "Oyuncuyla konuşmak", text: "Olanak, işaret, geri bildirim ve dokunma hedefleri." },
+          { label: "Kontroller ve öğretici", text: "Kontrol şeması ve oyuncunun kontrolleri nasıl öğrendiği." },
+        ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Arayüz Nedir?",
+        lead: "Oyuncu oyunun kurallarını göremez; yalnızca ekranda gördüğünü, duyduğunu ve elindeki kontrolü bilir. Arayüz, kuralların oyuncuya görünen yüzüdür. Kurallar ne kadar iyi olursa olsun, arayüz onları anlatamıyorsa oyuncu için o kurallar yoktur.",
       },
       {
         type: "concept",
-        heading: "Oyun Menüleri",
-        bullets: [
-          "Ana menü, ayarlar, duraklatma: oyuncunun oyunu yönettiği yerler.",
-          "Basit ve anlaşılır olmalı. Oyuncu “Oyna” düğmesini aramak zorunda kalmamalı.",
+        heading: "Arayüz ve Kullanıcı Deneyimi",
+        lead: "İki terim sık karıştırılır. Arayüz oyuncunun gördüğü ve dokunduğu şeydir; kullanıcı deneyimi ise oyuncunun bunları kullanırken yaşadığı şeydir.",
+        terms: [
+          { term: "Arayüz", en: "user interface, UI", def: "Oyuncu ile oyun arasındaki bütün temas noktaları: menüler, düğmeler, göstergeler, yazılar, sesler, titreşim." },
+          { term: "Kullanıcı deneyimi", en: "user experience, UX", def: "Oyuncunun oyunu anlamasının, kontrol etmesinin ve oyunda yolunu bulmasının ne kadar kolay olduğu. Arayüz güzel olup deneyim kötü olabilir." },
+          { term: "HUD", en: "heads-up display", def: "Oyun sırasında ekranda sürekli duran göstergeler: can, puan, süre, mini harita. Adını savaş uçaklarında pilotun önündeki cama yansıtılan göstergelerden alır." },
+          { term: "Menü", def: "Oyunun dışında kalan ekranlar: ana menü, ayarlar, duraklatma, oyun sonu." },
         ],
       },
       {
         type: "concept",
-        heading: "Oyun İçi Arayüzler (HUD)",
+        heading: "Oyuncu ile Oyun Arasındaki İki Boşluk",
+        lead: "Don Norman (The Design of Everyday Things, 1988), birinin bir aleti kullanırken iki boşluğu aşması gerektiğini söyler. Norman bunlara körfez (gulf) der. İyi arayüz iki körfezin üstüne köprü kurar.",
+        table: {
+          head: ["Körfez", "Oyuncunun sorusu", "Köprü kurulmazsa", "Köprü"],
+          rows: [
+            ["Yürütme körfezi", "Ne yapabilirim, nasıl yaparım?", "Oyuncu ekrana bakar ama ne yapacağını bilemez.", "Görünür seçenekler, tanıdık kontroller, öğretici"],
+            ["Değerlendirme körfezi", "Yaptığım işe yaradı mı?", "Oyuncu düğmeye basar ama bir şey olup olmadığını anlayamaz.", "Anında ve açık geri bildirim: ses, animasyon, sayı"],
+          ],
+        },
         bullets: [
-          "Can, puan, süre gibi bilgiler oynarken ekranda sürekli görünür.",
-          "Fazla bilgi dikkat dağıtır. Oyuncunun o an karar vermek için gerçekten neye ihtiyacı var?",
-          "Önemli bilgiyi oyuncunun baktığı yere yakın koyun; ekranın köşesine değil.",
+          "Bu dersin bundan sonraki her konusu, bu iki körfezden birine köprü kurmanın bir yoludur.",
+        ],
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "Bilgiyi Nereye Koymalı?",
+        lead: "Oyuncu oynarken sürekli bilgiye ihtiyaç duyar: canı ne kadar, ne kadar süresi kaldı, nereye gitmeli? Bu bilginin ekranın köşesindeki bir sayıyla mı, karakterin üzerindeki bir ışıkla mı, yoksa oyun dünyasının içindeki bir nesneyle mi verileceği bir tasarım kararıdır.",
+      },
+      {
+        type: "concept",
+        heading: "Dört Arayüz Türü",
+        image: {
+          src: "assets/lesson/dead-space.jpg",
+          caption: "Dead Space (2008): karakterin canı sırtındaki zırhta yanan bir çubuktur, mermisi silahın üzerinde belirir. Ekranda ayrı bir gösterge yoktur.",
+          credit: "Visceral Games / Electronic Arts. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Erik Fagerholt ve Magnus Lorentzon (Beyond the HUD, 2009), arayüz öğelerini iki soruyla sınıflandırır: Öğe oyunun hikâyesinin içinde mi, yani karakter onu görebilir mi? Öğe oyunun mekânında mı duruyor, yoksa ekranın üstünde mi?",
+        terms: [
+          { term: "Diegetik", en: "diegetic", def: "Hem hikâyede hem mekânda. Karakter de görür: Dead Space'te sırttaki can çubuğu, bir yarış oyununda arabanın kendi hız göstergesi." },
+          { term: "Diegetik olmayan", en: "non-diegetic", def: "Ne hikâyede ne mekânda. Yalnızca oyuncu görür: köşedeki puan, can kalpleri, mini harita." },
+          { term: "Mekânsal", en: "spatial", def: "Mekânda ama hikâyede değil: karakterin başının üstündeki isim, yere çizilmiş yol oku." },
+          { term: "Meta", def: "Hikâyede ama mekânda değil: hasar alınca ekranın kenarlarının kırmızıya dönmesi. Karakterin acısını oyuncunun ekranına taşır." },
+        ],
+        bridge: "Diegetik olmayan ve mekânsal arayüzün birer örneğini sıradaki sayfada görelim.",
+      },
+      {
+        type: "gallery",
+        heading: "Arayüz Türleri Ekranda",
+        lead: "Önceki sayfadaki Dead Space, diegetik arayüzün en bilinen örneğidir. Çoğu oyun ise iki türü birlikte kullanır:",
+        gallery: [
+          { src: "assets/lesson/supertuxkart.png", caption: "Diegetik olmayan: SuperTuxKart'ta süre, tur, sıralama ve hız göstergesi ekranın köşelerinde durur; yalnızca oyuncu görür.", credit: "SuperTuxKart geliştirici ekibi, CC BY-SA 3.0. Kaynak: Wikipedia" },
+          { src: "assets/lesson/sims-plumbob.jpg", caption: "Mekânsal: The Sims'te seçili karakterin başının üstünde dönen yeşil elmas (plumbob). Fotoğraftaki, bu göstergenin lamba olarak satılan hâli.", credit: "Dinosaur918, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+        ],
+        bridge: "Tür seçmeden önce daha temel bir soru var: hangi bilgi ekranda olmalı? Sıradaki sayfa bunu anlatıyor.",
+      },
+      {
+        type: "concept",
+        heading: "Ekranda Ne Gösterilmeli?",
+        lead: "Acemi tasarımcılar her bilgiyi ekrana koyar; sonuçta oyuncu hiçbirine bakmaz. Her bilgi için sorulacak soru: Oyuncu karar vermek için bu bilgiye şu anda ihtiyaç duyuyor mu?",
+        table: {
+          head: ["Bilgi türü", "Ne zaman gösterilir?", "Örnek"],
+          rows: [
+            ["Sürekli gereken", "Her an ekranda", "Can, kalan süre, mermi"],
+            ["Değişince önemli", "Yalnızca değiştiği anda, kısa süre", "Yeni görev, kazanılan puan, seviye atlama"],
+            ["İstenince gereken", "Oyuncu açtığında", "Harita, envanter, ayarlar"],
+            ["Oyuncunun bilmesi gerekmeyen", "Hiç", "Düşmanın tam canı, zorluk ayarının iç değerleri"],
+          ],
+        },
+        bullets: [
+          "Önemli bilgiyi oyuncunun zaten baktığı yere yakın koyun. Oyuncu hızlı bir anda ekranın köşesine bakmaz; karakterine ve tehlikeye bakar.",
         ],
       },
       {
         type: "concept",
-        heading: "Bilgi Aktarma Yöntemleri",
-        bullets: [
-          "Renk, ikon, ses, titreşim, animasyon: hepsi bilgi taşır.",
-          "Örnek: can azaldığında ekranın kenarları kırmızıya döner ve kalp atışı sesi gelir.",
-          "Her eylem bir cevap almalı. Düğmeye basıp hiçbir şey olmazsa oyuncu oyunun bozuk olduğunu düşünür.",
+        heading: "Örnek: “Leke”nin Ekranı",
+        lead: "“Leke”nin oyuncusu 60 saniye boyunca gözünü lekelerden ayıramaz. Bu yüzden bilgiyi olabildiğince oyun dünyasının içine, defter sayfasına taşıyoruz:",
+        table: {
+          head: ["Bilgi", "Ne zaman?", "Nasıl gösterilir?", "Tür"],
+          rows: [
+            ["Silginin kalan ömrü", "Sürekli", "Silginin kendi boyu: küçüldükçe ömrü azalır (4.1)", "Diegetik"],
+            ["Sayfanın ne kadarı kaplandı", "Sürekli", "Sayfa kenarında mavi mürekkeple dolan bir çizgi", "Diegetik"],
+            ["Kalan süre", "Sürekli", "Sayfanın üstünde, kalemle çizilmiş gibi kısalan bir çizgi", "Diegetik"],
+            ["Kazanılan puan", "Değişince", "Silinen lekenin yerinde bir an beliren sayı", "Mekânsal"],
+            ["Rekor", "Oyun sonunda", "Sonuç ekranında, önceki rekorla yan yana", "Menü"],
+          ],
+        },
+      },
+
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "Oyuncuyla Konuşmak",
+        lead: "Oyuncu bir şeyi kullanmadan önce onun ne işe yaradığını tahmin eder; kullandıktan sonra da işe yarayıp yaramadığına bakar. Bu bölüm, Norman'ın günlük eşyalar için önerdiği ilkeleri ve parmağın ekrandaki sınırlarını anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Olanak, İşaret ve Geri Bildirim",
+        image: {
+          src: "assets/lesson/kapi-itiniz.jpg",
+          caption: "Japonya'da bir kapı. Üstteki levhada “itiniz” (おす) yazıyor, ama tutmak için yapılmış çubuk kollar “çek” diyor. Tasarımcılar böyle kapılara “Norman kapısı” der.",
+          credit: "Ishikawa Ken, CC BY-SA 2.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Norman'a göre iyi tasarlanmış bir nesne, nasıl kullanılacağını kendisi söyler. Kapıda yazı gerekiyorsa tasarım başarısız olmuştur. Aynı ilkeler oyun arayüzü için de geçerlidir:",
+        terms: [
+          { term: "Olanak", en: "affordance", def: "Bir nesnenin kişiye sunduğu eylem. Düğme basmayı, kol çekmeyi, kenar tutunmayı sunar." },
+          { term: "İşaret", en: "signifier", def: "Olanağın görünür ipucu: parlayan düğme, tutunulabilen kenarın beyaz boyası, 3.2'deki Mirror's Edge kırmızısı." },
+          { term: "Geri bildirim", en: "feedback", def: "Eylemin sonucunun hemen gösterilmesi. 3.1'deki juice, geri bildirimin oyundaki adıdır." },
+          { term: "Kısıt", en: "constraint", def: "Yanlış eylemi baştan imkânsız kılmak: kullanılamayan düğmenin soluklaşması." },
         ],
       },
       {
         type: "concept",
-        heading: "Kontroller",
-        bullets: [
-          "Her hareketin hangi tuşla ya da dokunuşla yapıldığı kontrol şemasıdır.",
-          "Oyuncunun zaten bildiği kontrolleri kullanın: PC'de WASD ya da ok tuşları ve boşlukla zıplama, mobilde dokun ve kaydır.",
-          "Az tuş, çok olasılık: Flappy Bird'ün tek dokunuşu bütün oyunu taşır.",
+        heading: "Fitts Yasası ve Dokunma Hedefi",
+        image: {
+          src: "assets/lesson/fitts.jpg",
+          caption: "Fitts'in deneyi: iki hedef arasındaki uzaklık (D) ve hedefin genişliği (W). Hedef küçüldükçe ve uzaklaştıkça ona ulaşmak uzar.",
+          credit: "Mantury, CC BY-SA 4.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Psikolog Paul Fitts (1954), bir hedefe ulaşma süresinin iki şeye bağlı olduğunu ölçtü: hedefin uzaklığı ve büyüklüğü. Bu ilke, ekrandaki her düğmenin boyutunu ve yerini belirler:",
+        terms: [
+          { term: "Fitts yasası", en: "Fitts's law", def: "Büyük ve yakın hedefe hızlı, küçük ve uzak hedefe yavaş ulaşılır. Sık kullanılan düğme büyük ve yakın olmalıdır." },
+          { term: "En küçük dokunma hedefi", def: "Apple'ın arayüz kılavuzu en az 44x44 nokta, Google'ın Material kılavuzu 48x48 dp önerir. Daha küçüğüne parmak ıskalayarak dokunur." },
+          { term: "Başparmak bölgesi", def: "Steven Hoober'ın 2013'te 1.333 kişiyi gözlemlediği araştırmada telefonu kullananların yaklaşık yarısı tek eliyle tutuyordu. Ekranın alt-orta kısmına başparmak kolayca ulaşır; üst köşelere ulaşamaz." },
         ],
       },
       {
         type: "concept",
-        heading: "İyi Arayüz Neye Benzer?",
-        bullets: [
-          "Oyuncu oyunu durdurmadan bilgiyi anlar.",
-          "Arayüz oyunun görsel stiliyle uyumludur.",
-          "En iyi arayüz çoğu zaman fark edilmeyendir: oyuncu arayüzü değil, oyunu düşünür.",
+        heading: "Örnek: “Leke”de Parmak ve Ekran",
+        lead: "“Leke” tek parmakla oynanır (1.2'deki sütun). Bu, dokunmatik ekranın bütün sorunlarını oyunun merkezine taşır:",
+        table: {
+          head: ["Sorun", "Çözüm", "İlke"],
+          rows: [
+            ["Parmak, silgiyi ve sildiği lekeyi kapatıyor", "Silgi, parmağın biraz üstünde durur", "Geri bildirim görünür olmalı"],
+            ["Oyuncu telaşla duraklatma düğmesine yanlışlıkla basıyor", "Düğme üst köşede: kolay ulaşılmaz, ama 44 noktadan küçük değil", "Fitts yasasını tersine kullanmak"],
+            ["Oyun sonunda “Tekrar” düğmesi aranıyor", "Büyük düğme, ekranın alt-ortasında", "Başparmak bölgesi"],
+            ["Silindiği anlaşılmayan leke", "Silinirken parçalanma, hışırtı ve hafif titreşim", "Değerlendirme körfezine köprü"],
+          ],
+        },
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Kontroller ve Öğretici",
+        lead: "Oyuncu, oyunun ilk saniyelerinde iki şeyi öğrenmek zorundadır: hangi kontrolün ne yaptığını ve oyunun amacını. Bu bölüm, kontrollerin nasıl seçildiğini ve oyuncuya yazı yığını olmadan nasıl öğretildiğini anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Kontrol Şeması",
+        lead: "Kontrol şeması (control scheme), her eylemin hangi tuşla, düğmeyle ya da dokunuşla yapıldığının listesidir. 2.1'deki doğal eşleme ilkesi burada somutlaşır: eylem ile hareket birbirine benzemelidir.",
+        terms: [
+          { term: "Gelenek", en: "convention", def: "Oyuncuların başka oyunlardan öğrendiği alışkanlık: PC'de WASD ile yürümek, boşlukla zıplamak, Esc ile duraklatmak. Geleneğe uyan kontrolü oyuncu öğrenmek zorunda kalmaz." },
+          { term: "Az tuş, çok olasılık", def: "Her yeni tuş, öğrenilecek yeni bir şeydir. Gamejam oyunları için en fazla üç-dört temel eylem yeterlidir." },
+          { term: "Yeniden atama", en: "remapping", def: "Oyuncunun tuşları kendisinin değiştirebilmesi. Sol elini kullananlar ve farklı klavye düzenleri için önemlidir." },
         ],
+        bridge: "Geleneklerin donanımdan nasıl doğduğunu sıradaki sayfada görelim.",
+      },
+      {
+        type: "gallery",
+        heading: "Geleneğe Dönüşmüş Kontroller",
+        lead: "Önceki sayfadaki gelenekler bir anda ortaya çıkmadı; donanımın sınırlarından ve milyonlarca oyuncunun alışkanlığından doğdu:",
+        gallery: [
+          { src: "assets/lesson/nes-kumanda.jpg", caption: "NES kumandası (1985): bir yön tuşu ve iki düğme. Super Mario Bros.'tan beri “A zıplar, B koşar” geleneği buradan gelir.", credit: "Evan-Amos, kamu malı. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/wasd.jpg", caption: "WASD: 1990'ların sonunda Quake oyuncularıyla yaygınlaştı. Sol el yürür, sağ el fareyle nişan alır.", credit: "Santeri Viinamäki, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+        ],
+        bridge: "Gelenek oyuncunun neyi bildiğini söyler. Bilmediğini nasıl öğreteceğimizi sıradaki vaka gösteriyor.",
       },
       {
         type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Clash Royale: iksir (elixir) çubuğu ve kulelerin üstündeki can göstergesi",
-          "Fortnite: harita, can, kalkan ve mermi göstergesi",
-          "Candy Crush: kalan hamle sayısı ve bölüm hedefi",
+        heading: "Vaka: Plants vs. Zombies'in Öğreticisi",
+        lead: "PopCap'ten George Fan, 2012'deki GDC konuşmasında Plants vs. Zombies'i (2009) hiç oyun oynamayan annesinin bile bitirebileceği biçimde nasıl tasarladığını anlattı. İlkelerinden bazıları:",
+        terms: [
+          { term: "Yaparak öğret", def: "İlk bölümde tek bir bitki ve tek bir sıra vardır. Oyuncu okumaz, ilk bitkiyi ekerek öğrenir." },
+          { term: "Bir seferde bir şey", def: "Her bölüm tek bir yeni bitki ya da düşman tanıtır. 3.2'deki kishōtenketsu'nun “giriş” perdesi gibi." },
+          { term: "Az yazı", def: "Ekrandaki ipucu yazıları birkaç kelimeyi geçmez ve yalnızca gerektiği anda görünür." },
+          { term: "Öğretici oyunun içinde", def: "Ayrı bir “öğretici” bölümü yoktur; öğretim, oyunun ilk saatine dağıtılmıştır." },
         ],
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
-        bullets: [
-          "Oynadığınız bir oyunda kafanızı karıştıran bir menü ya da ekran oldu mu?",
-          "Can azaldığında oyun size bunu hangi yollarla hissettiriyor?",
+        type: "concept",
+        heading: "Öğretici Türleri",
+        lead: "Öğretici (tutorial ya da onboarding), oyuncunun kontrolleri ve amacı öğrendiği bölümdür. Dört yaygın türü vardır; yukarıdan aşağıya doğru oyuncuyu daha az bölerler:",
+        table: {
+          head: ["Tür", "Nasıl çalışır?", "Örnek", "Sorunu"],
+          rows: [
+            ["Ön metin", "Oyun başlamadan kontroller yazıyla anlatılır", "Eski oyunların “Nasıl Oynanır?” ekranı", "Oyuncular okumaz, atlar"],
+            ["Bağlamsal ipucu", "İpucu, eylem gerektiğinde ve tek sefer çıkar", "Kapıya yaklaşınca beliren “E: Aç”", "Fazlası ekranı doldurur"],
+            ["Gösterim", "Hayalet bir el ya da animasyon hareketi gösterir", "Angry Birds'ün ilk bölümünde sapanı çeken el", "Karmaşık kontrolleri anlatamaz"],
+            ["Güvenli alan", "Hatanın bedeli olmayan ilk bölüm", "Super Mario Bros. 1-1'in ilk ekranı (3.2)", "Tasarlaması en çok emek isteyen"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin İlk On Saniyesi ve Kontrol Şeması",
+        lead: "“Leke” tek kontrolle oynanır; öğretilmesi gereken tek şey sürterek silmektir. Gösterim ile güvenli alanı birleştiriyoruz ve ekranda hiç yazı kullanmıyoruz:",
+        steps: [
+          { label: "0-3 sn", text: "Sayfada tek bir küçük damla ve onu sürterek silen yarı saydam bir el. Süre işlemiyor." },
+          { label: "3-6 sn", text: "Oyuncu damlayı silince kırıntılar saçılır, “çıt” sesi gelir: ilk geri bildirim." },
+          { label: "6-10 sn", text: "Süre çizgisi kısalmaya başlar ve ikinci damla belirir. Oyun başlamıştır; oyuncu öğretici bittiğini fark etmez." },
+        ],
+        table: {
+          head: ["Eylem (GDD 4)", "Kontrol (GDD 5)"],
+          rows: [
+            ["Silmek: silgi değdiği mürekkebi siler, silgi küçülür", "Parmağı ekranda sürtmek"],
+            ["Duraklatmak", "Sağ üst köşedeki düğmeye dokunmak"],
+          ],
+        },
+      },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "Ekran Akışı",
+        lead: "Ekran akışı (screen flow), oyuncunun menüler ve oyun arasında hangi sırayla dolaştığını gösteren basit bir çizimdir: Açılış → Ana menü → Oyun → Sonuç → (Tekrar ya da Ana menü). Her ok, oyuncunun bir dokunuşudur. Gamejam'de jüri oyununuzu yalnızca birkaç dakika oynar; açılıştan oyuna ve sonuç ekranından yeni tura geçiş birer dokunuş olmalıdır. “Leke”de sonuç ekranındaki büyük “Tekrar” düğmesi, oyuncuyu doğrudan yeni bir sayfaya götürür.",
+      },
+
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Arayüz / kullanıcı deneyimi", en: "UI / UX", def: "Oyuncunun gördüğü ve dokunduğu / bunları kullanırken yaşadığı." },
+          { term: "HUD", def: "Oyun sırasında ekranda sürekli duran göstergeler." },
+          { term: "Yürütme / değerlendirme körfezi", def: "“Ne yapabilirim?” / “İşe yaradı mı?” boşlukları." },
+          { term: "Diegetik / diegetik olmayan", def: "Karakterin de gördüğü / yalnızca oyuncunun gördüğü arayüz." },
+          { term: "Mekânsal / meta", def: "Mekânda ama hikâyede değil / hikâyede ama mekânda değil." },
+          { term: "Olanak / işaret", en: "affordance / signifier", def: "Nesnenin sunduğu eylem / bu eylemin görünür ipucu." },
+          { term: "Fitts yasası", def: "Hedefe ulaşma süresi uzaklığa ve büyüklüğe bağlıdır." },
+          { term: "Kontrol şeması / gelenek", def: "Eylem-kontrol listesi / oyuncuların alıştığı kontroller." },
+          { term: "Öğretici", en: "tutorial / onboarding", def: "Oyuncunun kontrolleri ve amacı öğrendiği bölüm." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Evde bir oyun oynarken ekranı durdurun: ekranda hangi bilgiler var? Hangisine hiç bakmadınız?",
-          "Kendi oyununuzun oyun ekranını çizin. Ekranda en fazla 3 bilgi olsun; neden bu üçünü seçtiğinizi yazın.",
-          "Oyuncunun 2-3 temel hareketini ve her birinin hangi tuşla ya da dokunuşla yapıldığını yazın (GDD madde 4-5).",
+          "Oyuncunun 2-3 temel eylemini “Leke” tablosundaki gibi isim + ne yaptığı biçiminde yazın (GDD madde 4) ve her birinin hangi tuşla ya da dokunuşla yapıldığını gerekçesiyle belirtin (GDD madde 5).",
+          "Oyununuzda oyuncunun bilmesi gereken bilgileri listeleyin. Her biri için “Ekranda Ne Gösterilmeli?” tablosundaki türü ve dört arayüz türünden hangisiyle gösterileceğini yazın.",
+          "Oyun ekranınızı telefon ya da monitör oranında kâğıda çizin. Düğmeleri gerçek boyutlarında çizin ve başparmak bölgesini işaretleyin.",
+          "Oyununuzun ilk on saniyesini “Leke” örneğindeki gibi saniye saniye yazın: oyuncu kontrolleri yazı okumadan nasıl öğrenecek?",
+          "Evde: bilmediğiniz bir oyunu açın ve ilk iki dakikasını izleyerek oynayın. Oyun size ne öğretti, nasıl öğretti, nerede takıldınız? 3 cümle yazın.",
         ],
       },
     ],
