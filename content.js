@@ -35,7 +35,8 @@
 
 const WEEKS = [
   // ---------------------------------------------------------------------
-  // HAFTA 0 — Tanıtım sunumu: dersin içeriği, kazanımlar, somut sonuçlar.
+  // HAFTA 0 — Tanıtım sunumu: dersin yöntemi (öğrencinin kendi fikir yazısı,
+  // haftadan haftaya biçilir), yol haritası, kazanımlar, somut çıktılar.
   // ---------------------------------------------------------------------
   {
     id: "0",
@@ -44,106 +45,141 @@ const WEEKS = [
       {
         type: "intro",
         heading: "Oyun Tasarımı Dersine Hoş Geldiniz",
-        bullets: [
-          "7 hafta boyunca oyunlara oyuncu gözüyle değil, onları yapan kişinin gözüyle bakacağız.",
-          "Sonunda elinizde kendi oyununuzun tasarımı ve gamejam'e hazır bir ekip olacak.",
+        lead: "Yedi hafta boyunca oyunlara oyuncu gözüyle değil, onları tasarlayan kişinin gözüyle bakacağız. Her biriniz kendi oyun fikrinizi getireceksiniz; ders bittiğinde bu fikir, bir gamejam'de ekibinizle yapabileceğiniz, yazılı bir oyun tasarımına dönüşmüş olacak.",
+        steps: [
+          { label: "Bu ders ne?", text: "Neyi öğreneceğiz, neyi öğrenmeyeceğiz?" },
+          { label: "Yöntem", text: "Fikrinizin haftadan haftaya nasıl oyuna dönüşeceği." },
+          { label: "Yol haritası", text: "Yedi hafta, her haftanın sorusu ve elinizde kalacaklar." },
+          { label: "İlk ödev", text: "Tasarım Defteri ve fikir yazınız." },
         ],
       },
       {
         type: "concept",
         heading: "Bu Ders Ne Değil, Ne?",
+        table: {
+          head: ["Değil", "Ne?"],
+          rows: [
+            ["Kodlama dersi değil", "Bir oyunun nasıl düşünüldüğünü öğreneceğiz. Kâğıt ve kalem yeter."],
+            ["Oyun oynama dersi değil", "Sevdiğiniz oyunları söküp parçalarını inceleyeceğiz. Derste oyun oynamıyoruz; oynamak, gerektiğinde ev ödevidir."],
+            ["Çizim dersi değil", "Çizimleriniz güzel değil, anlaşılır olmalı. Mario bile birkaç pikselden doğdu."],
+            ["Bir tasarım dersi", "Fikir üreteceğiz, kural yazacağız, çizeceğiz, başkasına oynatıp düzelteceğiz."],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Yöntem: Fikrinizden Oyununuza",
+        lead: "Bu derste herkes kendi oyununu tasarlar. Başlangıç noktası, yazacağınız bir paragraflık fikir yazısıdır. Fikir yazıları neredeyse her zaman bir dünya ve bir hikâye anlatır, çoğu zaman da elimizdeki zamana sığmayacak kadar büyüktür. Terzi kumaşı keserek elbiseyi ortaya çıkarır; biz de her hafta fikrinizi o haftanın aracıyla biçeceğiz.",
+        steps: [
+          { label: "Yazın", text: "Yapmak istediğiniz oyunu serbestçe bir paragrafta anlatın." },
+          { label: "Biçin", text: "Her ders bir araç öğretir: hedef kitle, mekanik, zorluk eğrisi, karakter… Ödevde bu aracı kendi fikrinize uygularsınız." },
+          { label: "Biriktirin", text: "Her ödev Tasarım Defteri'ne bir parça ekler." },
+          { label: "Birleştirin", text: "7. haftada parçalar birleşir ve oyununuzun tasarım belgesi (GDD) olur." },
+        ],
         bullets: [
-          "Bir kodlama dersi değil: kod yazmayı değil, bir oyunun nasıl düşünüldüğünü öğreneceğiz. Kâğıt ve kalem yeter.",
-          "Oyun oynama dersi de değil: sevdiğiniz oyunları söküp içindeki parçaları inceleyeceğiz.",
-          "Bir tasarım dersi: fikir üretecek, kural yazacak, çizecek, evde ailenize ya da arkadaşlarınıza oynatıp düzelteceksiniz.",
-          "Derste oyun oynamıyoruz. Oynamak ev ödevi: bazı haftalarda bir oyunu evde tasarımcı gözüyle oynamanızı isteyeceğiz.",
+          "Ders boyunca örnek bir öğrenci fikrini, “Leke”yi birlikte biçeceğiz. Her hafta önce “Leke”de, sonra kendi fikrinizde aynı adımı göreceksiniz.",
         ],
       },
       {
         type: "concept",
         heading: "Yol Haritası",
-        bullets: [
-          "Hafta 1: Oyun nedir, bir oyun fikri nasıl doğar?",
-          "Hafta 2: Oyuncu kim? Kurallar, mekanikler ve oyun döngüsü.",
-          "Hafta 3: Bir oyunu eğlenceli yapan ne? Bölüm (level) tasarımı.",
-          "Hafta 4: Karakter, görsel stil, ses ve müzik.",
-          "Hafta 5: Arayüz, hikâye ve görevler.",
-          "Hafta 6: Tasarım belgesi (GDD) nedir, neden yazılır?",
-          "Hafta 7: Atölye: kendi GDD'nizi yazın, prototip yapın, oyununuzu sunun.",
-        ],
+        table: {
+          head: ["Hafta", "Sorusu", "Fikrinize eklenen parça"],
+          rows: [
+            ["1", "Oyun nedir? Bir fikir nasıl tasarıma dönüşür?", "Tür, temel fiil, yüksek konsept"],
+            ["2", "Oyuncu kim? Kurallar ve mekanikler nasıl seçilir?", "Persona, platform, çekirdek mekanik ve döngü"],
+            ["3", "Bir oyunu eğlenceli yapan ne? Bölüm nasıl kurulur?", "Eğlence türü, zorluk eğrisi, ödüller, bölüm haritası"],
+            ["4", "Karakter, görsel stil ve ses nasıl seçilir?", "Karakter ve düşmanlar, stil, palet, sesler"],
+            ["5", "Oyun oyuncuyla nasıl konuşur? Hikâye nasıl anlatılır?", "Ekran, kontroller, öğretici, amaç ve hikâye"],
+            ["6", "Tasarım nasıl yazılır ve test edilir?", "Değişiklik kaydı, kâğıt prototip, test notları"],
+            ["7", "Atölye", "Ekibinizin GDD'si ve 30 saniyelik sunum"],
+          ],
+        },
       },
       {
         type: "concept",
-        heading: "Kazanımlar: Ders Bitince Neler Yapabileceksiniz?",
+        heading: "Kazanımlar",
+        lead: "Ders bitince şunları yapabileceksiniz:",
         bullets: [
-          "Herhangi bir oyunu parçalarına ayırmak: kuralı, mekaniği, döngüsü ve oyuncuya yaşattığı duygu ne?",
-          "Aklınızdaki bir fikri tek cümleye indirip oynanabilir kurallara çevirmek.",
-          "Tasarıma oyuncudan başlamak: bu oyunu kim oynayacak, ne hissetmeli?",
-          "Zorluğu adım adım artıran bir bölüm kurmak.",
+          "Herhangi bir oyunu parçalarına ayırmak: kuralları, mekanikleri, döngüsü ve oyuncuya yaşattığı deneyim ne?",
+          "Dağınık bir fikri tek cümlelik bir tasarıma indirmek ve neyin kalıp neyin gideceğine ölçütlerle karar vermek.",
+          "Tasarıma oyuncudan başlamak: bu oyunu kim, nerede, ne için oynayacak?",
+          "Zorluğu adım adım yükselen bir bölüm ve oyuncuya yazısız öğreten bir başlangıç kurmak.",
           "Fikrinizi ekibinize yazılı (GDD) ve sözlü (30 saniyelik sunum) olarak anlatmak.",
           "Oyununuzu başkasına oynatmak, izlemek ve gördüğünüze göre düzeltmek.",
         ],
       },
       {
         type: "concept",
-        heading: "Somut Sonuçlar: Elinizde Ne Olacak?",
-        bullets: [
-          "Tasarım Defteri: her haftanın ödeviyle dolan, size ait bir defter.",
-          "Kendi oyununuzun 10 maddelik tasarım belgesi (GDD).",
-          "İlk bölümünüzün kâğıt üzerindeki haritası, karakter krokiniz, renk paletiniz ve ekran taslağınız.",
-          "Evde en az bir kişiye oynatılmış bir kâğıt prototip.",
-          "Sınıfa yapacağınız 30 saniyelik oyun sunumu.",
-          "Rolleri belli, gamejam'e hazır bir ekip.",
-        ],
+        heading: "Elinizde Ne Olacak?",
+        table: {
+          head: ["Çıktı", "Ne zaman?"],
+          rows: [
+            ["Tasarım Defteri: her haftanın ödeviyle dolan, size ait bir defter", "Her hafta"],
+            ["Biçilmiş fikir: tür, temel fiil ve tek cümlelik yüksek konsept", "1. hafta"],
+            ["İlk bölümünüzün kâğıt haritası", "3. hafta"],
+            ["Karakter ve düşman çizimleri, renk paleti, moodboard", "4. hafta"],
+            ["Oyun ekranı taslağı ve hikâye omurgası", "5. hafta"],
+            ["Başkasına oynatılmış bir kâğıt prototip ve test notları", "6. hafta"],
+            ["Ekibinizin 10 maddelik GDD'si ve 30 saniyelik sunumu", "7. hafta"],
+          ],
+        },
       },
       {
         type: "concept",
-        heading: "Her Hafta Nasıl İşleyecek?",
-        bullets: [
-          "Kavram: bir tasarım fikrini birlikte öğreniyoruz.",
-          "Oyun Örnekleri: o fikri tanıdığınız oyunlarda buluyoruz.",
-          "Sınıfa Sorular: kendi oyun deneyiminizle tartışıyoruz.",
-          "Ödev: evde kendi oyununuza bir parça ekliyorsunuz. Bazen de bir oyunu evde oynayıp inceliyorsunuz.",
-          "7. haftada bu parçalar birleşip GDD'niz oluyor.",
+        heading: "Her Ders Nasıl İşler?",
+        lead: "Bütün dersler aynı düzende ilerler; nerede olduğunuzu her slaytın üstündeki bölüm etiketinden takip edebilirsiniz:",
+        steps: [
+          { label: "Ders haritası", text: "Önceki dersle bağlantı ve bu dersin bölümleri." },
+          { label: "Bölümler", text: "Her bölüm bir tasarım kararını kaynağıyla anlatır: kim söylemiş, hangi kitapta, hangi oyunda?" },
+          { label: "Vakalar", text: "Gerçek oyunlardan ekran görüntüleri ve derinlemesine örnekler." },
+          { label: "“Leke” örneği", text: "Öğrendiğimiz aracın örnek fikre uygulanışı." },
+          { label: "Ek bilgi ve terim sözlüğü", text: "Merak edenler için ek konular; dersin bütün terimleri tek sayfada." },
+          { label: "Ödev", text: "Aynı aracı kendi fikrinize uygulamak." },
         ],
       },
       {
         type: "concept",
         heading: "Tasarım Defteri",
+        lead: "Bu dersin tek malzemesi bir defter ya da dosyadır. Bütün ödevler buraya yazılır ve çizilir; 7. haftada GDD'nizi bu defterden dolduracaksınız.",
         bullets: [
-          "Bu dersin tek malzemesi: bir defter ya da dosya. Bütün ödevler buraya yazılır ve çizilir.",
           "Kötü fikir diye bir şey yok. Beğenmediğiniz fikri silmeyin, üstünü çizin; bazen eski bir fikir sonra işe yarar.",
+          "Fikriniz haftalar içinde değişecek. Bu bir başarısızlık değil, tasarımın kendisidir; 6. haftada bu değişikliklerin kaydını tutacağız.",
           "Güzel yazmak ya da güzel çizmek gerekmiyor. Anlaşılır olması yeter.",
         ],
       },
       {
-        type: "examples",
+        type: "concept",
         heading: "Küçük Ekip, Büyük Oyun",
-        items: [
-          "Minecraft: ilk sürümünü tek bir kişi yaptı.",
-          "Among Us: üç kişilik küçük bir stüdyodan çıktı.",
-          "Flappy Bird: tek kişinin yaptığı, tek dokunuşla oynanan bir oyun.",
+        lead: "Oyun yapmak için yüzlerce kişilik bir stüdyo gerekmez. Bugün milyonlarca kişinin oynadığı birçok oyun, bir ya da birkaç kişinin elinden çıktı. Ortak noktaları büyük bütçe değil, küçük ve net bir fikirdi.",
+        bullets: [
+          "Gamejam'de siz de küçük bir ekip olacaksınız. Bu derste öğreneceğiniz şey, o küçük ekibin elindeki zamanla bitirebileceği bir oyunu tasarlamaktır.",
         ],
+        bridge: "Sıradaki sayfada böyle dört oyun var.",
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
-        bullets: [
-          "Oynarken “bunu ben yapsam şöyle yapardım” dediğiniz bir oyun oldu mu? Neyi değiştirirdiniz?",
-          "Sizce bir oyunu yapmak için en çok neye ihtiyaç var: fikre mi, koda mı, çizime mi, ekibe mi?",
+        type: "gallery",
+        heading: "Bir ya da Birkaç Kişinin Oyunları",
+        lead: "Önceki sayfada söylediğimiz gibi, bu oyunların her biri çok küçük bir ekipten çıktı:",
+        gallery: [
+          { src: "assets/lesson/minecraft-crafting.png", caption: "Minecraft: ilk sürümünü Markus Persson 2009'da tek başına yaptı.", credit: "Xbox México, CC BY 3.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/flappy-bird.png", caption: "Flappy Bird: Dong Nguyen'in tek başına yaptığı, tek dokunuşla oynanan oyun.", credit: "dotGEARS. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/among-us.png", caption: "Among Us: üç kişilik Innersloth stüdyosundan çıktı.", credit: "Innersloth. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/stardew-valley.png", caption: "Stardew Valley: kodunu, çizimlerini ve müziğini Eric Barone tek başına yaptı.", credit: "ConcernedApe. Kaynak: Wikipedia (adil kullanım)" },
         ],
+        bridge: "Bu oyunların hepsi bir fikirle başladı. Sizin fikriniz de ilk ödevle başlıyor.",
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
           "Kendinize bir Tasarım Defteri ayırın.",
-          "İlk sayfaya en sevdiğiniz 3 oyunu yazın. Her birinin yanına o oyunun size hissettirdiği duyguyu tek kelimeyle ekleyin (örn. heyecan, merak, rahatlama).",
+          "Fikir yazınızı yazın: yapmak istediğiniz oyunu bir paragrafta, serbestçe anlatın. Dünyası, karakteri, oyuncunun ne yaptığı, aklınıza ne geliyorsa. Uzun ya da dağınık olması sorun değil; 1. haftada birlikte biçeceğiz.",
+          "Defterin ilk sayfasına en sevdiğiniz 3 oyunu yazın. Her birinin yanına o oyunun size hissettirdiği duyguyu tek kelimeyle ekleyin (örn. heyecan, merak, rahatlama).",
         ],
       },
     ],
   },
-
   // ---------------------------------------------------------------------
   // HAFTA 1 — Bölümlü yapı (bkz. Hafta 2 açıklaması). Öğrenciler bu haftaya
   // kendi oyun fikirlerini bir metin olarak yazıp getirir; kurs boyunca bu
