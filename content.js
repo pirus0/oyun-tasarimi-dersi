@@ -6,7 +6,7 @@
  * sadece bu dosyayı düzenlemek yeterlidir.
  *
  * id formatı: "0" tanıtım sunumu (tek oturum); 1-6. haftalar iki oturumlu
- * ("1.1", "1.2", ...; 6. hafta şimdilik yalnızca "6.1"); "7.1" uygulama
+ * ("1.1", "1.2", ...); "7.1" uygulama
  * atölyesi. Ana sayfa, id'nin nokta öncesine göre hafta kartlarını gruplar.
  *
  * Ödevler tek bir hatta ilerler: her hafta öğrencinin kendi oyununa bir parça
@@ -3454,6 +3454,252 @@ const WEEKS = [
           "“On Madde ve Kaynakları” tablosuna bakarak 10 maddeden hangilerinin boş ya da eski olduğunu listeleyin; 7. haftada önce onları dolduracağız.",
           "Oyununuzun tek sayfa tasarımını A4 ya da A3 kâğıda çizin: ortada oyun ekranı, çevresinde oklarla notlar.",
           "Evde: tek sayfanızı oyunu hiç bilmeyen birine gösterin. Bir dakika içinde oyunun nasıl oynandığını anlayabiliyor mu? Anlamadığı yeri sayfada düzeltin.",
+        ],
+      },
+    ],
+  },
+  // ---------------------------------------------------------------------
+  // HAFTA 6.2 — Kaynaklar: Tracy Fullerton (Game Design Workshop: prototip
+  // ve oyun testi bölümleri), Maddy Thorson & Noel Berry (Celeste Classic,
+  // 2015), Arvi Teikari (Baba Is You, Nordic Game Jam 2017), Ken Birdwell
+  // (The Cabal: Valve's Design Process for Creating Half-Life, 1999),
+  // Ericsson & Simon (sesli düşünme protokolü), Neil Gaiman (yazarlık
+  // kuralları, 2012), Bungie / Microsoft oyuncu araştırması (Halo 3, 2007).
+  // ---------------------------------------------------------------------
+  {
+    id: "6.2",
+    title: "Prototip ve Oyun Testi",
+    slides: [
+      {
+        type: "intro",
+        heading: "Prototip ve Oyun Testi",
+        lead: "6.1'de GDD'nin yaşayan bir belge olduğunu ve “Leke”nin değişiklik kaydını gördük. Peki o değişiklikler nereden gelir? Bu derste bir fikrin kâğıt üzerinde değil, oyuncunun elinde sınanmasını öğreniyoruz: ucuz bir prototip yapmak, başkasına oynatmak ve gördüklerimizden doğru dersi çıkarmak. 1.1'deki yinelemeli tasarım döngüsünün uygulamasıdır.",
+        steps: [
+          { label: "Prototip", text: "Bir fikri en ucuz yoldan oynanır hâle getirmek." },
+          { label: "Oyun testi", text: "Kime, ne zaman ve ne için oynatılır?" },
+          { label: "Test protokolü", text: "Oyuncuyu izlemek, susmak ve not almak." },
+          { label: "Bulgudan değişikliğe", text: "Test notlarından hangi değişikliklerin çıkacağına karar vermek." },
+        ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Prototip",
+        lead: "Bir fikrin eğlenceli olup olmadığını anlamanın tek yolu onu oynamaktır. Ama bütün oyunu yapıp sonra test etmek, yanlış fikre haftalar harcamak demektir. Prototip, bir fikri olabildiğince az emekle oynanır hâle getirir.",
+      },
+      {
+        type: "concept",
+        heading: "Prototip Nedir?",
+        lead: "Tracy Fullerton (Game Design Workshop), prototipi oyunun oynanabilir ilk modeli olarak tanımlar. Prototipin amacı güzel görünmek değil, bir soruya cevap vermektir.",
+        terms: [
+          { term: "Prototip", en: "prototype", def: "Oyunun bir fikrini sınamak için yapılan, oynanabilir, kaba model." },
+          { term: "Sadakat", en: "fidelity", def: "Prototipin bitmiş oyuna ne kadar benzediği. Düşük sadakatli prototip kâğıttır; yüksek sadakatli prototip neredeyse oyunun kendisidir." },
+          { term: "Soru soran prototip", def: "Her prototip tek bir soruyu cevaplar: “Bu mekanik eğlenceli mi?”, “Oyuncu nereye gideceğini anlıyor mu?” Sorusu olmayan prototip, yarım kalmış oyundur." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Prototip Türleri",
+        image: {
+          src: "assets/lesson/kagit-prototip.jpg",
+          caption: "Jason Rohrer'in Diamond Trust of London için hazırladığı kâğıt prototip: harita, puan tablosu, nohut ve bozuk paralar.",
+          credit: "Jason Rohrer, kamu malı. Kaynak: Wikimedia Commons",
+        },
+        lead: "Prototipler, ne kadar emek istediklerine ve hangi soruyu cevaplayabildiklerine göre ayrılır:",
+        table: {
+          head: ["Tür", "Ne ile yapılır?", "Hangi soruya cevap verir?"],
+          rows: [
+            ["Kâğıt prototip", "Kâğıt, kalem, zar, kart, bozuk para", "Kurallar ve kararlar ilgi çekici mi?"],
+            ["Gri kutu", "Oyun motorunda görselsiz kutular (3.2'deki blokaj)", "Hareket ve bölüm iyi hissettiriyor mu?"],
+            ["Dikey dilim", "Bir bölümün bitmiş görsel ve sesle yapılmış hâli", "Bitmiş oyun nasıl görünecek ve hissettirecek?"],
+          ],
+        },
+        bullets: [
+          "Gamejam'de sıra her zaman aynıdır: önce kâğıt ya da gri kutu, en son görsel. Güzel görünen ama sıkıcı bir oyun, jüriden çirkin ama eğlenceli bir oyundan daha az puan alır.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin Kâğıt Prototipi",
+        lead: "“Leke” bir telefon oyunu ama ilk prototipi gerçek bir silgi ve kurşun kalemle yapılabilir. Prototipin cevaplayacağı soru: Bir dakikalık telaş eğlenceli mi, silginin küçülmesi bir bedel gibi hissettiriyor mu?",
+        steps: [
+          { label: "Malzeme", text: "Bir defter sayfası, kurşun kalem, küçük bir silgi ve telefonun kronometresi." },
+          { label: "Oyun yöneticisi", text: "Bir kişi “mürekkep” olur: her beş saniyede sayfaya yeni bir leke çizer, var olanları biraz büyütür." },
+          { label: "Oyuncu", text: "Diğer kişi silgiyle lekeleri siler. Silgi gerçekten aşınır." },
+          { label: "Bitiş", text: "60 saniye sonunda ya da sayfanın yarısı karalanınca tur biter. Oyuncuya “nasıldı?” değil, “ne zaman zorlandın?” diye sorulur." },
+        ],
+        bridge: "Kaba bir prototipin koca bir oyuna dönüşebileceğini iki gamejam oyunu gösteriyor.",
+      },
+      {
+        type: "gallery",
+        heading: "Jam Prototipinden Oyuna",
+        lead: "Önceki sayfadaki gibi küçük başlayan iki prototip, sonradan ödüllü oyunlara dönüştü. İkisinde de çekirdek mekanik prototipte zaten vardı:",
+        gallery: [
+          { src: "assets/lesson/celeste-classic.png", caption: "Celeste Classic (2015): Maddy Thorson ve Noel Berry'nin dört günde yaptığı küçük oyun. Zıplama, tırmanma ve havada atılma burada doğdu; 2018'de Celeste oldu.", credit: "Maddy Thorson ve Noel Berry, MIT lisansı. Kaynak: Wikipedia" },
+          { src: "assets/lesson/baba-is-you.png", caption: "Baba Is You: Arvi Teikari, 2017'de Nordic Game Jam'i kazandı. Kuralların kendisi itilebilen bloklardır. Tam oyun 2019'da çıktı.", credit: "Arvi Teikari. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "Prototip ancak birisi oynadığında bir şey öğretir. İkinci bölüm, kime ve nasıl oynatacağımızı anlatıyor.",
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "Oyun Testi",
+        lead: "Tasarımcı kendi oyununu tarafsız göremez: kuralları bildiği için takılmaz, emek verdiği için kusurları görmez. 2.1'de “siz oyuncunuz değilsiniz” demiştik; oyun testi bunun pratik sonucudur.",
+      },
+      {
+        type: "concept",
+        heading: "Oyun Testi Nedir?",
+        image: {
+          src: "assets/lesson/fuar-test.jpg",
+          caption: "Gamescom 2015: bir ziyaretçi henüz çıkmamış bir oyunu deniyor. Fuarlardaki demolar, geliştiriciler için büyük bir oyun testidir.",
+          credit: "Sergey Galyonkin, CC BY-SA 2.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Oyun testi (playtest), oyunu başkalarına oynatıp tasarımcının onları izlemesidir. Fullerton, testin üç soruya cevap aradığını söyler:",
+        terms: [
+          { term: "Anlaşılıyor mu?", def: "Oyuncu ne yapacağını, kontrolleri ve amacı yardımsız anlıyor mu? (5.1'deki iki körfez)" },
+          { term: "Eğlenceli mi?", def: "Oyuncu deneyim hedefini (1.2) yaşıyor mu? Telaş hedeflendiyse oyuncu telaşlanıyor mu?" },
+          { term: "Dengeli mi?", def: "Zorluk eğrisi (3.1) yerinde mi? Oyuncunun her seferinde seçtiği tek bir “en iyi” yol var mı?" },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Kime Oynatılır?",
+        lead: "Fullerton, oyunun geliştikçe tasarımcıdan uzaklaşan kişilere oynatılmasını önerir. Her test grubu farklı bir şey öğretir:",
+        table: {
+          head: ["Kim?", "Ne zaman?", "Ne öğretir?", "Sınırı"],
+          rows: [
+            ["Kendiniz", "Her değişiklikten sonra", "Kurallar çalışıyor mu, oyun bozuluyor mu?", "Her şeyi bildiğiniz için anlaşılırlığı ölçemezsiniz"],
+            ["Ekip arkadaşları", "Her gün", "Fikir ekibin hayal ettiği oyuna benziyor mu?", "Onlar da fazla şey biliyor"],
+            ["Arkadaşlar, aile", "Prototip oynanır olunca", "Oyun ilk kez gören biri için anlaşılıyor mu?", "Sizi kırmamak için kibar davranabilirler"],
+            ["Hedef kitleden yabancılar", "Oyun tamamlanmaya yaklaşınca", "Gerçek oyuncu ne yapıyor?", "Bulması en zor grup"],
+          ],
+        },
+      },
+
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "Test Protokolü",
+        lead: "Testin en zor kısmı oyuncuyu izlerken susmaktır. Tasarımcı oyuncunun takıldığını görünce açıklamak ister; ama gamejam'de jüri üyesinin yanında açıklama yapacak kimse olmayacak. Protokol, testin her seferinde aynı ve tarafsız yapılmasını sağlayan kurallardır.",
+      },
+      {
+        type: "examples",
+        heading: "Vaka: Valve ve Half-Life",
+        image: {
+          src: "assets/lesson/half-life.jpg",
+          caption: "Half-Life (1998): Valve'ın ilk oyunu. Bölümlerin çoğu, test oyuncularının takıldığı yerlere göre yeniden düzenlendi.",
+          credit: "Valve. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Valve tasarımcısı Ken Birdwell, 1999'da yazdığı “The Cabal” makalesinde Half-Life'ın tasarım sürecini anlattı. Oyun testleri sürecin merkezindeydi:",
+        terms: [
+          { term: "Sessiz gözlem", def: "Test oyuncusu oynarken tasarımcı arkasında oturur, konuşmaz ve yardım etmez. Takılınan her yer not edilir." },
+          { term: "Her şey not edilir", def: "Oyuncunun nereye baktığı, nerede durduğu, nerede öldüğü, neye güldüğü." },
+          { term: "Tekrar", def: "Bölüm değiştirilir ve yeni bir test oyuncusuyla yeniden denenir. Takılma ortadan kalkana kadar döngü sürer." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Sesli Düşünme",
+        lead: "Oyuncunun ne yaptığını görürüz ama ne düşündüğünü göremeyiz. Psikologlar K. Anders Ericsson ve Herbert Simon'ın geliştirdiği sesli düşünme yöntemi (think-aloud), bu boşluğu kapatır. Kullanılabilirlik araştırmacısı Jakob Nielsen onu en değerli test yöntemi olarak görür.",
+        terms: [
+          { term: "Sesli düşünme", en: "think-aloud", def: "Oyuncudan oynarken aklından geçeni yüksek sesle söylemesi istenir: “Şuraya zıplamam lazım galiba… bu kırmızı şey ne?”" },
+          { term: "Hatırlatma", def: "Oyuncu susarsa yalnızca “Şu an ne düşünüyorsun?” diye sorulur. Yönlendirici soru sorulmaz." },
+          { term: "Söylenen ile yapılan", def: "Oyuncu “kolaymış” der ama beş kez ölür. İkisi çelişirse, yapılan esastır." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Bir Test Nasıl Yapılır?",
+        lead: "Gamejam ölçeğinde bir oyun testi beş adımda, on dakikada yapılır:",
+        steps: [
+          { label: "Hazırlık", text: "Testin sorusunu yazın: “Oyuncu şişenin sallanmasını fark ediyor mu?” Not kâğıdını hazırlayın." },
+          { label: "Kısa giriş", text: "Yalnızca “Bu bir oyun prototipi; oynarken aklından geçeni söyle. Test edilen sen değilsin, oyun.” deyin. Kuralları anlatmayın." },
+          { label: "Gözlem", text: "Susun, yardım etmeyin, not alın. Oyuncu takılırsa iki dakika bekleyin; çözemezse o noktayı not edip yardım edin." },
+          { label: "Sonraki sorular", text: "Açık uçlu sorun: “En zorlandığın an neydi?”, “Neyi değiştirirdin?” “Beğendin mi?” diye sormayın; herkes evet der." },
+          { label: "Not tablosu", text: "Hemen yazın: ne oldu, nerede oldu, kaç oyuncuda oldu." },
+        ],
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Bulgudan Değişikliğe",
+        lead: "Testten bir sayfa dolusu not çıkar. Hepsini aynı anda düzeltmeye çalışmak, oyunu dağıtır. Bu bölüm, notların nasıl okunacağını ve hangi değişikliklerin yapılacağına nasıl karar verileceğini anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Oyuncu Sorunu Söyler, Çözümü Değil",
+        lead: "Yazar Neil Gaiman, yazarlara şunu öğütler: Okurlar bir yerin kötü olduğunu söylediğinde neredeyse her zaman haklıdır; tam olarak neyin yanlış olduğunu ve nasıl düzeltileceğini söylediklerinde ise neredeyse her zaman yanılırlar. Aynı ilke oyun testine de uyar:",
+        table: {
+          head: ["Oyuncu ne der?", "Altta yatan sorun", "Tasarımcının işi"],
+          rows: [
+            ["“Daha çok silah olsun.”", "Dövüş tekdüze geliyor", "Düşmanlara yeni sorular eklemek (4.1); silah şart değil"],
+            ["“Çok zor.”", "Ölümün sebebi anlaşılmıyor olabilir", "Telgrafı ve geri bildirimi kontrol etmek"],
+            ["“Sıkıcı.”", "Zorluk eğrisi düz ya da çok dik", "Akış kanalına bakmak (3.1)"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Bulguları Önceliklendirmek",
+        lead: "Her bulgu iki soruyla tartılır: Kaç oyuncuda oldu? Oyunu ne kadar engelliyor? Önce hem sık hem ağır olanlar düzeltilir:",
+        table: {
+          head: ["", "Az oyuncuda", "Çok oyuncuda"],
+          rows: [
+            ["Oyunu durduruyor", "Düzelt: bazı oyuncular hiç ilerleyemiyor", "Hemen düzelt: oyun bu hâliyle oynanmıyor"],
+            ["Rahatsız ediyor", "Not et, sonra bak", "Düzelt: deneyimi herkes için bozuyor"],
+          ],
+        },
+        bullets: [
+          "Bir seferde az sayıda değişiklik yapın ve yeniden test edin. Aynı anda on şey değişirse hangisinin işe yaradığını bilemezsiniz.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin İlk Testi",
+        lead: "“Leke”nin kâğıt prototipi beş arkadaşa oynatıldı. Not tablosu ve kararlar:",
+        table: {
+          head: ["Bulgu", "Kaç kişi?", "Karar", "Değişiklik kaydına (6.1)"],
+          rows: [
+            ["İlk 20 saniye sıkıcı, son 20 saniye imkânsız", "4/5", "Hemen düzelt", "Leke çıkma hızı daha yumuşak artacak (3.1)"],
+            ["Silginin küçüldüğü fark edilmiyor", "3/5", "Düzelt", "Silgi her silişte gözle görülür biçimde kısalacak ve kırıntı saçacak"],
+            ["Lekelerin büyüdüğü fark edilmiyor; oyuncu yalnızca yeni lekelere bakıyor", "2/5", "Düzelt", "Büyüyen lekenin kenarı titreyecek ve hafif koyulaşacak"],
+            ["“Renkli lekeler olsun”", "1/5", "Not et", "Değişiklik yok: hiçbir sütuna hizmet etmiyor"],
+          ],
+        },
+      },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "Telemetri ve Isı Haritaları",
+        lead: "Büyük stüdyolar testi tek tek oyuncuları izlemekle sınırlamaz. Telemetri (telemetry), oyunun oyuncuların her hareketini otomatik olarak kaydetmesidir. Bungie ve Microsoft'un oyuncu araştırma ekibi Halo 3 (2007) için yüzlerce test oyuncusunun nerede öldüğünü haritalar üzerine işaretledi. Ölümlerin yoğunlaştığı kırmızı noktalar, ısı haritası (heatmap), bölüm tasarımcılarına hangi köşenin haksız derecede zor olduğunu gösterdi. Gamejam'de bunun basit bir karşılığı var: test oyuncularının öldüğü ya da takıldığı yerleri kâğıt haritanız üzerinde çarpıyla işaretlemek.",
+      },
+
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Prototip", en: "prototype", def: "Bir fikri sınamak için yapılan kaba, oynanabilir model." },
+          { term: "Sadakat", en: "fidelity", def: "Prototipin bitmiş oyuna benzeme derecesi." },
+          { term: "Kâğıt prototip / gri kutu / dikey dilim", def: "Kurallar / hareket ve bölüm / bitmiş görünüm için prototipler." },
+          { term: "Oyun testi", en: "playtest", def: "Oyunu başkasına oynatıp izlemek." },
+          { term: "Sesli düşünme", en: "think-aloud", def: "Oyuncunun oynarken düşündüğünü yüksek sesle söylemesi." },
+          { term: "Test protokolü", def: "Testin her seferinde aynı ve tarafsız yapılmasını sağlayan kurallar." },
+          { term: "Önceliklendirme", def: "Bulguları sıklık ve ağırlığa göre sıralamak." },
+          { term: "Telemetri / ısı haritası", en: "telemetry / heatmap", def: "Oyuncu davranışının otomatik kaydı / harita üzerinde yoğunluk gösterimi." },
+        ],
+      },
+      {
+        type: "homework",
+        heading: "Ödev",
+        bullets: [
+          "Oyununuzun çekirdek mekaniği için tek bir test sorusu yazın ve bu soruyu cevaplayacak bir kâğıt prototip yapın (“Leke” örneğindeki gibi malzeme, roller, bitiş).",
+          "Evde: prototipinizi en az üç kişiye “Bir Test Nasıl Yapılır?” adımlarıyla oynatın. Kuralları anlatmayın, sesli düşünmelerini isteyin, yardım etmeyin.",
+          "Notlarınızı “Leke”nin test tablosundaki gibi yazın: bulgu, kaç kişi, karar.",
+          "En fazla üç değişiklik seçin ve 6.1'de başladığınız değişiklik kaydına ekleyin.",
         ],
       },
     ],
