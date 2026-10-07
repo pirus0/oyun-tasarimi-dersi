@@ -2907,84 +2907,293 @@ const WEEKS = [
       },
     ],
   },
+  // ---------------------------------------------------------------------
+  // HAFTA 5.2 — Kaynaklar: Marc LeBlanc (gömülü ve ortaya çıkan anlatı,
+  // GDC 2000), Henry Jenkins (Game Design as Narrative Architecture, 2004),
+  // Kenn Adams (hikâye omurgası, 1991), Don Carson (Environmental
+  // Storytelling, 2000), Harvey Smith & Matthias Worch (GDC 2010), Clint
+  // Hocking (Ludonarrative Dissonance in BioShock, 2007), Joseph Campbell
+  // (Kahramanın Sonsuz Yolculuğu, 1949).
+  // ---------------------------------------------------------------------
   {
     id: "5.2",
     title: "Hikâye ve Görev Tasarımı",
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["Oyunlarda basit hikâye kurma.", "Görev (quest) tasarımı."],
+        heading: "Hikâye ve Görev Tasarımı",
+        lead: "5.1'de arayüzün oyuncuya ne yapacağını nasıl söylediğini gördük. Hikâye ise oyuncuya bunu neden yaptığını söyler. Bu ders, oyunlarda hikâyenin kitaplardan ve filmlerden nasıl farklı anlatıldığını ve oyuncuya hedefin görevlerle nasıl verildiğini anlatır. GDD'nin 3. maddesi, “Oyuncunun Amacı”, bu dersten çıkacak.",
+        steps: [
+          { label: "Oyunda hikâye nedir?", text: "Tasarımcının yazdığı hikâye ve oyuncunun yaşadığı hikâye." },
+          { label: "Hikâyenin iskeleti", text: "Karakter, amaç, engel ve hikâye omurgası." },
+          { label: "Dünyayla anlatmak", text: "Çevresel anlatım ve hikâye ile mekaniğin çatışması." },
+          { label: "Görev tasarımı", text: "Görev türleri, iyi görevin ölçütleri ve gamejam'de hikâye bütçesi." },
+        ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Oyunda Hikâye Nedir?",
+        lead: "Romanda okur, filmde izleyici hikâyeyi dışarıdan takip eder. Oyunda ise oyuncu hikâyenin içindedir: karar verir, hata yapar, başka bir yoldan gider. Bu yüzden oyun tasarımcısı hikâyeyi tek başına yazamaz; bir kısmını yazar, bir kısmının oyuncu tarafından yaşanmasına alan açar.",
       },
       {
         type: "concept",
-        heading: "Oyunlarda Hikâye Kullanımı",
+        heading: "Gömülü ve Ortaya Çıkan Anlatı",
+        lead: "Marc LeBlanc (GDC 2000), oyunlardaki hikâyeyi kimin yazdığına göre ikiye ayırır. Çoğu oyun ikisini farklı oranlarda karıştırır:",
+        terms: [
+          { term: "Gömülü anlatı", en: "embedded narrative", def: "Tasarımcının önceden yazıp oyuna yerleştirdiği hikâye: ara sahneler, diyaloglar, bulunan notlar. Her oyuncu aynı hikâyeyle karşılaşır." },
+          { term: "Ortaya çıkan anlatı", en: "emergent narrative", def: "Kimsenin yazmadığı, kuralların ve oyuncuların etkileşiminden doğan hikâye. “Son saniyede kazandık”, “en yakın arkadaşım hain çıktı.”" },
+        ],
+        table: {
+          head: ["Oyun", "Gömülü anlatı", "Ortaya çıkan anlatı"],
+          rows: [
+            ["The Last of Us", "Çok güçlü: senaryo, oyuncular, ara sahneler", "Az: çatışmaların nasıl geçtiği"],
+            ["Among Us", "Neredeyse yok: bir uzay gemisi ve hainler", "Çok güçlü: her tur yeni bir şüphe ve ihanet hikâyesi"],
+            ["Minecraft", "Çok az: ejderhayı yenmek isteğe bağlı", "Çok güçlü: oyuncunun inşa ettiği ve başına gelen her şey"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Jenkins'in Dört Anlatı Türü",
+        image: {
+          src: "assets/lesson/henry-jenkins.jpg",
+          caption: "Henry Jenkins, medya araştırmacısı. 2004'te oyun tasarımcısını hikâye anlatıcısından çok bir “anlatı mimarı” olarak tanımladı.",
+          credit: "Derzsi Elekes Andor, CC BY-SA 3.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Henry Jenkins (Game Design as Narrative Architecture, 2004), oyunların hikâyeyi mekân aracılığıyla anlattığını söyler ve dört yol tanımlar:",
+        table: {
+          head: ["Tür", "Nasıl çalışır?", "Örnek"],
+          rows: [
+            ["Çağrıştırıcı", "Oyuncunun zaten bildiği bir hikâyeyi ya da dünyayı hatırlatır", "Star Wars, Harry Potter oyunları"],
+            ["Canlandırılan", "Hikâye, oyuncunun yaptığı eylemlerle ilerler", "Zelda'da tapınaktan tapınağa yolculuk"],
+            ["Gömülü", "Hikâye mekâna saklanmıştır; oyuncu parçaları bulup birleştirir", "Gone Home, Hollow Knight"],
+            ["Ortaya çıkan", "Mekân ve kurallar, oyuncunun kendi hikâyesini kurmasına izin verir", "The Sims, Minecraft"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin Anlatısı",
+        lead: "1.2'de “Leke”nin fikir yazısındaki canavar savaşını ve karakter geliştirmeyi kestik. Geriye kalan küçük oyun, hikâyeyi hangi yollarla anlatabilir?",
+        table: {
+          head: ["Tür", "Karar", "Neden?"],
+          rows: [
+            ["Çağrıştırıcı", "Kullan", "Herkes defterine karalama yapmış, mürekkep dökmüştür. Dünyayı anlatmaya gerek yok."],
+            ["Ortaya çıkan", "Kullan", "Her tur kendi telaş hikâyesini üretir: “son saniyede şişeye yetiştim.”"],
+            ["Gömülü", "Az kullan", "Sayfaların içeriği (bir matematik sorusu, bir harita, bir mektup) öğrencinin gününü ima eder."],
+            ["Canlandırılan", "Kullanma", "Bölümler arasında yolculuk yok; 60 saniyelik turda ara sahneye yer yok."],
+          ],
+        },
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "Hikâyenin İskeleti",
+        lead: "Oyunun hikâyesi ne kadar küçük olursa olsun, oyuncunun “neden?” sorusuna cevap vermelidir. Bu bölüm, hikâyenin en küçük parçalarını ve bir hikâyeyi birkaç cümlede kurmanın yolunu anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Karakter, Amaç, Engel, Bedel",
+        lead: "Hikâye anlatıcılığının temel kalıbı dört parçadan oluşur. Bunlardan biri eksikse hikâye yürümez; oyunda ise bu dört parça doğrudan tasarım kararlarına dönüşür:",
+        table: {
+          head: ["Parça", "Soru", "Oyunda neye dönüşür?"],
+          rows: [
+            ["Karakter", "Kim?", "Oyuncu karakteri ve yetenek seti (4.1)"],
+            ["Amaç", "Ne istiyor?", "Kazanma koşulu ve uzun vadeli hedef (1.2, 2.2)"],
+            ["Engel", "Onu ne durduruyor?", "Çatışma: düşmanlar, süre, bulmaca (4.1)"],
+            ["Bedel", "Başaramazsa ne kaybeder?", "Kaybetmenin bedeli (2.2)"],
+          ],
+        },
         bullets: [
-          "Her oyunun büyük bir hikâyeye ihtiyacı yok.",
-          "Basit bir hikâye bile oyuncuya neden oynadığını hissettirir.",
-          "Oyunlarda hikâye okunmaz, yaşanır: oyuncu hikâyenin içinde karar veren kişidir.",
+          "Oyunda bu dört parça zaten tasarlandı. Hikâye, onlara isim ve anlam vermektir: “zamanla yarışmak” yerine “zil çalmadan defteri kurtarmak.”",
         ],
       },
       {
         type: "concept",
-        heading: "Karakter, Amaç, Problem",
-        bullets: [
-          "Karakter: kim? Amaç: ne istiyor? Problem: önünde hangi engel var?",
-          "Bu üçü bir araya gelince basit bir hikâye oluşur.",
-          "Örnek: küçük bir robot (karakter) eve dönmek istiyor (amaç), ama pili bitmek üzere (problem).",
+        heading: "Hikâye Omurgası",
+        lead: "Doğaçlama tiyatro yazarı Kenn Adams (1991), bir hikâyeyi birkaç cümlede kurmak için bir kalıp önerdi: hikâye omurgası (story spine). Pixar'ın senaryo ekibi de bu kalıbı kullanır. Cümlelerin başlangıçları sabittir; boşlukları siz doldurursunuz:",
+        steps: [
+          { label: "Bir zamanlar…", text: "Karakter ve dünya tanıtılır." },
+          { label: "Her gün…", text: "Karakterin sıradan hayatı. Değişmeden önceki düzen." },
+          { label: "Ama bir gün…", text: "Düzeni bozan olay. Oyunun başladığı an." },
+          { label: "Bu yüzden…", text: "Olayın sonucu. Bu adım birkaç kez tekrarlanabilir: oyunun bölümleri." },
+          { label: "Sonunda…", text: "Doruk noktası ve sonuç. Kazanmak ya da kaybetmek." },
         ],
       },
       {
         type: "concept",
-        heading: "Mekân da Hikâye Anlatır",
+        heading: "Örnek: “Leke”nin Hikâye Omurgası",
+        lead: "“Leke”nin fikir yazısındaki dağınık hikâyeyi omurgaya döküyoruz. Her cümle, oyunda bir şeye karşılık gelmeli:",
+        table: {
+          head: ["Omurga", "“Leke”", "Oyundaki karşılığı"],
+          rows: [
+            ["Bir zamanlar…", "sıkıcı bir matematik dersinde bir öğrenci vardı.", "Açılış ekranı"],
+            ["Her gün…", "defterinin kenarlarına karalamalar yapardı.", "Sayfaların tükenmez kalem çizimleri (4.2)"],
+            ["Ama bir gün…", "dolma kaleminin mürekkebi canlandı.", "İlk damla (5.1'deki ilk on saniye)"],
+            ["Bu yüzden…", "lekeler sayfadan sayfaya yayıldı ve öğrenci silgisine sarıldı.", "Dört sayfa, dört bölüm (3.2)"],
+            ["Sonunda…", "zil çaldı.", "Kazanırsa temiz defter, kaybederse mürekkebe boğulmuş sayfa"],
+          ],
+        },
+      },
+
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "Dünyayla Anlatmak",
+        lead: "Oyuncular uzun yazıları okumaz ve ara sahneleri atlar. Ama içinde dolaştıkları dünyaya dikkatle bakarlar. Bu bölüm, hikâyeyi yazı yerine mekânla anlatmayı ve hikâye ile mekaniğin birbirine ters düştüğü durumları anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Çevresel Anlatım",
+        image: {
+          src: "assets/lesson/edith-finch.jpg",
+          caption: "What Remains of Edith Finch (2017): ailenin üst üste eklenerek büyümüş evi, ailenin tarihini anlatır. Yazılar bile mekânın içinde, havada durur.",
+          credit: "Giant Sparrow. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Disney tema parklarında çalışmış tasarımcı Don Carson (2000), ziyaretçilerin bir mekâna bakarak orada ne olduğunu kendiliğinden tahmin ettiğini anlattı. Harvey Smith ve Matthias Worch (GDC 2010) bunu oyunlar için “Burada ne oldu?” sorusuyla özetler:",
+        terms: [
+          { term: "Çevresel anlatım", en: "environmental storytelling", def: "Hikâyeyi mekânın düzeniyle, nesnelerle ve izlerle anlatmak. Devrilmiş sandalye, yarım kalmış yemek, duvardaki pençe izi." },
+          { term: "Oyuncunun çıkarımı", def: "Oyuncu parçaları kendisi birleştirir. Kendi çıkardığı hikâyeyi, kendisine anlatılan hikâyeden daha iyi hatırlar." },
+          { term: "Ucuzluk", def: "Bir nesne yerleştirmek, bir ara sahne çekmekten çok daha ucuzdur. Gamejam için en verimli anlatım yolu budur." },
+        ],
+        bridge: "Neredeyse hiç konuşmadan hikâye anlatan üç oyunu sıradaki sayfada görelim.",
+      },
+      {
+        type: "gallery",
+        heading: "Mekânla Anlatan Oyunlar",
+        lead: "Önceki sayfadaki “Burada ne oldu?” sorusu, bu üç oyunun anlatım biçimidir. Üçünde de hikâyenin büyük kısmını anlatıcı ya da ara sahne değil, mekân anlatır:",
+        gallery: [
+          { src: "assets/lesson/gone-home.png", caption: "Gone Home (2013): oyuncu boş bir aile evinde dolaşır; çekmecelerdeki notlar ve eşyalar ailenin hikâyesini anlatır.", credit: "The Fullbright Company, CC BY-SA 3.0. Kaynak: Wikipedia" },
+          { src: "assets/lesson/limbo.jpg", caption: "Limbo (2010): tek bir kelime yoktur. Karanlık orman ve terk edilmiş şehir, çocuğun yalnızlığını anlatır.", credit: "Playdead. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/journey.jpg", caption: "Journey (2012): uzaktaki dağ hem hedef hem hikâyedir. Kalıntılar, kaybolmuş bir uygarlığı ima eder.", credit: "thatgamecompany. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "Mekân ve hikâye birbirini desteklediğinde oyun güçlenir. Birbirine ters düştüklerinde ne olduğunu sıradaki sayfa anlatıyor.",
+      },
+      {
+        type: "concept",
+        heading: "Ludonarratif Uyumsuzluk",
+        image: {
+          src: "assets/lesson/bioshock.jpg",
+          caption: "BioShock (2007): oyun, oyuncuyu kendi çıkarı için güç toplamaya teşvik ederken hikâye ona seçenek vermeden başkasına yardım ettirir.",
+          credit: "2K Games. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Tasarımcı Clint Hocking, 2007'de BioShock üzerine yazdığı yazıda, oyunun mekaniklerinin söylediği ile hikâyesinin söylediği birbirine ters düştüğünde oyuncunun oyundan koptuğunu anlattı. Buna ludonarratif uyumsuzluk der (Latince ludus: oyun).",
+        terms: [
+          { term: "Uyumsuzluk", def: "Hikâye karakteri barışçıl biri olarak anlatırken oyun, yüzlerce düşmanı öldürmeyi ödüllendirir. Oyuncu hangisine inanacağını bilemez." },
+          { term: "Uyum", def: "Mekanik hikâyeyi anlatır. Papers, Please'te (1.2) pasaport kontrol etmek hem oyunun eylemi hem de hikâyenin kendisidir." },
+        ],
         bullets: [
-          "Hikâyeyi yazıyla anlatmak zorunda değilsiniz; dünya da anlatır.",
-          "Yıkılmış bir köprü, yarım kalmış bir yemek masası, duvardaki pençe izleri: oyuncu burada ne olduğunu kendisi tahmin eder.",
-          "Az yazı, çok ipucu: oyuncu kendi çıkardığı hikâyeyi daha çok sever.",
+          "Test: hikâyenizin karakter hakkında söylediğini, oyuncunun o karakterle yaptığı eylemler de söylüyor mu?",
+        ],
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Görev Tasarımı",
+        lead: "Hikâye oyuncuya neden oynadığını söyler; görev ise şu an ne yapması gerektiğini. İyi tasarlanmış görevler, oyuncuyu kaybolmadan hikâyenin içinde ilerletir. Bu bölüm görevleri ve gamejam ölçeğinde hikâyeye ne kadar zaman ayrılacağını anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Görev ve Hedef Hiyerarşisi",
+        lead: "Görev (quest ya da mission), oyuncuya verilen, başı ve sonu belli bir hedeftir. 1.2'deki kısa ve uzun vadeli hedefler, görevlerle birbirine bağlanır:",
+        terms: [
+          { term: "Hedef hiyerarşisi", def: "Uzun vadeli hedef orta boy görevlere, görevler de kısa adımlara bölünür. Oyuncu her an bir sonraki küçük adımı bilmelidir." },
+          { term: "Ana görev", def: "Oyunun bitmesi için tamamlanması zorunlu olan görev zinciri." },
+          { term: "Yan görev", def: "İsteğe bağlı görev. Keşfetmek ya da ustalaşmak isteyen oyuncuya ek hedef verir." },
+          { term: "İlerleme göstergesi", def: "Görevin ne kadarının yapıldığını gösteren işaret: “3/5 toplandı”, dolan bir çubuk." },
         ],
       },
       {
         type: "concept",
-        heading: "Görev (Quest) Oluşturma",
+        heading: "Görev Türleri ve Tuzakları",
+        lead: "Görevlerin çoğu birkaç temel kalıptan türer. Her kalıbın, kötü kullanıldığında oyuncuyu sıkan bir tuzağı vardır:",
+        table: {
+          head: ["Tür", "Oyuncu ne yapar?", "Tuzağı"],
+          rows: [
+            ["Getir", "Bir nesneyi bulup bir yere götürür", "Anlamsız gidip gelme: “10 kurt postu getir.”"],
+            ["Yok et", "Belirli düşmanları ya da bir boss'u yener", "Aynı düşmanı tekrar tekrar kesmek"],
+            ["Koru / eşlik et", "Birini ya da bir şeyi güvenli bir yere ulaştırır", "Korunan karakter aptalca davranırsa oyuncu öfkelenir"],
+            ["Ulaş / keşfet", "Haritada bir yeri bulur", "Yön verilmezse oyuncu kaybolur (3.2)"],
+            ["Çöz", "Bir bulmacayı ya da gizemi çözer", "Tek bir doğru cevap ve hiç ipucu yoksa takılır"],
+          ],
+        },
         bullets: [
-          "Görev, oyuncuya net bir hedef ve bu hedefe ulaşmanın bir yolunu verir.",
-          "Örnek: “Kayıp anahtarı bul ve kapıyı aç.”",
-          "İyi bir görev oyunun temel eylemini kullanır. Zıplama oyununda görev, bir şeyleri zıplayarak yapmayı gerektirmeli.",
+          "İyi görev, oyunun temel fiilini kullanır. Zıplama oyununda görev zıplayarak, silme oyununda silerek yapılmalıdır.",
         ],
       },
       {
         type: "concept",
-        heading: "Oyuncuya Hedef Verme",
-        bullets: [
-          "Büyük hedefler küçük adımlara bölünmeli.",
-          "Her adım tamamlandığında oyuncu bir geri bildirim almalı: ses, işaret, küçük bir ödül.",
-          "Oyuncu hiçbir an “şimdi ne yapmam gerekiyor?” diye kaybolmamalı.",
-        ],
+        heading: "Gamejam'de Hikâye Bütçesi",
+        image: {
+          src: "assets/lesson/among-us.png",
+          caption: "Among Us: hikâye tek cümledir (gemide hainler var), görevler ekranın köşesinde bir listedir. Gerisini oyuncular yaratır.",
+          credit: "Innersloth. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Her anlatım aracının bir üretim maliyeti vardır. 48 saatlik bir oyunda hikâye, oynanıştan zaman çalmamalıdır:",
+        table: {
+          head: ["Araç", "Maliyet"],
+          rows: [
+            ["Tek cümlelik giriş ve sonuç ekranı", "Çok düşük"],
+            ["Çevresel ipuçları: nesneler, mekânın düzeni", "Düşük"],
+            ["Kısa yazılı notlar ya da diyalog kutuları", "Orta"],
+            ["Ara sahne, animasyon", "Yüksek"],
+            ["Dallanan diyaloglar, seslendirme", "Çok yüksek"],
+          ],
+        },
       },
       {
-        type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Zelda: kurtarma hikâyesi, dünyanın her köşesinde ipuçları",
-          "Minecraft: hikâye neredeyse yok, ejderhayı yenmek isteğe bağlı bir hedef",
-          "Among Us: görev listesi, küçük ve net adımlar",
-        ],
+        type: "concept",
+        heading: "Örnek: “Leke”nin Amacı ve Görevleri",
+        lead: "“Leke”nin ana görevi tek cümleye sığar; yan görevler, ustalaşmak isteyen oyuncuya temel fiil üzerinden yeni hedefler verir:",
+        quote: {
+          text: "Oyuncunun amacı, defterin dört sayfasını birer dakika boyunca mürekkebin yarısını kaplamasına izin vermeden korumak ve zil çalana kadar defteri kurtarmaktır.",
+          source: "“Leke”nin amacı (GDD madde 3)",
+        },
+        table: {
+          head: ["Yan görev", "Kullandığı fiil", "Neyi ödüllendirir?"],
+          rows: [
+            ["Bir sayfayı silginin yarısı kalmışken bitir", "Silmek, idareli", "Verimli silmek"],
+            ["Hiçbir şişenin devrilmesine izin verme", "Silmek, öncelikli", "Telgrafı okumak (4.1)"],
+            ["Dördüncü sayfayı %10'un altında mürekkeple bitir", "Silmek, hızlı", "Ustalık"],
+          ],
+        },
       },
+
+      // --- Ek bilgi ---
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
-        bullets: [
-          "Hikâyesi güçlü olan bir oyun biliyor musunuz? Sizi neden etkiledi?",
-          "Hiç hikâyesi olmayan ama sevdiğiniz bir oyun var mı? Hikâye eksikliğini hissettiniz mi?",
+        type: "extra",
+        heading: "Kahramanın Yolculuğu",
+        lead: "Mitoloji araştırmacısı Joseph Campbell (Kahramanın Sonsuz Yolculuğu, 1949), dünyanın dört bir yanındaki mitlerin ortak bir yapı taşıdığını öne sürdü: kahraman sıradan dünyasından ayrılır, sınavlardan geçer, büyük bir dönüşüm yaşar ve değişmiş olarak geri döner. Senaryo yazarı Christopher Vogler bu yapıyı Hollywood için on iki adıma böldü. Journey'nin yönetmeni Jenova Chen, oyunun yapısını bu yolculuğa göre kurduğunu anlatır: çölde başlayan oyuncu, dağın zirvesine doğru tırmanırken karla ve soğukla sınanır, sonunda ışığa ulaşır. Uzun oyunlar için güçlü bir iskelettir; gamejam ölçeğinde ise hikâye omurgası çoğu zaman yeterlidir.",
+      },
+
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Gömülü / ortaya çıkan anlatı", en: "embedded / emergent", def: "Tasarımcının yazdığı / kurallardan ve oyunculardan doğan hikâye." },
+          { term: "Jenkins'in dört türü", def: "Çağrıştırıcı, canlandırılan, gömülü, ortaya çıkan." },
+          { term: "Karakter, amaç, engel, bedel", def: "Hikâyenin dört temel parçası." },
+          { term: "Hikâye omurgası", en: "story spine", def: "Bir zamanlar… Her gün… Ama bir gün… Bu yüzden… Sonunda…" },
+          { term: "Çevresel anlatım", en: "environmental storytelling", def: "Hikâyeyi mekânla, nesnelerle ve izlerle anlatmak." },
+          { term: "Ludonarratif uyumsuzluk", def: "Mekaniğin söylediği ile hikâyenin söylediğinin çatışması." },
+          { term: "Hedef hiyerarşisi", def: "Uzun hedef, görevler ve kısa adımlar zinciri." },
+          { term: "Ana / yan görev", def: "Zorunlu / isteğe bağlı görev." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Kendi oyununuz için 3 cümle yazın: karakter kim, amacı ne, önündeki problem ne?",
-          "Oyuncunun amacını tek cümleyle yazın: kazanmak ya da ilerlemek için ne yapmalı? (GDD madde 3)",
-          "Oyununuz için 3 adımlı küçük bir görev tasarlayın. Her adım oyununuzun temel eylemini kullansın.",
+          "Oyununuzun hikâye omurgasını beş cümleyle yazın ve “Leke” tablosundaki gibi her cümlenin oyunda neye karşılık geldiğini yanına not edin.",
+          "Oyuncunun amacını tek cümleyle yazın: kazanmak ya da ilerlemek için ne yapmalı, başaramazsa ne olur? (GDD madde 3)",
+          "Oyununuzun anlatısını Jenkins'in dört türüyle değerlendirin: hangisini kullanıyorsunuz, hangisini bilerek dışarıda bırakıyorsunuz?",
+          "Hikâyenizi yazı kullanmadan anlatacak en az üç çevresel ipucu tasarlayın: bir nesne, bir iz, mekânın bir düzeni.",
+          "En fazla üç yan görev tasarlayın. Her biri oyununuzun temel fiilini kullansın.",
+          "Evde: oynadığınız bir oyunda hikâyenin söylediği ile sizin oyunda yaptıklarınız uyumlu mu? Bir örnekle 3 cümle yazın.",
         ],
       },
     ],
