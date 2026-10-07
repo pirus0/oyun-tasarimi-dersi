@@ -1887,73 +1887,317 @@ const WEEKS = [
       },
     ],
   },
+  // ---------------------------------------------------------------------
+  // HAFTA 4.1 — Kaynaklar: Miyamoto (Mario'nun piksel kısıtından doğan
+  // tasarımı), Naoto Ohshima / Yuji Naka (Sonic, 1991), Toru Iwatani
+  // (Pac-Man, 1980), Masahiro Sakurai (Kirby's Adventure, 1993), Mitchell,
+  // Francke & Eng (Illustrative Rendering in Team Fortress 2, NPAR 2007),
+  // Tom Bancroft (Creating Characters with Personality, 2006), Mike Bithell
+  // (Thomas Was Alone, 2012).
+  // ---------------------------------------------------------------------
   {
     id: "4.1",
     title: "Karakter Tasarımı",
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["Karakterin amacı ve yetenekleri.", "Siluet, renk ve şekil."],
-      },
-      {
-        type: "concept",
-        heading: "Karakter Nasıl Oluşturulur?",
-        bullets: [
-          "Önce karakterin oyundaki rolü ve amacı gelir, görünüşü sonra.",
-          "Örnek: Mario'nun amacı prensesi kurtarmaktır; zıplayabildiği için düşmanların üstüne basabilir.",
+        heading: "Karakter Tasarımı",
+        lead: "3.2'de oyuncunun dolaştığı mekânı kurduk. Şimdi o mekânda dolaşan karakterlere geçiyoruz: oyuncunun yönettiği karakter ve onun karşısına çıkan düşmanlar. Oyunda karakter önce bir resim değil, bir yetenek setidir; görünüş, o yetenekleri oyuncuya anlatmak için tasarlanır.",
+        steps: [
+          { label: "Karakter = mekanik", text: "Oyuncu karakteri ne yapabildiğiyle tanımlanır." },
+          { label: "Okunabilirlik", text: "Siluet, şekil dili ve renk: karakter bir bakışta nasıl anlaşılır?" },
+          { label: "Karakter ve oyuncu", text: "Oyuncu karakterin kendisi mi, yoksa onu izleyen biri mi?" },
+          { label: "Düşmanlar", text: "Her düşman, oyuncunun yeteneklerine sorulan bir sorudur." },
         ],
       },
+
+      // --- Bölüm 1 ---
       {
-        type: "concept",
-        heading: "Karakterin Yetenekleri Oynanışı Belirler",
-        bullets: [
-          "Hızlı, güçlü, gizli, akıllı gibi belirgin özellikler seçin.",
-          "Her özellik oynanışa yansımalı: “hızlı” karakterin oyunu koşu, “gizli” karakterin oyunu saklanma üzerine kurulur.",
-          "Oyunda hiçbir işe yaramayan özellik sadece süstür.",
-        ],
+        type: "section",
+        heading: "Karakter = Mekanik",
+        lead: "Bir romanda karakteri düşünceleri ve konuşmaları tanımlar; bir oyunda ise oyuncunun onunla ne yapabildiği. Bu yüzden oyun karakteri tasarlanırken ilk soru “neye benziyor?” değil, “ne yapabiliyor?” sorusudur.",
       },
       {
         type: "concept",
-        heading: "Siluet: Gölgesinden Tanınmak",
-        bullets: [
-          "İyi bir karakter, içi simsiyah boyansa bile şeklinden tanınır.",
-          "Görünüş, karakterin ne yapabildiğini anlatmalı: iri gövde güç, ince uzun gövde hız.",
-          "Basit şekiller, küçük detaylardan daha okunaklıdır; özellikle küçük telefon ekranında.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Renk ve Şekillerin Kullanımı",
-        bullets: [
-          "Renkler duygu ve rol anlatır. Oyunlarda kırmızı genelde tehlike, yeşil güvenli demektir.",
-          "Şekiller karakter algısını etkiler: köşeli ve sivri şekiller sert ya da tehlikeli, yuvarlak şekiller dost canlısı görünür.",
-          "Bu kalıplar kural değildir; bilerek bozarsanız oyuncuyu şaşırtabilirsiniz.",
+        heading: "Oyuncu Karakteri Nedir?",
+        lead: "Oyuncu karakteri (player character), oyuncunun oyun dünyasındaki temsilcisidir. Oyuncunun 2.2'de seçtiğimiz çekirdek mekaniği, bu karakter aracılığıyla yaptığı her şeydir.",
+        terms: [
+          { term: "Avatar", def: "Oyuncunun oyun dünyasındaki bedeni. Bir insan, bir araba, bir blok, bir imleç olabilir." },
+          { term: "Yetenek seti", en: "moveset", def: "Karakterin yapabildiği eylemlerin tamamı: koşmak, zıplamak, saldırmak, saklanmak. Bölümler bu sete göre tasarlanır." },
+          { term: "3C", def: "Endüstride karakter (character), kamera (camera) ve kontrolün (control) birlikte tasarlanması. Biri değişirse diğer ikisi de değişir: 3.1'deki oyun hissi bu üçünden doğar." },
         ],
       },
       {
         type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Mario: kırmızı şapka ve bıyık, küçük ekranda bile tanınır",
-          "Sonic: mavi renk ve geriye doğru sivri dikenler hız hissi verir",
-          "Among Us: aynı basit şekil, kimliği sadece renk belirler",
+        heading: "Vaka: Yetenekten Doğan Karakterler",
+        image: {
+          src: "assets/lesson/pacman.png",
+          caption: "Pac-Man (1980): karakterin bütün görünüşü tek bir fiili, yemeyi anlatır.",
+          credit: "Bandai Namco, CC BY 3.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Ünlü karakterlerin çoğu, önce bir fiil olarak doğmuş, görünüşleri bu fiile göre çizilmiştir:",
+        terms: [
+          { term: "Pac-Man", def: "Toru Iwatani, oyunu “yemek” fiili üzerine kurdu. Karakter, bir dilimi alınmış pizzadan esinlenen, sadece ağızdan ibaret bir daire oldu." },
+          { term: "Sonic", def: "Yuji Naka, düşmanlara top olup yuvarlanarak saldıran hızlı bir karakter istedi. Tavşan, armadillo gibi adaylar arasından kendini top hâline getirebilen kirpi seçildi." },
+          { term: "Kirby", def: "Masahiro Sakurai'nin karakteri düşmanları yutar; Kirby's Adventure'da (1993) yuttuğu düşmanın yeteneğini kopyalar. Yuttuğu her şey ona yeni bir fiil kazandırır." },
         ],
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
+        type: "concept",
+        heading: "Teknik Kısıt Tasarımı Belirler",
+        image: {
+          src: "assets/lesson/mario-nakaue.png",
+          caption: "Mario'nun şapka, bıyık ve tulumu, 1981'de birkaç pikselle çizilebilmek için seçildi.",
+          credit: "Shigehisa Nakaue / Nintendo. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Shigeru Miyamoto, Mario'yu Donkey Kong (1981) için 16x16 piksellik bir alana çizmek zorundaydı. Karakterin en tanıdık parçaları, aslında bu kısıta verilmiş cevaplardır:",
+        table: {
+          head: ["Parça", "Hangi sorunu çözdü?"],
+          rows: [
+            ["Şapka", "Saçı çizmek ve zıplarken hareket ettirmek zordu."],
+            ["Bıyık", "Ağzı ve ifadeyi birkaç pikselle göstermek mümkün değildi."],
+            ["Tulum", "Gövdeden farklı renkteki tulum, kolların hareketini görünür kıldı."],
+          ],
+        },
         bullets: [
-          "Bir oyun karakterini sadece siluetinden tanıyabilir misiniz? Örnek verin.",
-          "Kötü karakterlere neden genelde koyu renkler ve sivri şekiller verilir?",
+          "Ders: Gamejam'de çizim beceriniz ve zamanınız da bir kısıttır. Çizebileceğinizden daha karmaşık bir karakter tasarlamayın; basitliği bir kimliğe dönüştürün.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin Oyuncu Karakteri",
+        lead: "“Leke”nin fikir yazısında bir öğrenci vardı. Biçilmiş tasarımda oyuncu öğrenciyi değil, silgiyi yönetir. Karakteri yetenek setinden başlayarak tanımlayalım:",
+        table: {
+          head: ["Soru", "“Leke”nin silgisi"],
+          rows: [
+            ["Ne yapabiliyor?", "Parmağın gittiği yere gider ve değdiği mürekkebi siler. Tek eylem."],
+            ["Neyi yapamıyor?", "Zıplamaz, saldırmaz, saklanmaz. Kısıt, telaş sütununu korur."],
+            ["Kaynağı ne?", "Kendi boyu: her silişte küçülür. Karakterin görünüşü aynı zamanda can göstergesidir."],
+            ["Kişiliği nereden gelir?", "Hareketinden: bastırınca yassılır, büyük leke silince sevinçle zıplar (3.1'deki juice)."],
+          ],
+        },
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "Okunabilirlik",
+        lead: "Oyuncu, karakterlere oyun sırasında, hızla ve çoğu zaman göz ucuyla bakar. Bir karakterin kim olduğu ve ne yapabildiği yarım saniyede anlaşılmıyorsa, tasarım ne kadar güzel olursa olsun oyunda işe yaramaz. Bu bölüm, karakteri okunur yapan üç aracı anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Siluet",
+        image: {
+          src: "assets/lesson/tf2-siniflar.jpg",
+          caption: "Team Fortress 2 (2007): dokuz sınıfın her biri, içi siyaha boyansa bile gövde biçimi ve silahından tanınır.",
+          credit: "Valve. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Valve'ın sanatçıları Team Fortress 2 için yazdıkları makalede (Mitchell, Francke ve Eng, 2007), dokuz sınıfın kalabalık bir çatışmada bile uzaktan ayırt edilmesi gerektiğini anlatır. Bunu sırayla üç katmanda çözdüler:",
+        steps: [
+          { label: "Takım", text: "Kırmızı ya da mavi: dost mu, düşman mı?" },
+          { label: "Sınıf", text: "Siluet: iri Heavy, ince Scout, sırtında tüp taşıyan Pyro. Gövde biçimi rolü söyler." },
+          { label: "Silah", text: "Silah gövdeden dışarı taşar, siluete eklenir: karakterin ne yapacağı uzaktan görülür." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Şekil Dili",
+        image: {
+          src: "assets/lesson/sonic-taslak.png",
+          caption: "Naoto Ohshima'nın Sonic için ilk eskizleri (1990): geriye doğru sivri dikenler, durduğu yerde bile hızı anlatır.",
+          credit: "Sega / Naoto Ohshima. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Animasyon geleneğinden gelen şekil dili (shape language), temel geometrik şekillerin izleyicide benzer çağrışımlar uyandırdığını söyler. Disney animatörü Tom Bancroft (Creating Characters with Personality, 2006) bunu karakter tasarımının temeli olarak anlatır:",
+        terms: [
+          { term: "Daire", def: "Yumuşak, dost, sevimli, zararsız. Kirby, Pac-Man." },
+          { term: "Kare", def: "Sağlam, güçlü, güvenilir, ağır. TF2'nin Heavy'si, Minecraft'ın Steve'i." },
+          { term: "Üçgen", def: "Hızlı, keskin, tehlikeli, dengesiz. Sonic'in dikenleri, kötü karakterlerin sivri hatları." },
+        ],
+        bullets: [
+          "Bu çağrışımlar kural değil, beklentidir. Yuvarlak ama tehlikeli bir düşman, oyuncuyu bilerek şaşırtmak için kullanılabilir.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Renk ve Değer",
+        lead: "Renk, karakteri hem arka plandan ayırır hem de rolünü söyler. Ama ayrımı asıl yapan renk tonu değil, değerdir.",
+        terms: [
+          { term: "Değer", en: "value", def: "Bir rengin ne kadar açık ya da koyu olduğu. Görüntü siyah-beyaza çevrildiğinde karakter hâlâ arka plandan ayrılıyorsa değer doğru seçilmiştir." },
+          { term: "Kontrast", def: "Karakterle arka plan arasındaki fark. Oyuncu karakteri sahnenin en dikkat çeken öğesi olmalıdır." },
+          { term: "İmza renk", def: "Karakterle özdeşleşen tek renk. Sonic'in mavisi Sega'nın logosundan alındı. Among Us'ta herkes aynı şekli taşıdığı için kimliği yalnızca renk belirler." },
+        ],
+        bullets: [
+          "Renk tek başına bilgi taşımamalı: renk körü oyuncular için dost ve düşman şekille de ayrılmalı.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”yi Okunur Yapmak",
+        lead: "“Okul defteri” sütunu her şeyi mavi tükenmez kalemle çizilmiş gibi gösteriyor. Bu, silgiyi öne çıkarmak için kolay bir fırsat:",
+        table: {
+          head: ["Araç", "Silgi (oyuncu)", "Mürekkep (düşman)"],
+          rows: [
+            ["Siluet", "Düzgün, yuvarlak köşeli dikdörtgen", "Düzensiz, akan, kenarları dağınık leke"],
+            ["Şekil dili", "Yumuşak kare: güvenilir, dost", "Sivri damlalar: tehlikeli, yayılan"],
+            ["Renk", "Sahnedeki tek sıcak renk: pembe", "Defterle aynı ailede: koyu mavi"],
+            ["Değer", "Açık; beyaz kâğıtta bile kenar çizgisiyle ayrılır", "Koyu; kâğıtta en belirgin şey"],
+          ],
+        },
+      },
+
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "Karakter ve Oyuncu",
+        lead: "Oyuncu, karakteri yönetirken onunla bir ilişki kurar: kimi zaman karakterin kendisi olur, kimi zaman onu izleyen biri. Bu ilişkinin türü, karaktere ne kadar kişilik verileceğini belirler.",
+      },
+      {
+        type: "concept",
+        heading: "Üç Tür Oyuncu Karakteri",
+        table: {
+          head: ["Tür", "Nasıl çalışır?", "Örnek", "Bedeli"],
+          rows: [
+            ["Sessiz kahraman", "Karakter konuşmaz, yüzü az görünür; oyuncu kendini onun yerine koyar", "Link (Zelda), Gordon Freeman (Half-Life)", "Karakter oyuncunun boş kalıbıdır; kendi hikâyesi zayıftır"],
+            ["Tanımlı karakter", "Adı, geçmişi, sesi ve kişiliği vardır; oyuncu onu yönetir ama o başka biridir", "Lara Croft, Kratos, Celeste'nin Madeline'i", "Güçlü hikâye ister: yazı, ses, ara sahne"],
+            ["Özelleştirilebilir avatar", "Oyuncu görünüşü kendisi seçer", "Minecraft, Among Us, Mii", "Karakter bir kimlik taşımaz; kimliği oyuncu getirir"],
+          ],
+        },
+        bullets: [
+          "Gamejam'de tanımlı karakter, en pahalı seçenektir: kişiliğini anlatacak yazıya ve sahnelere zaman gerekir.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Kişilik Hareketle Anlatılır",
+        lead: "Oyunda karakterin kişiliğini anlatmanın en ucuz yolu yazı değil, harekettir: nasıl yürüdüğü, nasıl düştüğü, beklerken ne yaptığı.",
+        terms: [
+          { term: "Bekleme animasyonu", en: "idle animation", def: "Oyuncu bir şey yapmadığında karakterin hareketi. Sonic the Hedgehog'da (1991) Sonic beklerken sabırsızca ayağını yere vurur: tek bir hareketle “ben hızlıyım, oyalanma” der." },
+          { term: "Tepki", def: "Karakterin olaylara verdiği küçük yanıtlar: hasar alınca irkilmek, yükseklikten düşünce sendelemek." },
+          { term: "Abartma", en: "exaggeration", def: "Animasyonun 12 ilkesinden biri. Hareket, gerçekte olduğundan büyük gösterilir ki küçük ekranda da okunsun." },
+        ],
+      },
+      {
+        type: "examples",
+        heading: "Vaka: Thomas Was Alone",
+        image: {
+          src: "assets/lesson/thomas-was-alone.png",
+          caption: "Thomas Was Alone (2012): karakterler yalnızca renkli dikdörtgenlerdir, ama oyuncular onları isimleriyle hatırlar.",
+          credit: "Mike Bithell. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Mike Bithell'in oyununu tek kişi yaptı ve karakter çizmedi. Her karakter bir dikdörtgendir; kişiliğini yeteneği ve anlatıcının sözleri verir:",
+        terms: [
+          { term: "Thomas", def: "Orta boy, ortalama zıplama. Meraklı ve iyimser." },
+          { term: "Chris", def: "Küçük ve kısa zıplıyor. Huysuz; kimseye ihtiyacı olmadığını düşünüyor." },
+          { term: "John", def: "Uzun ve çok yükseğe zıplıyor. Gösterişi seviyor." },
+          { term: "Claire", def: "Büyük ve ağır, ama suda yüzebilen tek kişi. Kendini süper kahraman sanıyor." },
+        ],
+        bullets: [
+          "Ders: Yetenek seti kişiliğin kendisidir. Chris'in kısa zıplaması onu hem mekanik hem duygusal olarak başkalarına muhtaç kılar.",
+        ],
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Düşmanlar",
+        lead: "Düşman, oyuncunun karşısına çıkan, onun yeteneklerini sınayan karakterdir. İyi bir düşman yalnızca bir engel değil, oyuncuya sorulan bir sorudur: “Bu yeteneğini şu durumda kullanabilir misin?”",
+      },
+      {
+        type: "concept",
+        heading: "Her Düşman Bir Soru Sorar",
+        lead: "Düşmanlar, oyuncu karakterinin yetenek setine göre tasarlanır. Super Mario Bros.'ta Mario'nun tek ana fiili zıplamaktır; her düşman bu fiile farklı bir soru sorar:",
+        table: {
+          head: ["Düşman", "Davranışı", "Sorduğu soru"],
+          rows: [
+            ["Goomba", "Yavaşça düz yürür", "Zıplayabiliyor musun?"],
+            ["Koopa Troopa", "Basılınca kabuğuna girer; kabuk tekmelenebilir", "Düşmanı başka düşmanlara karşı silah olarak kullanabilir misin?"],
+            ["Piranha Plant", "Borudan belirli aralıklarla çıkar", "Zamanlamayı bekleyebilir misin?"],
+            ["Hammer Bro", "Yaylı bir yörüngeyle çekiç fırlatır", "Hem kaçıp hem saldırabilir misin?"],
+          ],
+        },
+        bullets: [
+          "Yeni bir düşman, yeni bir soru sormuyorsa yalnızca eskisinin farklı renklisidir. Gamejam'de bu, boşa harcanmış çizim süresidir.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Vaka: Pac-Man'in Hayaletleri",
+        lead: "Toru Iwatani, dört hayaletin aynı şekilde kovalamasının oyunu bunaltıcı ve tek düze yapacağını fark etti. Her hayalete farklı bir davranış verdi; şekilleri aynı, renkleri ve kişilikleri farklıydı:",
+        table: {
+          head: ["Hayalet", "Davranışı"],
+          rows: [
+            ["Blinky (kırmızı)", "Doğrudan Pac-Man'in arkasından gelir; kovalayıcı."],
+            ["Pinky (pembe)", "Pac-Man'in gittiği yönün birkaç kare önünü hedefler; pusucu."],
+            ["Inky (mavi)", "Blinky'nin konumuna göre hedef seçer; tahmin edilmesi zor."],
+            ["Clyde (turuncu)", "Uzaktayken kovalar, yaklaşınca köşesine kaçar; kararsız."],
+          ],
+        },
+        bullets: [
+          "Ders: Dört basit kural bir araya gelince karmaşık bir davranış oluşur. Oyuncu hayaletleri tanıdıkça onları birbirine karşı oynamayı öğrenir.",
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Adil Düşman: Telgraf",
+        image: {
+          src: "assets/lesson/kirby-yetenek.png",
+          caption: "Kirby'nin kopyalama yeteneğinin şeması: düşmanı yutan Kirby, düşmanın yeteneğini alır. Düşman hem tehdit hem ödüldür.",
+          credit: "FedericoMP, CC BY-SA 3.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Oyuncu, ne olacağını önceden görebildiği bir saldırıya yakalanırsa kendini suçlar ve tekrar dener. Habersiz bir saldırıya yakalanırsa oyunu suçlar.",
+        terms: [
+          { term: "Telgraf", en: "telegraphing", def: "Düşmanın saldırmadan önce verdiği açık işaret: geri çekilmek, parlamak, ses çıkarmak. Oyuncuya tepki verecek süre tanır." },
+          { term: "Zayıf nokta", def: "Düşmanın oyuncu fiiline açık olduğu an ya da yer. Saldırıdan sonraki kısa duraksama en klasik zayıf noktadır." },
+          { term: "Düşman ödül olarak", def: "Kirby'de düşman yutulunca yeni bir yetenek verir; Koopa'nın kabuğu silaha dönüşür. Düşman, oyuncuya bir şey kazandırınca kaçılacak değil, aranacak bir şey olur." },
+        ],
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin Düşmanları",
+        lead: "“Leke”de düşmanlar mürekkep lekeleridir. Silginin tek fiili silmek; her düşman bu fiile farklı bir soru sormalı:",
+        table: {
+          head: ["Düşman", "Davranışı", "Telgraf", "Sorduğu soru"],
+          rows: [
+            ["Damla", "Küçük, yavaş yayılır", "Yok: zararsız başlangıç", "Silebiliyor musun?"],
+            ["Mürekkep şişesi", "Devrilip büyük leke yapar", "Devrilmeden 1 saniye önce sallanır", "Hangisine önce gideceğini seçebiliyor musun?"],
+            ["Sıçrayan leke", "Silinince iki küçük damlaya bölünür", "Kenarları titrer", "Silgini harcamaya değer mi?"],
+          ],
+        },
+        bullets: [
+          "Üçüncü düşman, silginin küçülme kuralıyla birleşir: bölünen leke, oyuncuya her silişin bir bedeli olduğunu hatırlatır. Yeni soru sormayan bir dördüncü düşman eklenmez.",
+        ],
+      },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "Karakter Sayfası",
+        lead: "Animasyon ve oyun stüdyolarında bir karakter onaylandığında karakter sayfası (model sheet) hazırlanır: karakterin önden, yandan ve arkadan çizimi (turnaround), boy oranları, ifadeleri ve renk kodları. Bu sayfa, karakteri farklı kişilerin her seferinde aynı biçimde çizmesini sağlar. Gamejam'de birden fazla kişi çiziyorsa tek sayfalık basit bir karakter sayfası, oyunun sonunda birbirine benzemeyen karakterlerle karşılaşmayı önler.",
+      },
+
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Oyuncu karakteri / avatar", en: "player character", def: "Oyuncunun oyun dünyasındaki temsilcisi." },
+          { term: "Yetenek seti", en: "moveset", def: "Karakterin yapabildiği eylemlerin tamamı." },
+          { term: "3C", def: "Karakter, kamera ve kontrolün birlikte tasarlanması." },
+          { term: "Siluet", en: "silhouette", def: "Karakterin içi doldurulmuş dış hattı; okunabilirliğin ilk testi." },
+          { term: "Şekil dili", en: "shape language", def: "Daire dost, kare sağlam, üçgen tehlikeli." },
+          { term: "Değer", en: "value", def: "Rengin açıklığı ya da koyuluğu." },
+          { term: "Sessiz kahraman / tanımlı / özelleştirilebilir", def: "Oyuncu ile karakter arasındaki üç ilişki türü." },
+          { term: "Bekleme animasyonu", en: "idle animation", def: "Karakterin oyuncu bir şey yapmazken yaptığı hareket." },
+          { term: "Telgraf", en: "telegraphing", def: "Düşmanın saldırıdan önce verdiği işaret." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Kendi oyununuzun ana karakterini kâğıda çizin. Yanına amacını ve oynanışı etkileyen tek özelliğini yazın.",
-          "Siluet testi: karakterin içini kurşun kalemle tamamen karartın. Bir arkadaşınız ne yaptığını tahmin edebiliyor mu?",
+          "Oyuncu karakterinizi önce yazıyla tanımlayın: “Leke” tablosundaki dört soruyu (ne yapabiliyor, neyi yapamıyor, kaynağı ne, kişiliği nereden geliyor) cevaplayın.",
+          "Karakterinizi kâğıda çizin, sonra içini kurşun kalemle tamamen karartın. Siluet hâlâ ne yapabildiğini anlatıyor mu? Şekil dilinizi ve imza renginizi gerekçesiyle yazın (GDD madde 9, karakter kısmı).",
+          "En fazla üç düşman ya da engel tasarlayın. Her biri için “Leke” tablosundaki gibi davranışını, telgrafını ve karakterinizin fiiline sorduğu soruyu yazın.",
+          "Evde: siluetinizi ve düşman siluetlerinizi hiçbir açıklama yapmadan birine gösterin. Hangisinin oyuncu, hangisinin düşman olduğunu bilebiliyor mu? Bilemediyse şekil dilini değiştirin.",
         ],
       },
     ],
