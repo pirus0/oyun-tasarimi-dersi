@@ -3388,15 +3388,15 @@ const WEEKS = [
             ["3. Oyuncunun amacı", "5.2: amaç cümlesi"],
             ["4. Oyuncu ne yapabilir?", "5.1: temel eylemler"],
             ["5. Kontroller", "5.1: kontrol şeması"],
-            ["6. Oyun döngüsü", "2.2: çekirdek döngü"],
+            ["6. Oyun döngüsü", "2.2: çekirdek döngü; 3.1: zorluk eğrisi"],
             ["7. Kazanma ve kaybetme", "2.2: hedef türü ve kaybetmenin bedeli"],
-            ["8. Oyuncu ve duygu", "2.1: persona"],
+            ["8. Oyuncu ve duygu", "2.1: persona; 1.2: deneyim hedefi; 3.1: eğlence türü"],
             ["9. Görsel dünya", "4.1: karakter; 4.2: stil, palet, moodboard"],
             ["10. Ödüller ve ek özellikler", "3.1: ödüller ve motivasyon"],
           ],
         },
         bullets: [
-          "Şablonda ayrı maddesi olmayan ödevler (3.2 bölüm haritası, 4.1 düşmanlar, 5.2 hikâye omurgası) GDD'nin sonuna ek olarak konur.",
+          "Şablonda ayrı maddesi olmayan ödevler (3.2 bölüm haritası, 4.1 düşmanlar, 5.2 hikâye omurgası, 6.1 değişiklik kaydı) GDD'nin sonuna ek olarak konur.",
         ],
       },
       {
@@ -3705,10 +3705,10 @@ const WEEKS = [
     ],
   },
   // ---------------------------------------------------------------------
-  // HAFTA 7 — 6 haftalık teorinin ardından gelen uygulama atölyesi.
-  // Kendi gamejam fikirleri için GERÇEK bir GDD dolduruyorlar. Her alan için
-  // "template" tipi slayt: hem doldurma kriterini hem de tanıdık bir oyun
-  // (Flappy Bird) üzerinden doldurulmuş örneğini gösterir.
+  // HAFTA 7 — Uygulama atölyesi. Öğrenciler kendi fikirleri için GDD-Sablonu.docx'i
+  // dolduruyor. "template" slaytlarının yönergeleri şablondaki metinle BİREBİR
+  // aynıdır (ikisi birlikte güncellenir); örnekler, kurs boyunca biçilen
+  // “Leke”nin tam GDD'sidir. Kaynak: Dai Clegg (MoSCoW önceliklendirmesi, 1994).
   // ---------------------------------------------------------------------
   {
     id: "7.1",
@@ -3716,143 +3716,226 @@ const WEEKS = [
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: [
-          "Teori bitti: artık kendi GDD'nizi yazıyoruz.",
-          "Her başlık için neye göre yazıldığını ve tanıdık bir oyundan (Flappy Bird) doldurulmuş örneğini göreceksiniz.",
+        heading: "GDD Atölyesi",
+        lead: "Teori bitti. Altı hafta boyunca fikrinizi her derste biraz daha biçtiniz; 6.1'de bu parçaların GDD'ye nasıl dönüştüğünü, 6.2'de nasıl test edildiğini gördük. Bu derste ekibinizle kendi GDD'nizi yazıyorsunuz. Her maddede neye göre yazılacağını ve “Leke”nin o maddeyi nasıl doldurduğunu göreceksiniz; ders bittiğinde “Leke”nin tam GDD'si de ortaya çıkmış olacak.",
+        steps: [
+          { label: "Başlamadan önce", text: "Jam temasını fikre çevirmek ve ekipte fikir seçmek." },
+          { label: "On madde", text: "Şablonun her maddesi: yönerge ve “Leke” örneği." },
+          { label: "Ekler ve gamejam", text: "Ekler, kapsamı küçültmek, 30 saniyelik sunum ve şablonu indirmek." },
         ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Başlamadan Önce",
+        lead: "Gamejam başladığında size bir tema verilecek ve bir ekip içinde çalışacaksınız. Defterinizdeki fikir temaya uymayabilir, ekipteki herkesin de bir fikri olabilir. GDD'yi yazmaya başlamadan önce bu iki kararı vermek gerekir.",
       },
       {
         type: "concept",
-        heading: "Jam Temasını Fikre Çevirme",
-        bullets: [
-          "Gamejam'ler genelde bir tema verir (örn. “Kayıp”, “Döngü”, “Uzay”). Temayı birebir almak zorunda değilsiniz; ondan ilham alın.",
-          "Basit yöntem: temayla ilgili 5 kelime yazın, sonra bu kelimelerden birini bir oyun eylemine bağlayın.",
-          "Örnek: tema “Döngü” ise, gece ile gündüzün sürekli değiştiği bir hayatta kalma oyunu çıkabilir.",
-          "Defterinizdeki oyun temaya uyuyorsa onu uyarlayın; uymuyorsa aynı yöntemle yeni bir fikir üretin.",
+        heading: "Jam Temasını Fikre Çevirmek",
+        lead: "Gamejam'ler bir tema verir: “Döngü”, “Kayıp”, “Tek düğme”. Temayı birebir almak zorunda değilsiniz; ondan bir oyun eylemi çıkarmanız yeter. 1.2'deki dört kapıdan (mekanik, tema, deneyim, kısıt) biri burada tema kapısıdır.",
+        steps: [
+          { label: "Oku", text: "Temayı yazın ve akla gelen ilk fikri bir kenara koyun; ekiplerin çoğu aynı ilk fikri bulur." },
+          { label: "Çoğalt", text: "Temayla ilgili en az beş kelime yazın: nesneler, duygular, fiiller." },
+          { label: "Fiile bağla", text: "Kelimelerden birini oyuncunun yapacağı bir eyleme çevirin: “Döngü” → “aynı gece tekrar tekrar yaşanır, oyuncu her seferinde bir şey değiştirir.”" },
+          { label: "Defterle karşılaştır", text: "Defterinizdeki fikir temaya uyuyorsa uyarlayın; uymuyorsa aynı yöntemle yeni bir fikir üretin." },
         ],
+        bullets: [
+          "Örnek: tema “Yayılma” olsaydı “Leke” neredeyse hiç değişmeden uyardı: yayılan mürekkep, temanın kendisidir.",
+        ],
+        bridge: "Gamejam'de bu kararlar ekipçe, birkaç saat içinde verilir. Sıradaki sayfada bir jam'den kareler var.",
+      },
+      {
+        type: "gallery",
+        heading: "Bir Gamejam'in İçinden",
+        lead: "Önceki sayfadaki adımlar masada böyle görünür: ekip birlikte karar verir, ilk prototip çoğu zaman kâğıttır ve test jam bitmeden başlar.",
+        gallery: [
+          { src: "assets/lesson/jam-ekip.jpg", caption: "Ekip: aynı masada, aynı ekrana bakarak karar vermek.", credit: "Jason Krüger, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/jam-kartlar.jpg", caption: "Tasarım: oyunun kartları önce bilgisayarda kaba hâliyle çiziliyor.", credit: "Kevin Payravi, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/jam-test.jpg", caption: "Test: basılmış kâğıt kartlarla ilk oyun, jam'in ilk gününde.", credit: "Kevin Payravi, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+        ],
+        bridge: "Ekipte birden fazla fikir varsa hangisinin seçileceğine de ölçütlerle karar verilir.",
+      },
+      {
+        type: "concept",
+        heading: "Ekipte Fikir Seçmek",
+        lead: "Ekipte birden fazla fikir varsa en sevilen değil, ölçütlere en iyi uyan seçilir. 2.2'de mekanik, 4.2'de stil seçerken kullandığımız tabloyu fikirlere uyguluyoruz:",
+        table: {
+          head: ["Ölçüt", "Soru"],
+          rows: [
+            ["Temaya uygunluk", "Tema oyunun eyleminde mi, yoksa yalnızca adında mı?"],
+            ["Netlik", "Yüksek konsepti tek cümleye sığıyor mu? Tasarım sütunları belli mi?"],
+            ["Kapsam", "En küçük oynanabilir sürümü ilk gün bitebilir mi?"],
+            ["Ekibin becerisi", "Stili ekipteki biri çizebilir, mekaniği biri kodlayabilir mi?"],
+            ["Test edilebilirlik", "Kâğıt prototipi bir saatte yapılabilir mi?"],
+          ],
+        },
+        bullets: [
+          "Ölçütlerde berabere kalan fikirleri birleştirmeyi deneyin: birinin mekaniği, diğerinin teması. Karar verilemezse takım lideri son sözü söyler.",
+        ],
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "On Madde",
+        lead: "Şablonun her maddesi bir slaytta: üstte maddenin neye göre yazılacağı ve Tasarım Defteri'nizde hangi ödevden geleceği, altta “Leke”nin o maddeyi nasıl doldurduğu. Yönergeler, indireceğiniz şablondaki metinle birebir aynıdır.",
       },
       {
         type: "template",
         heading: "1. Oyun Adı ve Türü",
-        guidance: "Oyununuza bir isim verin ve türünü seçin: platform, bulmaca, macera, yarış, koşu, strateji, simülasyon ya da diğer. Defterinizde: 1.2 ödevi.",
-        example: "Flappy Bird — Koşu (sonsuz koşu / beceri oyunu)",
+        guidance: "Oyununuza bir isim verin ve türünü temel fiilinize göre seçin: platform, bulmaca, aksiyon-macera, strateji, refleks, sonsuz koşu, kum havuzu ya da diğer. Defterinizde: 1.2 ödevi.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Leke. Refleks oyunu; mobil tarayıcıda, dikey ekranda, tek parmakla oynanır.",
       },
       {
         type: "template",
         heading: "2. Oyun Fikri",
-        guidance: "“Oyuncu ______ yapar.” Tek cümlede oyununuzu anlatın. Defterinizde: 1.2 ödevi.",
-        example: "Oyuncu, borulara çarpmadan geçmek için kuşu doğru zamanda zıplatır.",
+        guidance: "Yüksek konseptinizi yazın: “[Oyun], [tür] türünde bir oyundur; oyuncu [temel fiil] yaparak [hedef]e ulaşmaya çalışır. Farkı: [kanca].” Defterinizde: 1.2 ödevi.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Leke, tek parmakla oynanan bir refleks oyunudur; oyuncu defter sayfasına yayılan mürekkep lekelerini silerek sayfayı temiz tutmaya çalışır. Farkı: sildiğiniz her leke silginizi küçültür.",
       },
       {
         type: "template",
         heading: "3. Oyuncunun Amacı",
-        guidance: "Oyuncu oyunda neyi başarmaya çalışıyor? Kazanmak ya da ilerlemek için ne yapmalı? Defterinizde: 5.2 ödevi.",
-        example: "Oyuncu, mümkün olduğunca çok boru aralığından geçip yüksek skor yapmaya çalışır.",
+        guidance: "Oyuncu neyi başarmaya çalışıyor, başaramazsa ne olur? Tek cümlelik amaç cümlenizi yazın; varsa yan görevlerinizi ekleyin. Defterinizde: 5.2 ödevi.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Defterin dört sayfasını birer dakika boyunca mürekkebin yarısını kaplamasına izin vermeden korumak ve zil çalana kadar defteri kurtarmak. Yan görevler: silginin yarısı kalmışken bir sayfayı bitirmek, hiçbir şişenin devrilmesine izin vermemek, son sayfayı %10'un altında mürekkeple bitirmek.",
       },
       {
         type: "template",
         heading: "4. Oyuncu Ne Yapabilir?",
-        guidance: "Oyuncunun 2-3 temel hareketini İSİM + NASIL ÇALIŞTIĞI şeklinde yazın (örn. “Zıplama: boşluğa basınca karakter zıplar”). Defterinizde: 5.1 ödevi.",
-        example: "Zıplama: Ekrana dokununca kuş yukarı fırlar. · Düşüş: Dokunmazsanız kuş sürekli aşağı iner (yer çekimi).",
+        guidance: "Oyuncunun 2-3 temel eylemini İSİM + NE YAPTIĞI şeklinde yazın (örn. “Zıplama: karakter yukarı sıçrar, havadayken yön değiştirebilir”). Defterinizde: 5.1 ödevi.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Silmek: silgi değdiği mürekkebi siler ve her silişte biraz küçülür. · Duraklatmak: oyun ve süre durur. “Leke” bilerek tek eylemlidir; bu, “tek parmak” sütununun gereğidir.",
       },
       {
         type: "template",
         heading: "5. Kontroller",
-        guidance: "Her hareketin hangi tuşla ya da dokunuşla yapıldığını yazın: Hareket, Zıplama/Etkileşim, Saldırı/Özel hareket. Defterinizde: 5.1 ödevi.",
-        example: "Hareket: yok (kuş kendiliğinden ileri gider) · Zıplama/Etkileşim: ekrana dokunmak · Saldırı/Özel hareket: yok",
+        guidance: "Her eylemin hangi tuşla, düğmeyle ya da dokunuşla yapıldığını yazın. Oyuncuların alıştığı geleneklere uyun; dokunmatik ekranda düğmeleri en az 44 nokta yapın. Defterinizde: 5.1 ödevi.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Silmek: parmağı ekranda sürtmek; silgi parmağın biraz üstünde durur ki silinen leke görünsün. · Duraklatmak: sağ üst köşedeki düğme. · Saldırı ya da özel hareket: yok.",
       },
       {
         type: "template",
         heading: "6. Oyun Döngüsü",
-        guidance: "Oyuncunun sürekli tekrarladığı eylemleri sırayla yazın: ___ → ___ → ___ → tekrar. Defterinizde: 2.2 ödevi.",
-        example: "Zıpla → Boru aralığından geç → Skor artır → Çarparsan biter → Tekrar başla",
+        guidance: "Çekirdek döngünüzü yazın: ___ → ___ → ___ → tekrar. Bir turun ya da bölümün zorluk olarak nasıl yükselip bittiğini bir cümleyle ekleyin. Defterinizde: 2.2 ve 3.1 ödevleri.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Leke belirir → sürterek sil → silgi küçülür, puan artar → yeni lekeler yayılır → tekrar. Her sayfa 60 saniye: öğret, yükselt, nefes (şişe devrilir), yükselt, zirve.",
       },
       {
         type: "template",
         heading: "7. Kazanma ve Kaybetme",
-        guidance: "Oyuncu nasıl kazanır, nasıl kaybeder? Kaybedince ne olur: baştan mı başlar, can mı gider? Defterinizde: 2.2 ödevi.",
-        example: "Kazanma: resmi bir bitiş yok, amaç en yüksek skoru kırmak. Kaybetme: boruya veya yere çarparsa oyun biter, skor sıfırdan başlar.",
+        guidance: "Kazanma koşulunuzun hedef türü ne? Oyuncu nasıl kaybeder, kaybedince ne olur: anında yeniden deneme, kontrol noktası, can sistemi? Defterinizde: 2.2 ödevi.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Kazanma: dört sayfayı da yarısından azı mürekkeple kaplıyken bitirmek (hedef türü: kurtarma). Kaybetme: sayfanın yarısı kaplanırsa ya da silgi biterse o sayfa anında baştan başlar; önceki sayfalar kaybolmaz.",
       },
       {
         type: "template",
         heading: "8. Oyuncu ve Duygu",
-        guidance: "Oyuncumuz kim (yaşı, sevdiği şey)? Neden bu oyunu oynasın? Oynarken hangi duyguları (eğlence, merak, heyecan, korku, güçlü hissetme, rekabet...) yaşasın? Defterinizde: 2.1 ödevi.",
-        example: "Her yaştan, kısa aralarda tekrar tekrar oynamayı seven kişiler. Hissedilecek duygular: gerginlik, tatmin, hafif sinirlenme.",
+        guidance: "Personanızı yazın: kim, ne kadar oyun oynar, ne ister, nerede ve ne kadar oynar? Deneyim hedefiniz ve birincil eğlence türünüz ne? Defterinizde: 1.2, 2.1 ve 3.1 ödevleri.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Elif, 14 yaşında, 9. sınıf. Gündelik oyuncu, uzun öğreticileri atlar; arkadaşlarıyla skor yarıştırmak ister; serviste telefonda 3-5 dakika, sessiz oynar. Deneyim hedefi: telaş. Birincil eğlence türü meydan okuma, ikincil duyum.",
       },
       {
         type: "template",
         heading: "9. Görsel Dünya",
-        guidance: "2D mi 3D mü? Dünya ve karakterler nasıl görünüyor? Ana renkleriniz neler? İlham aldığınız oyun, film ya da çizgi film var mı? Defterinizde: 4.2 ödevi.",
-        example: "2D, basit piksel sanat. Açık mavi gökyüzü, yeşil borular, sarı ve yuvarlak bir kuş karakteri.",
+        guidance: "2D mi 3D mü, hangi stil? Ana karakter ve düşmanlar nasıl görünüyor (siluet, şekil dili)? 60-30-10 paletiniz ve moodboard'unuzun ortak özelliği ne? Defterinizde: 4.1 ve 4.2 ödevleri.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "2D, tükenmez kalem çizimi; çizgiler hafifçe titrer. Silgi yumuşak köşeli pembe bir dikdörtgen, lekeler düzensiz ve sivri damlalar. Palet: kâğıt beyazı %60, tükenmez mavisi %30, silgi pembesi %10. Moodboard: okul defteri karalamaları ve mürekkep lekeleri.",
       },
       {
         type: "template",
         heading: "10. Ödüller ve Ek Özellikler (İsteğe Bağlı)",
-        guidance: "Oyununuzda para, puan, eşya, can ya da enerji gibi bir şey var mı? Varsa nasıl kazanılıyor ve ne işe yarıyor? Defterinizde: 3.1 ödevi.",
-        example: "Tek kaynak: skor. Yüksek skorlara göre oyun sonunda madalya verilir.",
+        guidance: "Oyununuzda puan, para, eşya, can ya da enerji gibi bir şey var mı? Ödülün türü ne, nasıl kazanılıyor, oyuncunun hangi motivasyonuna hitap ediyor? Defterinizde: 3.1 ödevi.",
+        exampleLabel: "Örnek — “Leke”",
+        example: "Puan: silinen her leke puan verir, büyük leke daha çok. Rekor: sonuç ekranında önceki rekorla yan yana durur ve arkadaşa gönderilebilir (Elif'in rekabet motivasyonu). Yıldız: üç yan görevin her biri bir yıldız verir.",
+      },
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "Ekler ve Gamejam",
+        lead: "On madde oyunun özünü anlatır. Ama defterinizde başka değerli parçalar da var: bölüm haritası, düşmanlar, hikâye omurgası. Bu bölüm onları eklere yerleştirmeyi, gamejam'de kapsamı korumayı ve oyununuzu 30 saniyede anlatmayı gösteriyor.",
       },
       {
         type: "concept",
-        heading: "İleri Seviye: Gerçek Bir GDD Ne Kadar Büyür?",
+        heading: "GDD'nin Ekleri",
+        lead: "6.1'de şablonda ayrı maddesi olmayan ödevlerin GDD'nin sonuna ek olarak konacağını söylemiştik. Şablonun sonundaki altı ek:",
+        table: {
+          head: ["Ek", "İçerik", "Defterdeki kaynağı"],
+          rows: [["Ek A", "Playtest Notları (Evde)", "6.2"], ["Ek B", "30 Saniyelik Sunum", "1.2, 7.1"], ["Ek C", "Bölüm Haritası", "3.2"], ["Ek D", "Düşmanlar ve Engeller", "4.1"], ["Ek E", "Hikâye Omurgası", "5.2"], ["Ek F", "Değişiklik Kaydı", "6.1, 6.2"]],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Kapsamı Küçültmek",
+        lead: "Gamejam'de her ekip, planladığından daha az iş bitirir. Bunun için özellikleri baştan sıralamak gerekir. Yazılım geliştirici Dai Clegg'in (1994) MoSCoW yöntemi, özellikleri dört kutuya ayırır; “Leke” için:",
+        table: {
+          head: ["Kutu", "Anlamı", "“Leke”"],
+          rows: [
+            ["Olmazsa olmaz", "Bunlar olmadan oyun yok", "Silmek, yayılan lekeler, süre, kaybetme, silginin küçülmesi (kanca)"],
+            ["Olsa iyi olur", "Oyunu belirgin biçimde güçlendirir", "Mürekkep şişesi, dört sayfa, juice (kırıntı, ses)"],
+            ["Zaman kalırsa", "Cilalar", "Sıçrayan leke, yan görevler, uyarlanabilir müzik, skor paylaşma"],
+            ["Bu sefer yok", "Bilerek dışarıda bırakılır", "Farklı silgiler, çok oyunculu, canavar savaşı"],
+          ],
+        },
         bullets: [
-          "Sizin 10 maddelik şablonunuz gamejam için yeterli ve sağlam bir başlangıç.",
-          "Profesyonel GDD'ler çok daha büyük olabilir. Örneğin Silent Hill 2 üzerine hazırlanmış bir GDD analizi; oyun konsepti, mekanikler, arayüz, görsel, ses ve müzik, hikâye, bölüm haritaları ve pazar analizi gibi başlıklarla 60 sayfaya kadar çıkıyor.",
-          "Fikriniz büyüdükçe GDD'niz de büyüyebilir, ama her zaman net bir özetle başlayın.",
+          "Kural: “olmazsa olmaz” kutusu bitmeden bir alt kutuya geçilmez. Bitmiş küçük bir oyun, yarım kalmış büyük bir oyundan her zaman iyidir.",
         ],
       },
       {
         type: "concept",
-        heading: "Şimdi Sıra Sizde",
-        bullets: [
-          "Ekibinizle 10 başlığı kendi oyununuz için doldurun. Tasarım Defterlerinizdeki cevaplardan başlayın.",
-          "Ekipte birden fazla fikir varsa oylayın ya da birleştirin: hangisini en kısa sürede oynanabilir hâle getirebilirsiniz?",
-          "Herkes aynı GDD'yi okuyunca oyun hakkında aynı şeyi anlamalı; bu yüzden kısa ve net yazın.",
+        heading: "30 Saniyelik Sunum",
+        lead: "Sunum (pitch), oyununuzu dinleyenin gözünde canlandırmaktır. Teknik ayrıntı değil, net bir resim hedeflenir. Şablondaki Ek B'ye yazılacak metin dört parçadan oluşur:",
+        steps: [
+          { label: "Ad", text: "Oyunun adı ve türü." },
+          { label: "Yüksek konsept", text: "GDD'nin 2. maddesi, kancasıyla birlikte." },
+          { label: "Duygu", text: "Oyuncu oynarken ne hissedecek? Deneyim hedefi." },
+          { label: "Neden eğlenceli?", text: "Oyunu benzerlerinden ayıran an: “son saniyede şişeye yetişmek.”" },
         ],
-      },
-      {
-        type: "concept",
-        heading: "Takım Lideri Sahneye Çıkıyor",
-        bullets: [
-          "Sıradaki 3 başlık (playtest, kapsam, sunum) genellikle Takım Lideri'nin koordine ettiği işlerdir.",
-          "Zaman takibi, ekip içi iletişim ve “şimdi ne yapıyoruz?” sorusuna cevap vermek onun görevidir.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Kâğıt Prototip ve Playtest",
-        bullets: [
-          "GDD bitince iş bitmez. Oyununuzu kâğıt, kalem ve birkaç parçayla hemen oynanabilir hâle getirin: bir kişi “bilgisayar” olur, kuralları uygular.",
-          "Evde bir aile üyenize ya da ekip dışından bir arkadaşınıza oynatın. Oyuncuyu izleyin, açıklama yapmayın: nerede duraksadı, ne zaman güldü, ne zaman sıkıldı?",
-          "Gördüklerinizi şablondaki “Playtest Notları” bölümüne yazın ve küçük değişiklikler yapın. Bu döngü gamejam boyunca tekrar eder.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Kapsamı Küçültün (Scope)",
-        bullets: [
-          "Gamejam'de zaman çok az. Önce en basit oynanabilir hâli (tek mekanik, tek bölüm) bitirin.",
-          "Fikrinizin olmazsa olmaz tek cümlesini (2. madde) koruyun, gerisini gerekirse atın.",
-          "Bitmiş küçük bir oyun, yarım kalmış büyük bir oyundan her zaman daha iyidir.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Fikrinizi Sunun (Pitch)",
-        bullets: [
-          "Oyununuzu sınıfa 30 saniyede anlatın: oyun adı + tek cümlelik fikir + oyuncu ne hissedecek + neden eğlenceli. Metni şablondaki “30 Saniyelik Sunum” bölümüne yazın.",
-          "Teknik ayrıntı değil, dinleyenin gözünde canlanan net bir resim hedefleyin.",
-          "Karakter krokiniz ya da bölüm çiziminiz varsa gösterin; bir resim uzun bir açıklamadan daha çok şey anlatır.",
-        ],
+        quote: {
+          text: "Leke, tek parmakla oynanan bir refleks oyunu. Defterinize dökülen mürekkep yayılıyor, siz de silgiyle siliyorsunuz; ama her silişte silginiz küçülüyor. Bir dakika boyunca nefes almadan, son saniyede devrilen şişeye yetişmeye çalışacaksınız.",
+          source: "“Leke”nin 30 saniyelik sunumu",
+        },
       },
       {
         type: "concept",
         heading: "Boş Şablonu İndirin",
+        lead: "Ekibinizle doldurmak için boş GDD şablonunu Word (.docx) formatında indirin. Her ekip kendi kopyasını doldurur.",
         bullets: [
-          "Ekibinizle doldurmak için boş GDD şablonunu Word (.docx) formatında indirin.",
-          "Her ekip kendi kopyasını doldurur. Şablonun sonunda playtest notları ve sunum için iki ek bölüm var.",
+          "Şablonda on madde ve altı ek var. Her maddenin altında, slaytlardakiyle aynı yönerge ve defterdeki kaynağı yazıyor.",
+          "Önce boş kalan maddeleri doldurun; 6.1 ödevinde çıkardığınız listeyi kullanın.",
+          "Herkes aynı GDD'yi okuduğunda oyun hakkında aynı şeyi anlamalı; kısa ve net yazın.",
         ],
         download: { label: "GDD Şablonunu İndir (.docx)", href: "GDD-Sablonu.docx" },
+      },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "48 Saatlik Plan",
+        lead: "Gamejam'de zaman, tasarımın en sıkı kısıtıdır. Deneyimli ekiplerin kullandığı kaba bir plan:",
+        table: {
+          head: ["Zaman", "İş"],
+          rows: [
+            ["İlk 2 saat", "Tema, fikir seçimi, GDD'nin 1-3. maddeleri ve MoSCoW listesi"],
+            ["2-6. saat", "Kâğıt prototip ve ilk test; çekirdek döngü kararı"],
+            ["1. günün sonu", "Gri kutu: “olmazsa olmaz” kutusu oynanır hâlde"],
+            ["2. gün", "Test, düzeltme, “olsa iyi olur” kutusu; görseller ve sesler eklenir"],
+            ["Son 4 saat", "Yeni özellik yok: hata düzeltme, cila, sunum ve yükleme"],
+          ],
+        },
+      },
+      {
+        type: "homework",
+        heading: "Gamejam'e Kadar",
+        bullets: [
+          "Ekibinizle GDD şablonunun on maddesini doldurun. “Leke” örneklerindeki ayrıntı düzeyini hedefleyin.",
+          "Ekleri tamamlayın: en azından Ek A (playtest notları) ve Ek B (30 saniyelik sunum) dolu olsun.",
+          "Oyununuzun MoSCoW listesini “Leke” tablosundaki gibi yazın.",
+          "30 saniyelik sunumunuzu sesli olarak, saat tutarak prova edin.",
+        ],
       },
     ],
   },

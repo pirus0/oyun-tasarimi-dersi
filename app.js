@@ -293,7 +293,7 @@
             <p>${escapeHtml(slide.guidance)}</p>
           </div>
           <div class="template-row template-example">
-            <span class="template-row-label">${icon("lightbulb", "#F5B93E")}Örnek — Flappy Bird</span>
+            <span class="template-row-label">${icon("lightbulb", "#F5B93E")}${escapeHtml(slide.exampleLabel || "Örnek")}</span>
             <p>${escapeHtml(slide.example)}</p>
           </div>
         </div>
