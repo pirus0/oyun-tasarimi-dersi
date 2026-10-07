@@ -2202,93 +2202,289 @@ const WEEKS = [
       },
     ],
   },
+  // ---------------------------------------------------------------------
+  // HAFTA 4.2 — Kaynaklar: Studio MDHR (Cuphead, 2017), Eric Barone
+  // (Stardew Valley, 2016), Playdead (Limbo, 2010), ustwo / Ken Wong
+  // (Monument Valley, 2014), Koji Kondo (Super Mario Bros. müziği, 1985),
+  // Tomas Pettersson (sfxr, Ludum Dare 10, 2007).
+  // ---------------------------------------------------------------------
   {
     id: "4.2",
-    title: "Görsel Tasarım ve Oyun Stili",
+    title: "Görsel Stil ve Ses",
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["Görsel stil seçimi, 2D mi 3D mü?", "Ses ve müzik de bir tasarım kararıdır."],
+        heading: "Görsel Stil ve Ses",
+        lead: "4.1'de karakterlerin okunur olması gerektiğini gördük. Şimdi bakışımızı bütün oyuna genişletiyoruz: karakterler, bölümler ve arayüz aynı dünyaya ait görünmeli ve duyulmalı. Bu ders, GDD'nin 9. maddesini, “Görsel Dünya”yı dolduracak kararları anlatır.",
+        steps: [
+          { label: "Görsel stil seçmek", text: "Stiller, maliyetleri ve seçim ölçütleri." },
+          { label: "Okunabilirlik ve bütünlük", text: "Oyuncu neye bakacağını nasıl bilir? Parçalar nasıl aynı dünyaya ait görünür?" },
+          { label: "Renk ve palet", text: "Renk uyumları, kısıtlı palet ve moodboard." },
+          { label: "Ses", text: "Ses türleri, sesin taşıdığı bilgi ve gamejam kaynakları." },
+        ],
+      },
+
+      // --- Bölüm 1 ---
+      {
+        type: "section",
+        heading: "Görsel Stil Seçmek",
+        lead: "Görsel stil, oyunun nasıl göründüğüne dair bütün kararların toplamıdır. Bu karar zevke bırakılmaz: stil, oyunun deneyim hedefine hizmet etmeli, hedef kitleye hitap etmeli ve ekibin elindeki zamanla bitirilebilmelidir.",
       },
       {
         type: "concept",
-        heading: "Oyunların Görsel Stilleri",
-        bullets: [
-          "Piksel sanat, çizgi film tarzı, gerçekçi, minimal.",
-          "Stil, oyunun havasını ve kime hitap ettiğini anlatır.",
-          "En güzel görünen değil, ekibinizin kısa sürede bitirebileceği stili seçin.",
+        heading: "Görsel Stil Nedir?",
+        lead: "Bir oyunun bütün görselleri, aynı kurallara göre üretildiğinde bir stil oluşturur. Bu kuralları belirleyen ve herkesin onlara uymasını sağlayan işe sanat yönetimi denir.",
+        terms: [
+          { term: "Sanat stili", en: "art style", def: "Görsellerin ortak kuralları: çizgi, şekil, renk, ışık, doku, ayrıntı düzeyi." },
+          { term: "Stilizasyon", def: "Gerçekliği bilerek sadeleştirmek ya da abartmak. Stilize oyunlar daha az ayrıntıyla daha çok şey anlatır ve yıllar geçtikçe eskimiş görünmez." },
+          { term: "Sanat yönetimi", en: "art direction", def: "Stilin kurallarını koymak ve oyunun her parçasının bu kurallara uymasını sağlamak." },
         ],
       },
       {
         type: "concept",
-        heading: "2D ve 3D Tasarım",
+        heading: "Stiller ve Maliyetleri",
+        lead: "Her stilin bir üretim maliyeti vardır: bir karakteri, bir bölümü, bir animasyonu o stilde yapmak ne kadar sürer? Gamejam'de stil seçimi her şeyden önce bir zaman kararıdır.",
+        table: {
+          head: ["Stil", "Nasıl görünür?", "Örnek", "Üretim maliyeti"],
+          rows: [
+            ["Piksel sanat", "Görünür, büyük kare piksellerle çizim", "Celeste, Stardew Valley", "Düşük-orta: küçük boyutta hızlı, animasyonda emek ister"],
+            ["Düz / vektör", "Düz renkli, sade geometrik şekiller", "Among Us, Monument Valley", "Düşük: şekiller kolay çizilir ve hareket ettirilir"],
+            ["El çizimi", "Kâğıtta ya da tablette çizilmiş kareler", "Cuphead, Hollow Knight", "Yüksek: her animasyon karesi ayrı çizilir"],
+            ["Low-poly 3D", "Az yüzeyli, keskin köşeli 3D modeller", "Superhot, Untitled Goose Game", "Orta: 3D bilgisi ister ama doku gerektirmez"],
+            ["Gerçekçi 3D", "Fotoğrafa yakın modeller ve ışık", "The Last of Us", "Çok yüksek: büyük ekipler ve yıllar ister"],
+          ],
+        },
+      },
+      {
+        type: "examples",
+        heading: "Vaka: İki Uç",
+        image: {
+          src: "assets/lesson/cuphead.png",
+          caption: "Cuphead (2017): 1930'ların çizgi filmleri gibi kâğıda elle çizilmiş kareler.",
+          credit: "Studio MDHR. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Stil seçiminin maliyetini gösteren iki bağımsız oyun:",
+        terms: [
+          { term: "Cuphead", def: "Chad ve Jared Moldenhauer kardeşler, Fleischer stüdyosunun 1930'lardaki çizgi filmlerini taklit etmek için her animasyon karesini kâğıda elle çizdi. Oyun yedi yılda bitti; kardeşler stüdyoyu ayakta tutmak için evlerini ipotek ettirdi." },
+          { term: "Stardew Valley", def: "Eric Barone oyunun kodunu, piksel sanatını ve müziğini tek başına, yaklaşık dört buçuk yılda yaptı. Küçük piksel boyutu, tek kişinin yüzlerce nesne ve karakter çizmesini mümkün kıldı." },
+        ],
         bullets: [
-          "2D: daha hızlı üretilir, küçük ekipler ve kısa süreler için uygundur.",
-          "3D: çok daha fazla emek ister, derinlik ve mekân hissi verir.",
-          "Gamejam'lerde çoğu ekip 2D seçer; kısa sürede bitirmek daha kolaydır.",
+          "Ders: İki stil de oyununa uygundu. Ama Cuphead'in stili, ekibinin zamanını yıllarca yuttu. Gamejam'de 48 saatiniz var.",
         ],
       },
       {
         type: "concept",
-        heading: "Renk Seçimi ve Görsel Bütünlük",
+        heading: "Örnek: “Leke” İçin Stil Seçimi",
+        lead: "2.2'deki mekanik seçimi gibi, aday stilleri ölçütlerle değerlendiriyoruz. Ölçütler: deneyim hedefi ve sütunlar (1.2), hedef kitle (2.1), ekibin becerisi ve süre.",
+        table: {
+          head: ["Aday", "Sütunlara uygun", "Hedef kitleye uygun", "Üretim", "Karar"],
+          rows: [
+            ["Piksel sanat", "Kısmen: defter hissi vermez", "Evet", "Orta", "Çıkar"],
+            ["Gerçekçi defter fotoğrafı", "Evet", "Evet", "Animasyonu zor", "Çıkar"],
+            ["Tükenmez kalem çizimi", "Evet: “okul defteri” sütununun kendisi", "Evet: tanıdık", "Kolay: tek renk çizgi", "Seç"],
+          ],
+        },
         bullets: [
-          "Az sayıda ana renk seçin ve hep onları kullanın.",
-          "Tüm karakterler ve alanlar aynı stilde olmalı; biri piksel, biri gerçekçi olursa göz rahatsız olur.",
-          "Oyuncunun dikkat etmesi gereken şeyler (düşman, altın) arka plandan kolayca ayrılmalı.",
+          "Ucuz canlılık: aynı çizimi üç kez hafifçe farklı çizip sırayla göstermek, çizgilerin titreşmesini sağlar (line boil). Tek bir hareketsiz çizim bile canlı görünür.",
+        ],
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "Okunabilirlik ve Bütünlük",
+        lead: "Güzel bir sahne, oyuncunun neye bakması gerektiğini söylemiyorsa oyunu zorlaştırır. Parçaları güzel ama birbirine benzemeyen bir oyun ise dağınık görünür. Bu bölüm, ekrandaki her şeyin hem okunur hem de aynı dünyaya ait olmasını anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Görsel Hiyerarşi",
+        image: {
+          src: "assets/lesson/limbo.jpg",
+          caption: "Limbo (2010): oyun tamamen siyah, beyaz ve gri. Karakter ve tehlikeler en koyu değerde, arka plan sise gömülü.",
+          credit: "Playdead. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Görsel hiyerarşi, ekrandaki öğelerin dikkat sırasıdır: oyuncu önce neyi, sonra neyi görmeli? Oyun ekranı genellikle katmanlara ayrılır:",
+        terms: [
+          { term: "Arka plan", def: "Atmosfer ve mekân. Düşük kontrast, soluk renk; oyuncunun gözünü çekmemeli." },
+          { term: "Oynanış katmanı", def: "Oyuncunun dokunduğu, kaçtığı, topladığı her şey. En yüksek kontrast buradadır." },
+          { term: "Ön plan", def: "Oyuncunun önünde kalan süs öğeleri. Seyrek kullanılır; oynanışı kapatmamalı." },
+          { term: "Paralaks", en: "parallax", def: "Uzaktaki katmanların daha yavaş kayması. 2D oyuna derinlik hissi verir." },
         ],
       },
       {
         type: "concept",
-        heading: "Hedef Kitleye Uygun Görsel Stil",
-        bullets: [
-          "Küçük yaş grubu: parlak renkler, yumuşak şekiller.",
-          "Daha büyük yaş grubu: daha karmaşık, gerçekçi ya da karanlık temalar da olabilir.",
-          "2.1'de tarif ettiğiniz oyuncuyu düşünün: bu stil ona hitap ediyor mu?",
+        heading: "Görsel Bütünlük",
+        lead: "Farklı kaynaklardan toplanan ya da farklı kişilerin çizdiği görseller yan yana gelince göz uyumsuzluğu hemen fark eder. Bütünlük için birkaç kuralın bütün oyunda aynı tutulması gerekir:",
+        table: {
+          head: ["Kural", "Bozulursa ne olur?"],
+          rows: [
+            ["Piksel boyutu", "Farklı ölçekte piksellerin aynı ekranda görünmesi (mixels) acemi işi gibi görünür."],
+            ["Çizgi kalınlığı", "Kalın kenar çizgili karakter, ince çizgili dünyada yapıştırılmış gibi durur."],
+            ["Işık yönü", "Gölgeler farklı yönlere düşerse nesneler aynı sahnede değilmiş gibi görünür."],
+            ["Ayrıntı düzeyi", "Sade bir dünyada çok ayrıntılı tek bir nesne, önemli olmadığı hâlde dikkati çeker."],
+            ["Perspektif", "Yandan görünüşlü dünyada üstten çizilmiş nesneler düz durur."],
+          ],
+        },
+      },
+
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "Renk ve Palet",
+        lead: "Renk, oyunun havasını oyuncu tek bir kelime okumadan belirler. Ama rastgele seçilmiş renkler birbiriyle çatışır ve önemli olanı gizler. Tasarımcılar bu yüzden oyuna başlamadan önce sınırlı bir renk paleti seçer ve ona bağlı kalır.",
+      },
+      {
+        type: "concept",
+        heading: "Rengin Üç Boyutu ve Uyumlar",
+        image: {
+          src: "assets/lesson/monument-valley.jpeg",
+          caption: "Monument Valley (2014): turkuaz zemin üzerinde pembe ve krem yapılar. Tamamlayıcı renkler yapıyı arka plandan koparır.",
+          credit: "ustwo games. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Her renk üç boyutla tarif edilir: ton (hue: kırmızı, mavi), doygunluk (saturation: canlı ya da soluk) ve 4.1'de gördüğümüz değer (value: açık ya da koyu). Renk çemberindeki konumlarına göre renkler arasında uyumlar kurulur:",
+        terms: [
+          { term: "Tamamlayıcı", en: "complementary", def: "Çemberde karşı karşıya duran renkler: mavi-turuncu, kırmızı-yeşil. Güçlü kontrast; önemli olanı öne çıkarır." },
+          { term: "Komşu", en: "analogous", def: "Çemberde yan yana duran renkler. Sakin, bütünlüklü bir hava verir." },
+          { term: "Sıcak / soğuk", def: "Kırmızı, turuncu, sarı öne çıkar ve enerji verir; mavi, yeşil, mor geri çekilir ve sakinleştirir." },
         ],
       },
       {
         type: "concept",
-        heading: "Ses ve Müzik de Bir Tasarım Kararıdır",
+        heading: "Kısıtlı Palet",
+        lead: "Kısıtlı palet (limited palette), oyunun bütün görsellerinin az sayıda, önceden seçilmiş renkle yapılmasıdır. Eski konsollarda bu donanımın zorunluluğuydu; bugün bütünlük için bilerek seçilir. İç mimarlıktan gelen 60-30-10 kuralı, renklerin ekrana nasıl dağıtılacağını söyler:",
+        table: {
+          head: ["Oran", "Görevi", "“Leke”de"],
+          rows: [
+            ["%60 ana renk", "Zemin; gözü dinlendirir", "Kâğıt beyazı ve açık mavi satır çizgileri"],
+            ["%30 ikincil renk", "Dünyanın ve tehdidin rengi", "Tükenmez kalem mavisi: çizimler ve mürekkep lekeleri"],
+            ["%10 vurgu rengi", "Oyuncunun bakması gereken şey", "Silgi pembesi: sahnedeki tek sıcak renk"],
+          ],
+        },
         bullets: [
-          "Müzik ve ses efektleri, görsel stil kadar oyunun havasını belirler. Korku oyunuyla çizgi film oyununun müziği aynı olamaz.",
-          "Doğru anda çalan bir “ding” sesi, oyuncuya başarılı olduğunu ekrana bakmadan da hissettirir.",
-          "Gamejam'de hazır, telifsiz ses kütüphaneleri kullanmak tamamen normaldir; beste yapmak zorunda değilsiniz.",
+          "Değer testi: ekran görüntüsünü siyah-beyaza çevirin. Silgi ve lekeler hâlâ kâğıttan ayrılıyorsa paletiniz okunurdur.",
         ],
       },
       {
         type: "concept",
-        heading: "Ses Efekti, Müzik, Ortam Sesi Farkı",
-        bullets: [
-          "Ses efekti (SFX): anlık eylemlere tepki verir. Zıplama, çarpışma, puan alma sesi gibi kısa ve nettir.",
-          "Müzik: sahnenin genel duygusunu taşır, sürekli çalar. Tekrar tekrar dinlenince sıkmamalı.",
-          "Ortam sesi: mekânı gerçek hissettirir. Rüzgâr, kalabalık uğultusu, su sesi gibi arka plan katmanıdır.",
+        heading: "Moodboard",
+        image: {
+          src: "assets/lesson/moodboard.jpg",
+          caption: "Bir tasarım stüdyosunun duvarındaki moodboard: çizimler, kumaş örnekleri, fotoğraflar ve renk kartları bir arada.",
+          credit: "Aminabell, CC BY-SA 4.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Moodboard (ilham panosu), bir projenin görsel havasını tarif etmek için toplanan görsellerin bir araya getirildiği panodur. Ekipteki herkesin aynı şeyi hayal etmesini sağlar.",
+        steps: [
+          { label: "Topla", text: "Oyunlardan, filmlerden, fotoğraflardan ve gerçek nesnelerden 20-30 görsel. Sadece oyunlara bakmayın." },
+          { label: "Ele", text: "Deneyim hedefinize uymayanları çıkarın; 8-12 görsel bırakın." },
+          { label: "Ortak noktayı yaz", text: "Kalan görsellerin ortak özelliği ne? Çizgi, ışık, doku, ayrıntı düzeyi." },
+          { label: "Paleti çıkar", text: "Görsellerden 3-5 renk seçin ve 60-30-10 ile dağıtın." },
+        ],
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Ses",
+        lead: "Oyuncular sesi çoğu zaman fark etmez, ama sesi kapatınca oyunun ne kadar boşaldığını hemen hisseder. Ses, oyunun havasını taşır, oyuncuya bilgi verir ve 3.1'deki juice'un yarısını oluşturur.",
+      },
+      {
+        type: "concept",
+        heading: "Oyunda Ses Türleri",
+        table: {
+          head: ["Tür", "Görevi", "Örnek"],
+          rows: [
+            ["Ses efekti (SFX)", "Anlık bir eyleme ya da olaya tepki verir; kısa ve nettir", "Zıplama, çarpışma, altın toplama"],
+            ["Müzik", "Sahnenin genel duygusunu taşır, sürekli çalar", "Bölüm müziği, boss müziği"],
+            ["Ortam sesi", "Mekânı gerçek hissettiren arka plan katmanı", "Rüzgâr, kalabalık uğultusu, su sesi"],
+            ["Arayüz sesi", "Menüde ve HUD'da yapılan işlemleri onaylar", "Düğme tıklaması, puan sayacı"],
+          ],
+        },
+        terms: [
+          { term: "Diegetik ses", def: "Kaynağı oyun dünyasının içinde olan, karakterlerin de duyduğu ses: ayak sesi, oyundaki radyo. Arka plan müziği ise diegetik olmayan sestir; onu yalnızca oyuncu duyar." },
         ],
       },
       {
         type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Minecraft: blok ve piksel stili, az detayla kocaman bir dünya",
-          "Genshin Impact: anime tarzı karakterler, ayrıntılı dünya",
-          "Among Us: minimal ve sade stil, küçük bir ekip için ideal",
+        heading: "Vaka: Koji Kondo ve Super Mario Bros.",
+        image: {
+          src: "assets/lesson/koji-kondo.jpg",
+          caption: "Koji Kondo, Super Mario Bros. (1985) ve The Legend of Zelda'nın (1986) bestecisi.",
+          credit: "Keith Mlynarski (atıf ile kullanım). Kaynak: Wikimedia Commons",
+        },
+        lead: "Koji Kondo, Super Mario Bros.'un ana temasını ekranı izlemeden değil, oyunun prototipini oynayarak besteledi. Müziği oynanışın bir parçası yapan üç karar:",
+        terms: [
+          { term: "Hareketin ritmi", def: "İlk denemesi yavaş bir melodiydi; Mario'nun koşma ve zıplama hızına uymadığı için atıldı. Son hâli, oyuncunun hareket ritmine göre yazıldı." },
+          { term: "Kısa döngü", def: "Kartuşta az yer vardı. Melodiler kısa tutuldu ve tekrar ettikçe sıkmayacak şekilde kuruldu." },
+          { term: "Müzik bilgi verir", def: "Süre 100'ün altına düşünce müzik hızlanır. Oyuncu sayaca bakmadan acele etmesi gerektiğini anlar." },
         ],
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
+        type: "concept",
+        heading: "Ses Bilgi Taşır",
+        lead: "Ses yalnızca süs değildir; oyuncuya ekrana bakmadan bilgi verir. Her önemli olayın bir sesi olmalı, her sesin bir anlamı olmalıdır.",
+        table: {
+          head: ["İşlev", "Ne yapar?", "“Leke”de"],
+          rows: [
+            ["Geri bildirim", "Eylemin gerçekleştiğini onaylar", "Sürterken kâğıt hışırtısı, leke bitince kısa bir “çıt”"],
+            ["Uyarı (telgraf)", "4.1'deki telgrafın sesli hâli", "Mürekkep şişesi devrilmeden önce cam tıngırtısı"],
+            ["Ekran dışı bilgi", "Oyuncunun bakmadığı yerde olanı duyurur", "Şişenin sesi, devrildiği yönden gelir"],
+            ["Durum", "Oyunun gidişatını sürekli hissettirir", "Sayfanın %40'ı kaplanınca müzik hızlanır"],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Gamejam'de Görsel ve Ses Kaynakları",
+        lead: "Gamejam'de her sesi kaydetmek, her müziği bestelemek gerekmez. Ücretsiz araçlar ve kütüphaneler serbestçe kullanılabilir; tek şart lisansa uymaktır.",
+        table: {
+          head: ["Kaynak", "Ne verir?"],
+          rows: [
+            ["sfxr / jsfxr", "Tek tıkla retro ses efekti üretir. Tomas Pettersson 2007'de Ludum Dare gamejam'inde katılımcılar için yaptı."],
+            ["Freesound", "Kullanıcıların yüklediği yüz binlerce ses kaydı."],
+            ["OpenGameArt, Kenney", "Oyunlar için hazırlanmış ücretsiz görsel, ses ve müzik paketleri."],
+          ],
+        },
+        terms: [
+          { term: "CC0", def: "Hiçbir koşul yok; isim vermeden de kullanılabilir." },
+          { term: "CC BY", def: "Kullanılabilir, ama yapanın adı oyunun jeneriğinde ya da açıklamasında yazılmalıdır." },
+        ],
         bullets: [
-          "Görselleri sade olduğu hâlde çok sevdiğiniz bir oyun var mı?",
-          "Aklınızda kalan bir oyun sesi ya da müziği var mı? Neden aklınızda kalmış olabilir?",
+          "Jam'in kurallarını okuyun: bazı jam'ler hazır varlıkları yasaklar ya da beyan edilmesini ister.",
+        ],
+      },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "Uyarlanabilir Müzik",
+        lead: "Bazı oyunlarda müzik, oynanışa göre kendini değiştirir: uyarlanabilir müzik (adaptive music). İki yaygın teknik vardır. Dikey katmanlama (vertical layering): aynı parçanın davul, bas ve melodi gibi katmanları ayrı kaydedilir; tehlike arttıkça yeni katmanlar eklenir. Yatay sıralama (horizontal resequencing): müzik kısa parçalara bölünür ve oyunun durumuna göre bir sonraki parça seçilir. “Leke”de dikey katmanlama çok ucuzdur: sayfa doldukça müziğe yeni bir katman eklemek, telaşı müziğin kendisine taşır.",
+      },
+
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Sanat stili / sanat yönetimi", en: "art style / art direction", def: "Görsellerin ortak kuralları / bu kuralların korunması." },
+          { term: "Stilizasyon", def: "Gerçekliği bilerek sadeleştirmek ya da abartmak." },
+          { term: "Görsel hiyerarşi", def: "Ekrandaki öğelerin dikkat sırası." },
+          { term: "Oynanış katmanı", def: "Oyuncunun etkileşime girdiği, en yüksek kontrastlı katman." },
+          { term: "Ton / doygunluk / değer", en: "hue / saturation / value", def: "Rengin üç boyutu." },
+          { term: "Tamamlayıcı / komşu renk", en: "complementary / analogous", def: "Renk çemberinde karşı / yan yana duran renkler." },
+          { term: "Kısıtlı palet, 60-30-10", def: "Az sayıda renk; ana, ikincil ve vurgu rengi oranı." },
+          { term: "Moodboard", def: "Görsel havayı tarif eden ilham panosu." },
+          { term: "SFX / ortam sesi / diegetik ses", def: "Eylem sesi / mekân sesi / oyun dünyasının içinden gelen ses." },
+          { term: "CC0 / CC BY", def: "Koşulsuz / isim vererek kullanılabilen lisans." },
         ],
       },
       {
         type: "homework",
         heading: "Ödev",
         bullets: [
-          "Kendi oyununuz için 2D mi 3D mü, hangi stil? 3 ana renk seçin ve her birinin neden seçildiğini yazın (GDD madde 9).",
-          "Oyununuzdaki 3 önemli an için birer ses tarif edin (örn. puan alma: kısa, tiz bir “ding”).",
-          "Evde sevdiğiniz bir oyunu 5 dakika sesli, 5 dakika sessiz oynayın. Ne değişti? 2 cümle yazın.",
+          "En az üç aday stili “Leke” tablosundaki gibi sütunlarınıza, hedef kitlenize ve üretim maliyetine göre değerlendirin; birini seçin ve 2D mi 3D mi olduğunu yazın (GDD madde 9).",
+          "8-12 görsellik bir moodboard hazırlayın (kâğıda yapıştırarak ya da dijital). Altına görsellerin ortak özelliğini bir cümleyle yazın.",
+          "Moodboard'unuzdan 3 renk seçin ve 60-30-10 tablosuna yerleştirin: hangisi zemin, hangisi dünya, hangisi oyuncunun bakması gereken şey? (GDD madde 9)",
+          "Oyununuzdaki dört önemli olay için “Ses Bilgi Taşır” tablosunu doldurun. Her ses için bir kaynak seçin (sfxr, Freesound ya da kendi kaydınız) ve lisansını not edin.",
+          "Evde: sevdiğiniz bir oyunu 5 dakika sesli, 5 dakika sessiz oynayın. Sessizken hangi bilgiyi kaçırdınız? 2 cümle yazın.",
         ],
       },
     ],
