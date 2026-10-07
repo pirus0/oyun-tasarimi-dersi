@@ -206,6 +206,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Tanımdaki Anahtar Kavramlar",
+        bridge: "Bu beş kavramı sıradaki sayfada üç tanıdık oyunda arayalım.",
         lead: "Salen ve Zimmerman'ın tanımı tasarımcılar için en kullanışlı olanıdır, çünkü her kelimesi tasarlanabilir bir parçayı gösterir.",
         terms: [
           { term: "Sistem", en: "system", def: "Birbirine bağlı parçalardan oluşan bütün. Bir parçayı değiştirdiğinizde diğerleri de etkilenir: futbolda kaleyi büyütürseniz hem skor hem de oyuncuların taktiği değişir." },
@@ -214,6 +215,17 @@ const WEEKS = [
           { term: "Kural", en: "rule", def: "Oyuncunun neyi yapıp neyi yapamayacağını belirleyen sınır. Kurallar oyunu kolaylaştırmaz, zorlaştırır." },
           { term: "Ölçülebilir sonuç", en: "quantifiable outcome", def: "Oyun sonunda kimin kazandığı, kaybettiği ya da kaç puan aldığı belli olur." },
         ],
+      },
+      {
+        type: "gallery",
+        heading: "Tanım Üç Oyunda",
+        lead: "Önceki sayfadaki beş kavram, en eski sokak oyunlarında da, kutu oyunlarında da aynı biçimde bulunur:",
+        gallery: [
+          { src: "assets/lesson/saklambac.jpg", caption: "Saklambaç: çatışma ebe ile saklananlar arasında; kural “sayarken bakmak yok”; sonuç, kimin yakalandığı.", credit: "Friedrich Eduard Meyerheim (muhtemelen), kamu malı. Kaynak: Wikipedia" },
+          { src: "assets/lesson/satranc.jpg", caption: "Satranç: her taşın hareketi bir kural; taşlar birbirine bağlı bir sistem; sonuç, mat.", credit: "MichaelMaggs, CC BY-SA 3.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/monopoly.jpg", caption: "Monopoly: oyun parası yapaydır, gerçek hayatta bir şey kaybettirmez; sonuç, iflas eden oyuncu.", credit: "Horst Frank, CC BY-SA 3.0. Kaynak: Wikimedia Commons" },
+        ],
+        bridge: "Bir şeyin oyun olup olmadığını bu kavramlarla sınayabiliriz. Sıradaki sayfa, oyunun ayrıldığı sihirli çemberi anlatıyor.",
       },
       {
         type: "concept",
@@ -339,6 +351,7 @@ const WEEKS = [
       {
         type: "extra",
         heading: "Caillois'nın Dört Oyun Kategorisi",
+        bridge: "Dört kategorinin gündelik hayattaki karşılıklarını sıradaki sayfada görelim.",
         lead: "Sosyolog Roger Caillois (1958), oyunları oyuncuya yaşattıkları temel deneyime göre dört gruba ayırır. Çoğu oyun birden fazla kategoriyi birleştirir.",
         table: {
           head: ["Kategori", "Deneyim", "Örnek"],
@@ -349,6 +362,19 @@ const WEEKS = [
             ["Ilinx", "Baş dönmesi, hız ve sarsılma hissi", "Salıncak, yarış oyunları"],
           ],
         },
+      },
+      {
+        type: "gallery",
+        extra: true,
+        heading: "Dört Kategori, Dört Fotoğraf",
+        lead: "Caillois'nın kategorileri yalnızca video oyunlarını değil, bütün oyunları kapsar. Önceki tablodaki dört deneyim, bir parkta da görülebilir:",
+        gallery: [
+          { src: "assets/lesson/satranc-park.jpg", caption: "Agon: Paris'te bir parkta satranç. Kazanan, daha iyi oynayandır.", credit: "Jorge Royan, CC BY-SA 3.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/zar.jpg", caption: "Alea: zar atıldığında sonuç oyuncunun elinde değildir.", credit: "PierreSelim, CC BY 3.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/evcilik.jpg", caption: "Mimicry: 1930'larda kılık değiştirip başka biri olma oyunu.", credit: "VinnieRattolle, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/salincak.jpg", caption: "Ilinx: salıncağın verdiği hız ve baş dönmesi.", credit: "Peachyeung316, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+        ],
+        bridge: "Kendi fikrinizin hangi kategoriye girdiğini bilmek, oyuncuya ne vaat ettiğinizi gösterir. Son ek bilgi, bir oyunun hangi aşamalardan geçerek üretildiğini anlatıyor.",
       },
       {
         type: "extra",
@@ -434,6 +460,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Fikriniz Hangi Kapıdan Girdi?",
+        bridge: "Tablodaki ilk kapının, mekaniğin, en ünlü örneğini sıradaki sayfada görelim.",
         lead: "Tasarımcılar bir oyuna genellikle dört kapıdan birinden girer. Fikriniz büyük olasılıkla bunlardan birinden doğdu; diğer üçünü tasarım sırasında tamamlamanız gerekecek.",
         table: {
           head: ["Giriş noktası", "Başlangıç sorusu", "Örnek"],
@@ -447,6 +474,16 @@ const WEEKS = [
         bullets: [
           "“Leke” temadan girdi: canlı mürekkep ve okul defteri. Eksik olan, temanın içinde oyuncunun ne yaptığıdır.",
         ],
+      },
+      {
+        type: "gallery",
+        heading: "Mekanikten Doğan Oyun: Portal",
+        lead: "Önceki tablodaki “mekanik” kapısının en ünlü örneği Portal'dır. Öğrenci projesi Narbacular Drop'taki geçit açma fikri, Valve'da bütün bir oyuna dönüştü. Mekanik aynı kaldı; dünya, karakter ve hikâye sonradan değişti.",
+        gallery: [
+          { src: "assets/lesson/narbacular-drop.jpg", caption: "Narbacular Drop (2005): DigiPen öğrencilerinin projesi. İki geçitten birine giren, diğerinden çıkar.", credit: "Nuclear Monkey Software. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/portal-2.jpg", caption: "Portal 2 (2011): aynı geçit mekaniği, üzerine eklenen yeni yan mekaniklerle.", credit: "Valve. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "“Tema” kapısının örneği Papers, Please; sıradaki sayfada bir temanın nasıl mekaniğe dönüştüğünü görüyoruz.",
       },
       {
         type: "examples",
@@ -605,6 +642,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Oyununuzun Türü",
+        bridge: "Tablodaki türlerden dördünün ekranda nasıl göründüğünü sıradaki sayfada görelim.",
         lead: "Tür (genre), oyunun temel eylemine ve yapısına göre yapılan sınıflandırmadır. Tür adı, oyuncuya ne yapacağını önceden söyler. Türünüzü temel fiilinize bakarak seçin.",
         table: {
           head: ["Tür", "Temel eylem", "Örnek"],
@@ -618,6 +656,18 @@ const WEEKS = [
             ["Kum havuzu (sandbox)", "Serbestçe inşa etmek ve keşfetmek", "Minecraft, Roblox"],
           ],
         },
+      },
+      {
+        type: "gallery",
+        heading: "Türler Ekranda",
+        lead: "Tür adı oyuncuya ne yapacağını söyler; ekran görüntüsü de. Önceki tablodaki dört türün temel eylemi, ekrana bakınca okunur:",
+        gallery: [
+          { src: "assets/lesson/celeste.png", caption: "Platform: Celeste. Boşluklar ve çıkıntılar, zıplamayı çağırır.", credit: "Maddy Makes Games, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/tetris-ilk-surum.png", caption: "Bulmaca: Tetris. Düşen parça ve boşluk, örüntü kurmayı çağırır.", credit: "Ekran görüntüsü: Alexey Pajitnov. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/botw.jpg", caption: "Aksiyon-macera: Zelda. Uzanan arazi keşfi çağırır.", credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/minecraft-crafting.png", caption: "Kum havuzu: Minecraft. Üretim ekranı inşa etmeyi çağırır.", credit: "Xbox México, CC BY 3.0. Kaynak: Wikimedia Commons" },
+        ],
+        bridge: "Türünüzü seçtikten sonra fikrinizi tek cümleye sığdırma sırası geliyor: yüksek konsept.",
       },
       {
         type: "concept",

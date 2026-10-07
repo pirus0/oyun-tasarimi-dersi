@@ -272,12 +272,14 @@
         sectionTitle = week.slides[i].heading;
       }
     }
+    // Ek bilgi bölümündeki ara görsel sayfaları "extra: true" ile işaretlenir.
+    const isExtra = slide.type === "extra" || slide.extra === true;
     const inSection = sectionNo > 0 && !["intro", "summary", "homework"].includes(slide.type);
     const badgeHtml =
       slide.type === "section"
         ? `<div class="section-number">Bölüm ${sectionNo}</div>`
         : inSection
-        ? `<div class="slide-badge slide-crumb${slide.type === "extra" ? " is-extra" : ""}"><span>${slide.type === "extra" ? "Ek bilgi" : `Bölüm ${sectionNo} · ${escapeHtml(sectionTitle)}`}</span></div>`
+        ? `<div class="slide-badge slide-crumb${isExtra ? " is-extra" : ""}"><span>${isExtra ? "Ek bilgi" : `Bölüm ${sectionNo} · ${escapeHtml(sectionTitle)}`}</span></div>`
         : `<div class="slide-badge">${icon(badge.icon, badge.color)}<span>${badge.label}</span></div>`;
 
     let bodyHtml;
