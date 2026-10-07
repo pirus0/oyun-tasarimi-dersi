@@ -67,6 +67,7 @@
     summary: { label: "Terim Sözlüğü", icon: "bookQuest", color: "#5A4FE0" },
     section: { label: "Bölüm", icon: "map", color: "#5A4FE0" },
     extra: { label: "Ek Bilgi", icon: "lightbulb", color: "#8A8B93" },
+    gallery: { label: "Görseller", icon: "lightbulb", color: "#F5B93E" },
   };
 
   // Tüm slaytlar tek kolon: dev ikon paneli içerik alanını yarıya düşürüyordu.
@@ -341,7 +342,7 @@
   }
 
   // Ders anlatımı blokları; slaytta hangisi varsa bu sırayla çizilir:
-  // lead (paragraf), quote, terms, table, steps, bullets.
+  // lead (paragraf), quote, gallery, terms, table, steps, bullets, bridge.
   function renderBlocks(slide) {
     let html = "";
     if (slide.lead) {
@@ -355,6 +356,19 @@
           <cite>${escapeHtml(slide.quote.source)}</cite>
         </blockquote>
       `;
+    }
+    // Ara görsel sayfası: 1-4 görsel yan yana, her birinin altında açıklama ve kaynak.
+    if (slide.gallery) {
+      html += `<div class="slide-gallery" style="--n:${slide.gallery.length}">${slide.gallery
+        .map(
+          (g) => `
+            <figure>
+              <img src="${escapeHtml(g.src)}" alt="${escapeHtml(g.caption)}" />
+              <figcaption>${escapeHtml(g.caption)}<span class="figure-credit">${escapeHtml(g.credit)}</span></figcaption>
+            </figure>
+          `
+        )
+        .join("")}</div>`;
     }
     if (slide.terms) {
       html += `<dl class="term-list${slide.terms.length >= 6 ? " term-list-grid" : ""}">${slide.terms
@@ -373,7 +387,7 @@
       const rows = slide.table.rows
         .map((r) => `<tr>${r.map((c) => `<td>${escapeHtml(c)}</td>`).join("")}</tr>`)
         .join("");
-      html += `<div class="table-wrap"><table class="slide-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+      html += `<div class="table-wrap"><table class="slide-table${slide.table.rows.length >= 8 ? " slide-table-dense" : ""}"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
     }
     if (slide.steps) {
       html += `<ol class="step-list">${slide.steps
@@ -382,6 +396,10 @@
     }
     if (slide.bullets) {
       html += `<ul class="slide-list">${slide.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`;
+    }
+    // Köprü: bu sayfanın bir sonraki sayfaya nasıl bağlandığını söyleyen kapanış satırı.
+    if (slide.bridge) {
+      html += `<p class="slide-bridge"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${escapeHtml(slide.bridge)}</span></p>`;
     }
     return html;
   }

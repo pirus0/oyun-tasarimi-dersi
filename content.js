@@ -26,6 +26,11 @@
  *   "questions" -> "Sınıfa Sorular" slaytı
  *   "homework"  -> "Ödev" slaytı
  *   "template"  -> GDD şablon alanı (bullets/items yerine: guidance, example)
+ *   "gallery"   -> ara görsel sayfası: gallery: [{ src, caption, credit }] (1-4 görsel)
+ *
+ * Her slaytta opsiyonel "bridge" alanı: sayfanın bir sonraki sayfaya nasıl
+ * bağlandığını söyleyen kapanış satırı. Ara görsel sayfası eklenince, önceki
+ * slayda görsel sayfasına, görsel sayfasına da sonraki slayda köprü yazılır.
  */
 
 const WEEKS = [
@@ -887,6 +892,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Platformlar ve Kısıtları",
+        bridge: "Tablodaki dört platformun oyuncunun elinde nasıl durduğunu bir sonraki sayfada görelim.",
         lead: "Her platform, oyuncunun eline farklı bir kontrol aracı verir ve farklı bir oynama ortamı yaratır.",
         table: {
           head: ["Platform", "Girdi (input)", "Tipik oturum", "Ortam", "Tasarıma etkisi"],
@@ -897,6 +903,17 @@ const WEEKS = [
             ["Tarayıcı", "Fare, klavye ya da dokunma", "Birkaç dakika", "Her yerde, kurulum yok", "Linkle hemen başlayan oyun; gamejam'lerde yaygın"],
           ],
         },
+      },
+      {
+        type: "gallery",
+        heading: "Platformlar Oyuncunun Elinde",
+        lead: "Önceki tablodaki “girdi” ve “ortam” sütunları fotoğraflarda somutlaşıyor: telefonda başparmaklar ekranın üstünde, kumandada parmaklar fiziksel tuşlarda, PC'de bir el klavyede, bir el farede.",
+        gallery: [
+          { src: "assets/lesson/mobil-oyun.jpg", caption: "Mobil: iki başparmak ekranın üstünde; parmak, oyunun bir kısmını kapatır.", credit: "Biswarup Ganguly, CC BY 3.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/switch.jpg", caption: "Konsol: Nintendo Switch'in kumandası ve televizyona bağlanan yuvası. Az sayıda, hissedilen tuş.", credit: "Evan-Amos, kamu malı. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/pc-oyun.jpg", caption: "PC: klavye, fare ve kumanda bir arada. En çok tuş, en hassas nişan.", credit: "Jean-Marc Trappler, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+        ],
+        bridge: "Elin cihazda nasıl durduğu, hangi fiilin o cihazda doğal hissettireceğini belirler. Sıradaki sayfa bu eşleşmeyi anlatıyor.",
       },
       {
         type: "concept",
@@ -1186,6 +1203,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Kazanma Koşulu: Hedef Türleri",
+        bridge: "Bu on türden dördünü sıradaki sayfada tanıdık oyunlarda görelim.",
         lead: "Fullerton oyun hedeflerini on türe ayırır. Seçilen tür, gereken mekanikleri belirler.",
         table: {
           head: ["Hedef türü", "Oyuncu ne yapar?", "Örnek"],
@@ -1202,6 +1220,18 @@ const WEEKS = [
             ["Alt etme", "Bilgi ya da blöfle rakibi aldatır", "Among Us, poker"],
           ],
         },
+      },
+      {
+        type: "gallery",
+        heading: "Hedef Türleri Ekranda",
+        lead: "Tablodaki hedef türleri, oyunun ekranına ya da tahtasına bakınca bile okunur. Hedef, oyunun neyi ön plana koyduğunu belirler:",
+        gallery: [
+          { src: "assets/lesson/satranc.jpg", caption: "Ele geçirme: satrançta her taş, rakibin alabileceği bir birimdir.", credit: "MichaelMaggs, CC BY-SA 3.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/pacman.png", caption: "Kovalama: Pac-Man hayaletlerden kaçar; güç hapını yiyince onları kovalar.", credit: "Bandai Namco, CC BY 3.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/mario-kart-8.jpg", caption: "Yarış: Mario Kart 8'de hedef, bitiş çizgisine rakiplerden önce varmaktır.", credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/tetris-ilk-surum.png", caption: "Hizalama: Tetris'te parçalar boşluksuz bir sıra oluşturacak biçimde dizilir.", credit: "Ekran görüntüsü: Alexey Pajitnov. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "Hedefe ulaşmak oyunun bir yüzü; diğer yüzü, ulaşamayınca ne olduğu. Sıradaki sayfa kaybetmenin bedelini anlatıyor.",
       },
       {
         type: "concept",
@@ -1391,6 +1421,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Eğlencenin Sekiz Türü",
+        bridge: "Bu türlerin birkaçının oyuncuya nasıl göründüğünü bir sonraki sayfada görelim.",
         lead: "MDA makalesinin yazarlarından Marc LeBlanc, “eğlenceli” kelimesinin yerine sekiz ayrı estetik önerir. Oyunlar genellikle bir-iki türü öne çıkarır; tasarımcı hangisini hedeflediğini bilirse kuralları ona göre seçer.",
         table: {
           head: ["Tür", "Oyuncu ne yaşar?", "Örnek"],
@@ -1405,6 +1436,17 @@ const WEEKS = [
             ["Oyalanma (submission)", "Zihni dinlendiren vakit geçirme", "Candy Crush, Solitaire"],
           ],
         },
+      },
+      {
+        type: "gallery",
+        heading: "Eğlence Türleri Ekranda",
+        lead: "Bir oyunun hangi eğlence türünü hedeflediği, ekran görüntüsünden bile sezilir. Önceki tablodaki türlerden dördünün örnekleri:",
+        gallery: [
+          { src: "assets/lesson/journey.jpg", caption: "Duyum ve keşif: Journey'de geniş çöl, ışık ve müzik; oyuncu yürüdükçe bilinmeyeni görür.", credit: "thatgamecompany. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/minecraft-crafting.png", caption: "İfade: Minecraft'ın üretim ekranı, oyuncunun kendi dünyasını kurmasının aracıdır.", credit: "Xbox México, CC BY 3.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/among-us.png", caption: "Dostluk: Among Us'ın asıl içeriği, diğer oyuncularla konuşmak ve birbirinden şüphelenmektir.", credit: "Innersloth. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "Kendi oyununuz için de bütün türleri değil, bir-ikisini seçeceksiniz. Sıradaki sayfada “Leke” için bu seçimi yapıyoruz.",
       },
       {
         type: "concept",
@@ -1777,6 +1819,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Bölümlerin Yapısı",
+        bridge: "Üç yapının oyuncunun ekranında nasıl göründüğünü bir sonraki sayfada karşılaştıralım.",
         lead: "Bölümlerin birbirine nasıl bağlandığı, oyuncunun ne kadar özgür olduğunu belirler. Yapı seçimi kapsamı da doğrudan etkiler.",
         table: {
           head: ["Yapı", "Nasıl çalışır?", "Örnek", "Gamejam'e uygunluğu"],
@@ -1787,6 +1830,17 @@ const WEEKS = [
             ["Açık dünya", "Oyuncu her yere istediği sırayla gider", "Minecraft, Zelda: Breath of the Wild", "Uygun değil"],
           ],
         },
+      },
+      {
+        type: "gallery",
+        heading: "Üç Yapı, Üç Mekân",
+        lead: "Önceki tablodaki yapılar, oyuncunun ekranda gördüğü mekânı da biçimlendirir:",
+        gallery: [
+          { src: "assets/lesson/super-mario.png", caption: "Doğrusal: Super Mario Bros.'ta ekran yalnızca sağa kayar; geri dönülemez.", credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/metroid.png", caption: "Kilit ve anahtar: Metroid'de (1986) harita her yöne uzanır, ama bazı geçitler ancak yeni bir yetenekle açılır.", credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/botw.jpg", caption: "Açık dünya: Zelda: Breath of the Wild'da (2017) görünen her dağa gidilebilir.", credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "Yapı ne olursa olsun, oyuncu nereye gideceğini bilmek zorunda. Sıradaki bölüm, oyuncuyu fark ettirmeden yönlendirmeyi anlatıyor.",
       },
 
       // --- Bölüm 4 ---
@@ -1815,6 +1869,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Yönlendirme Teknikleri",
+        bridge: "Tablodaki “renk” tekniğinin en bilinen örneğini sıradaki sayfada görelim.",
         lead: "Lynch'in öğelerine ek olarak, bölüm tasarımcıları oyuncunun gözünü istedikleri yere çekmek için görsel ipuçları kullanır:",
         table: {
           head: ["Teknik", "Nasıl çalışır?", "Örnek"],
@@ -1829,6 +1884,15 @@ const WEEKS = [
         bullets: [
           "Ölçü: ipucu fazla belirginse (her tırmanılacak yerde sarı boya), oyuncu kendini yönlendirilmiş değil, elinden tutulmuş hisseder.",
         ],
+      },
+      {
+        type: "gallery",
+        heading: "Renkle Yönlendirme: Mirror's Edge",
+        lead: "Mirror's Edge'de (2008) oyuncu çatılarda koşarken her an nereye atlayacağına karar verir. Şehir neredeyse tamamen beyaz; tırmanılabilen boru, rampa ve kapılar kırmızı. Buna “koşucu görüşü” (runner vision) denir ve önceki sayfadaki ölçüye uyar: kırmızı seçenekleri gösterir, yolu oyuncu seçer.",
+        gallery: [
+          { src: "assets/lesson/mirrors-edge.jpg", caption: "Mirror's Edge (2008): beyaz şehirde kırmızı nesneler koşu yolunu çizer.", credit: "DICE / Electronic Arts. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "Işık, renk ve işaretler önce kâğıtta planlanır, sonra oyunda denenir. Son bölüm, bir bölümün hangi adımlarla yapıldığını anlatıyor.",
       },
 
       // --- Bölüm 5 ---
@@ -2054,6 +2118,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Üç Tür Oyuncu Karakteri",
+        bridge: "Üç türün birer temsilcisini sıradaki sayfada yan yana görelim.",
         table: {
           head: ["Tür", "Nasıl çalışır?", "Örnek", "Bedeli"],
           rows: [
@@ -2065,6 +2130,17 @@ const WEEKS = [
         bullets: [
           "Gamejam'de tanımlı karakter, en pahalı seçenektir: kişiliğini anlatacak yazıya ve sahnelere zaman gerekir.",
         ],
+      },
+      {
+        type: "gallery",
+        heading: "Üç Tür, Üç Karakter",
+        lead: "Önceki tablodaki üç türün farkı, karakterin nasıl çizildiğine de yansır:",
+        gallery: [
+          { src: "assets/lesson/gordon-freeman.png", caption: "Sessiz kahraman: Half-Life'ın Gordon Freeman'ı oyun boyunca tek kelime konuşmaz; oyuncu onu kendi gözünden, birinci şahıs kamerayla oynar.", credit: "Valve. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/lara-croft.png", caption: "Tanımlı karakter: Tomb Raider'ın (2013) Lara Croft'u kendi adı, geçmişi ve sesiyle bir kişidir.", credit: "Crystal Dynamics / Square Enix. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/mii.jpeg", caption: "Özelleştirilebilir avatar: Nintendo'nun Mii karakterleri bilerek sade çizildi; yüzü oyuncu kendisi kurar.", credit: "Nintendo. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "Hangi türü seçerseniz seçin, karaktere kişilik vermenin en ucuz yolu yazı değil harekettir. Sıradaki sayfa bunu anlatıyor.",
       },
       {
         type: "concept",
@@ -2243,6 +2319,7 @@ const WEEKS = [
       {
         type: "concept",
         heading: "Stiller ve Maliyetleri",
+        bridge: "Tablodaki ilk dört stili sıradaki sayfada yan yana görelim.",
         lead: "Her stilin bir üretim maliyeti vardır: bir karakteri, bir bölümü, bir animasyonu o stilde yapmak ne kadar sürer? Gamejam'de stil seçimi her şeyden önce bir zaman kararıdır.",
         table: {
           head: ["Stil", "Nasıl görünür?", "Örnek", "Üretim maliyeti"],
@@ -2254,6 +2331,18 @@ const WEEKS = [
             ["Gerçekçi 3D", "Fotoğrafa yakın modeller ve ışık", "The Last of Us", "Çok yüksek: büyük ekipler ve yıllar ister"],
           ],
         },
+      },
+      {
+        type: "gallery",
+        heading: "Dört Stil Yan Yana",
+        lead: "Dört oyun, dört stil. Önceki tablodaki üretim maliyetini görsellerdeki ayrıntı miktarıyla karşılaştırın: hangisini 48 saatte bitirebilirdiniz?",
+        gallery: [
+          { src: "assets/lesson/celeste.png", caption: "Piksel sanat: Celeste (2018).", credit: "Maddy Makes Games, CC BY-SA 4.0. Kaynak: Wikimedia Commons" },
+          { src: "assets/lesson/among-us.png", caption: "Düz / vektör: Among Us (2018).", credit: "Innersloth. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/hollow-knight.jpg", caption: "El çizimi: Hollow Knight (2017).", credit: "Team Cherry. Kaynak: Wikipedia (adil kullanım)" },
+          { src: "assets/lesson/superhot.jpg", caption: "Low-poly 3D: Superhot (2016).", credit: "SUPERHOT Team. Kaynak: Wikipedia (adil kullanım)" },
+        ],
+        bridge: "Maliyet farkını en uçtaki iki oyunla, Cuphead ve Stardew Valley ile daha yakından görelim.",
       },
       {
         type: "examples",
