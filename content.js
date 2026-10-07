@@ -3198,73 +3198,251 @@ const WEEKS = [
       },
     ],
   },
+  // ---------------------------------------------------------------------
+  // HAFTA 6.1 — Kaynaklar: Tom Hall (Doom Bible, 1992), Condor (Diablo
+  // sunum belgesi, 1994), Scott Rogers (Level Up!, 2010: one-sheet,
+  // ten-pager, GDD), Stone Librande (One-Page Designs, GDC 2010).
+  // ---------------------------------------------------------------------
   {
     id: "6.1",
-    title: "GDD'ye Giriş (Teori)",
+    title: "Oyun Tasarım Belgesi (GDD)",
     slides: [
       {
         type: "intro",
-        heading: "Bu Hafta",
-        bullets: ["GDD nedir, neden gerekli?", "Tasarım Defteri'nden GDD'ye."],
+        heading: "Oyun Tasarım Belgesi",
+        lead: "Beş haftadır her derste fikrinize bir parça ekleyip Tasarım Defteri'ne yazdınız: hedef kitle, mekanikler, zorluk eğrisi, bölüm haritası, karakter, stil, arayüz, hikâye. Bu derste bu parçaları tek bir belgede, oyun tasarım belgesinde (GDD) toplamayı öğreniyoruz. 7. haftada kendi GDD'nizi yazacaksınız.",
+        steps: [
+          { label: "GDD nedir?", text: "Belgenin görevi ve iki tarihî örnek." },
+          { label: "Belgenin biçimleri", text: "Tek sayfadan yüz sayfaya: hangi uzunluk ne zaman?" },
+          { label: "İyi GDD nasıl yazılır?", text: "Yazım ilkeleri ve kararların gerekçesi." },
+          { label: "Defterden GDD'ye", text: "Ödevlerinizin GDD'nin hangi maddesine dönüştüğü." },
+        ],
       },
+
+      // --- Bölüm 1 ---
       {
-        type: "concept",
+        type: "section",
         heading: "GDD Nedir?",
-        bullets: [
-          "GDD (Game Design Document), oyun fikrinin tek bir belgede toplanmış halidir.",
-          "Ekibin ortak hafızasıdır; herkes aynı oyunu hayal eder.",
-        ],
+        lead: "Bir oyunu bir kişi bile yapsa, onu haftalar boyunca aklında aynı biçimde tutamaz. Ekip büyüdükçe sorun da büyür: her üye oyunu biraz farklı hayal eder. GDD, oyunun tek bir yerde yazılı hâlidir.",
       },
       {
         type: "concept",
-        heading: "Neden Gerekli?",
-        bullets: [
-          "GDD olmadan her ekip üyesi oyunu kafasında farklı hayal eder.",
-          "Örnek: programcı hızlı bir koşu oyunu kodlar, sanatçı yavaş ve sakin bir dünya çizer. İkisi de iyi iş çıkarmıştır ama parçalar birbirini tutmaz.",
+        heading: "Oyun Tasarım Belgesi",
+        lead: "Oyun tasarım belgesi (game design document, GDD), bir oyunun ne olduğunu, nasıl oynandığını ve neden böyle tasarlandığını anlatan belgedir.",
+        terms: [
+          { term: "Ortak hafıza", def: "Ekipteki herkes aynı belgeye bakar. Programcı, sanatçı ve ses tasarımcısı aynı oyunu yapar." },
+          { term: "Yaşayan belge", en: "living document", def: "GDD bir kez yazılıp kenara konmaz. Oyun test edildikçe değişir; belge de onunla birlikte güncellenir." },
+          { term: "Karar kaydı", def: "Belge yalnızca neyin yapılacağını değil, neden öyle karar verildiğini de yazar. Gerekçe yazılmazsa aynı tartışma her hafta yeniden yapılır." },
         ],
-      },
-      {
-        type: "concept",
-        heading: "Kısa ve Net Olmalı",
-        bullets: [
-          "İyi bir GDD uzun bir kompozisyon değil, birkaç kısa başlıktır.",
-          "Kötü: “Oyunumuzda oyuncu bir kuş olarak gökyüzünde...” diye başlayan uzun paragraf. İyi: “Oyuncu: kuşu zıplatır.”",
-          "GDD bir kere yazılıp kenara konmaz. Oyun değiştikçe o da güncellenir.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "GDD'niz Zaten Yarı Yarıya Hazır",
-        bullets: [
-          "Haftalardır yaptığınız ödevler GDD'nin maddeleridir.",
-          "İsim ve tür, oyun fikri, oyuncunun amacı, hareketler ve kontroller, döngü, kazanma ve kaybetme, oyuncu ve duygu, görsel dünya, ödüller.",
-          "7. haftada bu parçaları 10 maddelik gerçek bir GDD şablonuna taşıyacak ve eksikleri tamamlayacaksınız.",
-        ],
-      },
-      {
-        type: "concept",
-        heading: "Gelir Modelleri",
-        bullets: [
-          "Bir oyun yayınlanacaksa nasıl para kazanacağı da tasarımın bir parçasıdır.",
-          "Yaygın modeller: ücretsiz + reklam, tek seferlik satın alma, oyun içi satın alma, ek içerik (DLC).",
-          "Tasarımcının sorumluluğu: oyuncuyu kandıran, “parayı veren kazanır” hissi yaratan tasarımlar kısa vadede kazandırır ama oyuncunun güvenini kaybettirir.",
-          "Gamejam'de zorunlu değil, ama “bu oyun gerçek olsaydı nasıl gelir kazanırdı?” sorusu tasarımı netleştirir.",
-        ],
+        table: {
+          head: ["GDD olmadan", "Sonuç"],
+          rows: [
+            ["Programcı hızlı bir koşu oyunu kodlar, sanatçı sakin ve yavaş bir dünya çizer", "İkisi de iyi iş çıkarmıştır ama parçalar birbirini tutmaz"],
+            ["Biri yeni bir özellik ekler, kimseye söylemez", "Diğerleri onu hata sanar ve siler"],
+          ],
+        },
       },
       {
         type: "examples",
-        heading: "Oyun Örnekleri",
-        items: [
-          "Büyük stüdyolar (Ubisoft, Riot Games): yüzlerce kişilik ekipler, sürekli güncellenen kapsamlı tasarım belgeleri",
-          "Minecraft: tek kişinin yaptığı küçük bir prototipten doğdu, belgesi oyunla birlikte büyüdü",
+        heading: "Vaka: Doom İncili",
+        image: {
+          src: "assets/lesson/tom-hall.jpg",
+          caption: "Tom Hall, id Software'in kurucu tasarımcılarından. 1992'de Doom için ayrıntılı bir tasarım belgesi yazdı.",
+          credit: "Cmcurly, CC BY-SA 4.0. Kaynak: Wikimedia Commons",
+        },
+        lead: "Tom Hall, Doom'un (1993) yapımına başlarken “Doom İncili” (Doom Bible) adını verdiği uzun bir belge yazdı: karakterler, bölüm bölüm bir hikâye, ayrıntılı bir dünya.",
+        terms: [
+          { term: "Ne oldu?", def: "Ekibin geri kalanı, özellikle programcı John Carmack, hızlı ve yalın bir aksiyon oyunu istiyordu. Prototipler geliştikçe oyun belgeden uzaklaştı; belge güncellenmedi." },
+          { term: "Sonuç", def: "Belgenin büyük kısmı kullanılmadı. Hall, Doom bitmeden 1993'te şirketten ayrıldı." },
+        ],
+        bullets: [
+          "Ders: Belge oyunu takip etmezse kimse onu okumaz. Ayrıntılı ama güncellenmeyen belge, hiç olmayan belgeden daha çok zaman harcatır.",
+        ],
+        bridge: "Bunun tersi bir örnek: belgesi oyunla birlikte değişen bir oyun.",
+      },
+      {
+        type: "examples",
+        heading: "Vaka: Diablo'nun Sunum Belgesi",
+        image: {
+          src: "assets/lesson/diablo.jpg",
+          caption: "Diablo (1996): sunum belgesinde sıra tabanlı olarak tarif edilen oyun, gerçek zamanlı olarak çıktı.",
+          credit: "Blizzard North. Kaynak: Wikipedia (adil kullanım)",
+        },
+        lead: "Condor stüdyosu (sonradan Blizzard North), 1994'te Diablo'yu yayıncılara kısa bir sunum belgesiyle anlattı. Belge oyunun özünü birkaç sayfada veriyordu: rastgele üretilen zindanlar, karakter sınıfları, ganimet.",
+        terms: [
+          { term: "Büyük değişiklik", def: "Belgede oyun sıra tabanlıydı: oyuncu bir adım atar, sonra canavarlar hareket eder. Blizzard oyunun gerçek zamanlı olmasını önerdi; ekip denedi ve oyun bambaşka hissettirdi." },
+          { term: "Sonuç", def: "Mekanik değişti ama belgenin anlattığı öz, yani rastgele zindanlar ve ganimet, korundu. Belge değişikliği yön verdi." },
+        ],
+        bullets: [
+          "Ders: İyi belge her ayrıntıyı sabitlemez; değişmemesi gereken özü (1.2'deki tasarım sütunları) açıkça söyler.",
+        ],
+      },
+
+      // --- Bölüm 2 ---
+      {
+        type: "section",
+        heading: "Belgenin Biçimleri",
+        lead: "Her belge aynı uzunlukta olmaz. Bir yayıncıya fikir anlatırken tek sayfa yeterlidir; yüz kişilik bir ekibin oyunu yapabilmesi için yüzlerce sayfa gerekebilir. Doğru uzunluk, belgeyi kimin, ne zaman okuyacağına bağlıdır.",
+      },
+      {
+        type: "concept",
+        heading: "Üç Uzunluk",
+        lead: "Oyun tasarımcısı Scott Rogers (Level Up!, 2010), oyun geliştikçe büyüyen üç belge tarif eder:",
+        table: {
+          head: ["Belge", "Kim okur?", "Ne zaman?", "İçinde ne var?"],
+          rows: [
+            ["Tek sayfa", "Öğretmen, jüri, yayıncı", "Fikir aşamasında", "İsim, tür, yüksek konsept, hedef kitle, platform, kanca"],
+            ["On sayfa", "Ekip ve yatırımcı", "Ön üretimde", "Oyunun akışı, mekanikler, karakter, dünya, kontroller, para kazanma"],
+            ["Tam GDD", "Bütün ekip", "Üretim boyunca", "Her mekanik, bölüm, düşman, ekran ve ses ayrıntılı olarak"],
+          ],
+        },
+        bullets: [
+          "Gamejam'de tek sayfa ile on sayfa arası yeterlidir. 7. haftadaki 10 maddelik şablonumuz bu ölçektedir.",
+        ],
+        bridge: "Tam bir GDD'nin ne kadar büyüdüğünü sıradaki sayfada, gerçek bir içindekiler sayfasında görelim.",
+      },
+      {
+        type: "concept",
+        heading: "Tam Bir GDD'nin İçindekiler Sayfası",
+        image: {
+          src: "assets/lesson/gdd-ornek.jpg",
+          caption: "“Iron Sand: Heart of Darkness” adlı oyunun tasarım belgesinin içindekiler sayfası.",
+          credit: "Screen Log, CC BY-SA 4.0. Kaynak: Wikipedia",
+        },
+        lead: "Önceki tablodaki “tam GDD”, onlarca başlıktan oluşur. Sağdaki belgenin ana bölümleri ve altlarındaki başlıklardan bazıları:",
+        terms: [
+          { term: "Pazarlama", def: "Çıkış tarihi, tür, benzer oyunlar, yüksek konsept, rakip analizi, sistem gereksinimleri." },
+          { term: "Oynanış", def: "Etkileşimler, ortamlar, görevler, hedefler, çok oyunculu mod." },
+          { term: "Oyun akışı", def: "Açılış ekranları, ara sahneler, menüler, haritalar." },
+          { term: "Hikâye", def: "Birinci, ikinci ve üçüncü perde, final." },
+        ],
+        bullets: [
+          "Bizim 10 maddemiz, bu başlıkların en temel olanlarıdır: “Pazarlama”dan isim, tür ve yüksek konsept; “Oynanış”tan amaç, eylemler, döngü.",
+        ],
+        bridge: "Uzun belgeyi kimse baştan sona okumaz. Bir tasarımcı bu yüzden belgeyi tek sayfaya sığdırmayı önerdi.",
+      },
+      {
+        type: "concept",
+        heading: "Tek Sayfa Tasarım",
+        lead: "SimCity ve Spore üzerinde çalışmış tasarımcı Stone Librande, GDC 2010'daki konuşmasında uzun belgelerin okunmadığını, ama duvara asılan tek sayfalık görsel belgelerin ekip tarafından sürekli kullanıldığını anlattı. Tek sayfa tasarımın ilkeleri:",
+        terms: [
+          { term: "Görsel ağırlıklı", def: "Paragraf yerine ekran çizimi, harita, akış şeması; yanlarında oklarla kısa notlar." },
+          { term: "Tek konu", def: "Her sayfa bir şeyi anlatır: bütün oyun, bir bölüm, bir düşman ya da bir ekran." },
+          { term: "Duvara asılır", def: "Büyük kâğıda basılır ve ekibin görebileceği bir yere asılır. Herkes geçerken bakar, üzerine not alır." },
+          { term: "Kolay güncellenir", def: "Değişen bir şey olduğunda sayfa yeniden çizilir; uzun belgede bir paragrafı bulmaktan daha hızlıdır." },
+        ],
+      },
+
+      // --- Bölüm 3 ---
+      {
+        type: "section",
+        heading: "İyi GDD Nasıl Yazılır?",
+        lead: "GDD bir kompozisyon değil, bir kullanım kılavuzudur. Okuyan kişi, belgeye bakarak oyunun bir parçasını yapabilmelidir. Bu bölüm, belgeyi okunur ve kullanışlı yapan yazım ilkelerini anlatır.",
+      },
+      {
+        type: "concept",
+        heading: "Yazım İlkeleri",
+        lead: "Her ilkeyi “Leke”den bir örnekle görelim:",
+        table: {
+          head: ["İlke", "Kötü", "İyi"],
+          rows: [
+            ["Kısa ve net", "Oyunumuzda oyuncu, sıkıcı bir derste defterine mürekkep dökülen bir öğrencinin silgisi olarak…", "Oyuncu: parmağıyla sürterek mürekkep lekelerini siler."],
+            ["Ölçülebilir", "Lekeler hızlıca yayılır.", "Her leke saniyede kendi boyunun %10'u kadar büyür."],
+            ["Görsel", "Ekranın üstünde süre, kenarında doluluk var.", "Ekran çizimi, üzerinde oklarla “süre çizgisi”, “doluluk çizgisi” notları."],
+            ["Gerekçeli", "Silgi küçülür.", "Silgi her silişte küçülür; çünkü telaş sütunu her silişin bir bedeli olmasını ister."],
+          ],
+        },
+      },
+      {
+        type: "concept",
+        heading: "Örnek: “Leke”nin Değişiklik Kaydı",
+        lead: "Yaşayan belgenin en önemli parçası değişiklik kaydıdır (changelog): ne, ne zaman ve neden değişti? “Leke”nin bu kurstaki yolculuğu, aslında bir değişiklik kaydıdır:",
+        table: {
+          head: ["Ders", "Değişiklik", "Neden?"],
+          rows: [
+            ["1.2", "Dev canavar savaşı ve karakter geliştirme çıkarıldı", "Kapsam; telaş sütununu bölüyordu"],
+            ["2.1", "Platform: dokunmatik telefon", "Temel fiil (silmek) parmakla doğal eşleşiyor"],
+            ["2.2", "Mürekkep şişesi yan mekanik olarak eklendi", "Çekirdeğe bağlı, telaşı artırıyor"],
+            ["3.2", "Tek sayfa yerine dört sayfa", "Kishōtenketsu ile mekaniği adım adım öğretmek"],
+            ["4.1", "Sıçrayan leke eklendi", "Silgi küçülme kuralıyla birleşen yeni bir soru"],
+            ["5.1", "Silgi parmağın biraz üstüne taşındı", "Parmak, silinen lekeyi kapatıyordu"],
+          ],
+        },
+      },
+
+      // --- Bölüm 4 ---
+      {
+        type: "section",
+        heading: "Defterden GDD'ye",
+        lead: "GDD'nizin büyük kısmı zaten yazıldı: her ödev, şablonun bir maddesine karşılık geliyordu. Bu bölüm, hangi ödevin nereye gideceğini ve eksiklerin nasıl bulunacağını gösteriyor.",
+      },
+      {
+        type: "concept",
+        heading: "On Madde ve Kaynakları",
+        lead: "7. haftadaki şablonun on maddesi ve Tasarım Defteri'nizdeki karşılıkları:",
+        table: {
+          head: ["GDD maddesi", "Defterdeki kaynağı"],
+          rows: [
+            ["1. Oyun adı ve türü", "1.2: tür ve isim"],
+            ["2. Oyun fikri", "1.2: yüksek konsept ve kanca"],
+            ["3. Oyuncunun amacı", "5.2: amaç cümlesi"],
+            ["4. Oyuncu ne yapabilir?", "5.1: temel eylemler"],
+            ["5. Kontroller", "5.1: kontrol şeması"],
+            ["6. Oyun döngüsü", "2.2: çekirdek döngü"],
+            ["7. Kazanma ve kaybetme", "2.2: hedef türü ve kaybetmenin bedeli"],
+            ["8. Oyuncu ve duygu", "2.1: persona"],
+            ["9. Görsel dünya", "4.1: karakter; 4.2: stil, palet, moodboard"],
+            ["10. Ödüller ve ek özellikler", "3.1: ödüller ve motivasyon"],
+          ],
+        },
+        bullets: [
+          "Şablonda ayrı maddesi olmayan ödevler (3.2 bölüm haritası, 4.1 düşmanlar, 5.2 hikâye omurgası) GDD'nin sonuna ek olarak konur.",
         ],
       },
       {
-        type: "questions",
-        heading: "Sınıfa Sorular",
-        bullets: [
-          "GDD olmadan çalışan bir ekip ne tür karışıklıklar yaşar?",
-          "Sizce GDD'nin en önemli maddesi hangisi? Neden?",
+        type: "concept",
+        heading: "Örnek: “Leke”nin Tek Sayfası",
+        lead: "“Leke”nin bütününü Librande'nin yöntemiyle tek bir A4 sayfaya yerleştiriyoruz. Sayfanın ortasında oyun ekranının çizimi durur; her şey ona bağlanır:",
+        table: {
+          head: ["Sayfadaki yer", "İçerik"],
+          rows: [
+            ["Üst şerit", "İsim, tür ve yüksek konsept: “Leke, tek parmakla oynanan bir refleks oyunudur…”"],
+            ["Orta", "Telefon ekranının çizimi: silgi, lekeler, şişe, süre ve doluluk çizgileri"],
+            ["Ekranın çevresi", "Oklarla notlar: “silgi her silişte küçülür”, “şişe devrilmeden önce sallanır”"],
+            ["Sol sütun", "Üç sütun (telaş, tek parmak, okul defteri) ve persona"],
+            ["Sağ sütun", "Dört sayfanın küçük çizimleri ve kishōtenketsu perdeleri"],
+            ["Alt şerit", "Çekirdek döngü: sil → silgi küçülür → yeni leke → sil"],
+          ],
+        },
+      },
+
+      // --- Ek bilgi ---
+      {
+        type: "extra",
+        heading: "Gelir Modelleri",
+        lead: "Yayınlanacak bir oyunun nasıl para kazanacağı da tasarımı etkiler. Gamejam'de zorunlu değildir, ama “bu oyun gerçek olsaydı nasıl gelir kazanırdı?” sorusu, tasarımın neyi ödüllendirdiğini netleştirir.",
+        table: {
+          head: ["Model", "Nasıl çalışır?", "Tasarıma etkisi"],
+          rows: [
+            ["Tek seferlik satın alma", "Oyun bir kez satın alınır", "Tasarım yalnızca oyunun kendisine odaklanır"],
+            ["Ücretsiz + reklam", "Oyun bedava, aralarda reklam gösterilir", "Kısa turlar ve sık yeniden başlama teşvik edilir"],
+            ["Oyun içi satın alma", "Kozmetik ya da zaman kazandıran ürünler satılır", "Ödül ve ilerleme hızı satışa göre ayarlanma riski taşır"],
+            ["Ganimet kutusu", "İçeriği rastgele paketler satılır", "Kumara benzediği için birçok ülkede düzenleniyor (3.1)"],
+          ],
+        },
+      },
+
+      {
+        type: "summary",
+        heading: "Terim Sözlüğü",
+        terms: [
+          { term: "Oyun tasarım belgesi", en: "game design document, GDD", def: "Oyunun ne olduğunu, nasıl oynandığını ve neden böyle tasarlandığını anlatan belge." },
+          { term: "Yaşayan belge", en: "living document", def: "Oyun değiştikçe güncellenen belge." },
+          { term: "Karar kaydı", def: "Kararın yanında gerekçesinin de yazılması." },
+          { term: "Değişiklik kaydı", en: "changelog", def: "Ne, ne zaman ve neden değişti listesi." },
+          { term: "Tek sayfa / on sayfa / tam GDD", def: "Fikir, ön üretim ve üretim aşamalarının belgeleri." },
+          { term: "Tek sayfa tasarım", en: "one-page design", def: "Duvara asılan, görsel ağırlıklı tek konulu belge." },
+          { term: "Sunum belgesi", en: "pitch document", def: "Oyunu yayıncıya ya da jüriye anlatan kısa belge." },
         ],
       },
       {
@@ -3272,12 +3450,14 @@ const WEEKS = [
         heading: "Ödev",
         bullets: [
           "Tasarım Defteri'nizi baştan sona okuyun. Oyununuz haftalar içinde değiştiyse eski cevapları güncelleyin.",
-          "7. haftadaki 10 GDD maddesinden hangileri hâlâ boş? Bir liste çıkarın; atölyede önce onları dolduracağız.",
+          "Oyununuzun değişiklik kaydını “Leke” tablosundaki gibi yazın: fikriniz hangi derste nasıl değişti ve neden?",
+          "“On Madde ve Kaynakları” tablosuna bakarak 10 maddeden hangilerinin boş ya da eski olduğunu listeleyin; 7. haftada önce onları dolduracağız.",
+          "Oyununuzun tek sayfa tasarımını A4 ya da A3 kâğıda çizin: ortada oyun ekranı, çevresinde oklarla notlar.",
+          "Evde: tek sayfanızı oyunu hiç bilmeyen birine gösterin. Bir dakika içinde oyunun nasıl oynandığını anlayabiliyor mu? Anlamadığı yeri sayfada düzeltin.",
         ],
       },
     ],
   },
-
   // ---------------------------------------------------------------------
   // HAFTA 7 — 6 haftalık teorinin ardından gelen uygulama atölyesi.
   // Kendi gamejam fikirleri için GERÇEK bir GDD dolduruyorlar. Her alan için
